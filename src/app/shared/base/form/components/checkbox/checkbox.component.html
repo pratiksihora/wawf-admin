@@ -1,0 +1,16 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative d-flex h-100">
+
+    <!--begin::Checkbox-->
+      <label class="form-check form-check-custom"[ngClass]="{
+        'form-check-solid': field?.templateOptions?.solidControl,
+        'form-check-sm':field?.templateOptions?.smallControl,
+        'form-check-lg':field?.templateOptions?.largeControl }">
+        <input class="form-check-input" type="checkbox" [formControlName]="field.key" id="{{prefix}}{{field.key}}" (change)="notifyChange($event)">
+        <span class="fw-bold ps-2 fs-6" *ngIf="field?.displayOptions?.label2">{{ field?.displayOptions?.label2 | translate }}</span>
+      </label>
+    <!--end::Checkbox-->
+
+  </div>
+</app-form-control-layout>

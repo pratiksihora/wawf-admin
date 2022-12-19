@@ -1,0 +1,282 @@
+<!-- begin: expandable section -->
+<td *ngIf="options?.tableOptions?.expandable" class="ui-resizable-column text-truncate">
+  <span class="cursor-pointer text-center" [pRowToggler]="rowData">
+    <span class="svg-icon svg-icon-3" *ngIf="!expanded"
+      [inlineSVG]="'assets/media/icons/duotune/arrows/arr071.svg'"></span>
+    <span class="svg-icon svg-icon-3" *ngIf="expanded"
+      [inlineSVG]="'assets/media/icons/duotune/arrows/arr072.svg'"></span>
+  </span>
+</td>
+<!-- end: expandable section -->
+
+<!-- begin: reorder rows -->
+<td *ngIf="options?.tableOptions?.reorderableRows" class="ui-resizable-column text-truncate">
+  <span pReorderableRowHandle class="svg-icon svg-icon-3"
+    [inlineSVG]="'assets/media/icons/duotune/abstract/abs015.svg'"></span>
+</td>
+<!-- end: reorder rows -->
+
+<!-- begin: checkbox selection -->
+<td *ngIf="options?.tableOptions?.checkbox && !rowData?.checkboxHide" class="ui-resizable-column text-truncate">
+  <div class="text-center" *ngxPermissionsOnly="options?.actions?.deleteConfig?.permission">
+    <p-tableCheckbox [value]="rowData" [disabled]="rowData.checkboxDisable"></p-tableCheckbox>
+  </div>
+</td>
+<!-- begin: checkbox selection -->
+<!-- begin: action column -->
+<td *ngIf="options?.actions && options?.tableOptions?.leftAction" class="ui-resizable-column text-truncate">
+  <div class="d-flex">
+
+    <!-- begin: clone button -->
+    <ng-container *ngIf="options?.actions.clone">
+      <app-button [options]="options?.actions?.cloneConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: clone button -->
+
+    <!-- begin: view button -->
+    <ng-container *ngIf="options?.actions.view">
+      <app-button [options]="options?.actions?.viewConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: view button -->
+
+    <!-- begin: edit button -->
+    <ng-container *ngIf="options?.actions.edit">
+      <app-button [options]="options?.actions?.editConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: edit button -->
+
+    <!-- begin: delete button -->
+    <ng-container *ngIf="options?.actions?.delete">
+      <app-button [options]="options?.actions?.deleteConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- end: delete button -->
+  </div>
+</td>
+<!-- begin: action column -->
+
+<!-- begin: action buttons -->
+<td *ngIf="options?.buttons?.buttons && options?.tableOptions?.leftAction" class="ui-resizable-column text-truncate">
+  <div class="btn-group d-flex">
+    <ng-container *ngFor="let btn of options.buttons?.buttons">
+      <app-button [options]="btn" [data]="rowData" (buttonCallback)="buttonCallback($event)"></app-button>
+    </ng-container>
+  </div>
+</td>
+<!-- begin: action buttons -->
+
+<!-- begin: body template render -->
+<ng-container *ngIf="bodyTemplate">
+  <ng-container
+    *ngTemplateOutlet="bodyTemplate; context: { columns: columns,  item: rowData, options: options, expanded: expanded, rowIndex: rowIndex }">
+  </ng-container>
+</ng-container>
+<!-- end: body template render -->
+
+<!-- begin: body render -->
+<ng-container *ngIf="!bodyTemplate">
+  <ng-container *ngFor="let column of columns; let rowIndex = index">
+    <td class="ui-resizable-column text-truncate">
+
+      <ng-container [ngSwitch]="column.displayType">
+
+        <!-- begin: item template render -->
+        <ng-container *ngSwitchCase="'custom'">
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { columns: columns, column: column, item: rowData}">
+          </ng-container>
+        </ng-container>
+        <!-- end: item template render -->
+
+        <!-- begin: html render -->
+        <ng-container *ngSwitchCase="'HTML'">
+          <span *ngIf="rowData[column.field]" [innerHTML]="rowData[column.field] | safe: 'html'"></span>
+          <span *ngIf="!rowData[column.field] && column.blank">{{ column.blank | translate }}</span>
+        </ng-container>
+        <!-- end: date time item render -->
+
+        <!-- begin: user with image render -->
+        <ng-container *ngSwitchCase="'user-with-image'">
+          <div class="d-flex align-items-center">
+            <!-- begin: image section render -->
+            <div class="symbol symbol-45px me-5">
+              <!-- begin: image section render -->
+              <img [defaultImage]="defaultImage" *ngIf="rowData[column.field]?.image"
+                [lazyLoad]="bucketAwsUrl +rowData[column.field]?.image" alt="{{ rowData[column.field]?.name }}" />
+              <!-- end: image section render -->
+              <!-- begin: name image section render -->
+              <div *ngIf="!rowData[column.field]?.image" class="symbol-label bg-light-danger">
+                <span class="fs-7 text-danger">{{ rowData[column.field]?.name | firstLetter}}</span>
+              </div>
+              <!-- end: name image section render -->
+            </div>
+            <!-- end: image section render -->
+            <!-- begin: name section render -->
+            <div class="d-flex justify-content-start flex-column" *ngIf="rowData[column.field]?.name">
+              <a href="javascript:void(0);" (click)="nameCallback(rowData)"
+                class="text-dark fw-bolder text-hover-primary fs-6">{{
+                rowData[column.field]?.name }}</a>
+              <!-- begin: sub text section render -->
+              <span class="text-muted fw-bold text-muted d-block fs-7" *ngIf="rowData[column.field]?.value1">{{
+                rowData[column.field]?.value1 }}</span>
+              <!-- end: sub text section render -->
+              <!-- begin: role or status section render -->
+              <span *ngIf="rowData[column.field]?.value2"
+                class="badge badge-light-{{rowData[column.field]?.color || 'primary'}} fs-8 fw-bolder">{{
+                rowData[column.field]?.value2 }}</span>
+              <!-- end: role or statu section render -->
+            </div>
+            <!-- end: name section render -->
+          </div>
+        </ng-container>
+        <!-- end: user with image render -->
+
+        <!-- begin: user with image render -->
+        <ng-container *ngSwitchCase="'user-invite'">
+
+          <div class="d-flex align-items-center">
+            <!-- begin: image section render -->
+            <div class="symbol symbol-45px me-5">
+              <!-- begin: image section render -->
+              <img [defaultImage]="defaultImage" *ngIf="rowData[column.field]?.image"
+                [lazyLoad]="bucketAwsUrl  +rowData[column.field]?.image" alt="{{ rowData[column.field]?.name }}" />
+              <!-- end: image section render -->
+              <!-- begin: name image section render -->
+              <div *ngIf="!rowData[column.field]?.image" class="symbol-label bg-light-danger">
+                <span class="fs-7 text-danger">{{ rowData[column.field]?.name | firstLetter}}</span>
+              </div>
+              <!-- end: name image section render -->
+            </div>
+            <!-- end: image section render -->
+            <!-- begin: name section render -->
+            <div class="d-block">
+              <div class="d-flex justify-content-start flex-column" *ngIf="rowData[column.field]?.name">
+                <a href="javascript:void(0);" class="text-dark text-hover-primary fs-6">{{
+                  rowData[column.field]?.name }}</a>
+              </div>
+              <div class="badge badge-light-primary fs-8 fw-bolder mt-1 cursor-pointer"
+                *ngIf="rowData[column.field]?.can_invite" (click)="inviteButtonCallback(rowData)">Re-Invite</div>
+            </div>
+            <!-- end: name section render -->
+          </div>
+        </ng-container>
+        <!-- end: user with image render -->
+
+
+        <!-- begin: users render -->
+        <ng-container *ngSwitchCase="'users'">
+          <div>
+            <div class="symbol-group symbol-hover mb-1">
+              <!--begin:: members render-->
+              <ng-container *ngFor="let item of rowData[column.field]?.value; let itemIndex = index">
+                <div class="symbol symbol-circle symbol-25px">
+                  <!-- begin: image render -->
+                  <img [defaultImage]="defaultImage" *ngIf="item.image" [lazyLoad]="bucketAwsUrl +item.image"
+                    alt="{{item.name}}">
+                  <!-- end: image render -->
+                  <div *ngIf="!item.image" class="symbol-label bg-light-danger">
+                    <span class="fs-7 text-danger">{{ item.name | firstLetter }}</span>
+                  </div>
+                </div>
+              </ng-container>
+              <!--end:: members render -->
+
+              <!--begin:: pending members count-->
+              <div class="symbol symbol-circle symbol-25px" *ngIf="rowData[column.field]?.pending">
+                <div class="symbol-label bg-dark">
+                  <span class="fs-9 text-white">+{{ rowData[column.field]?.pending }}</span>
+                </div>
+              </div>
+              <!--end:: pending members count-->
+            </div>
+          </div>
+        </ng-container>
+        <!-- end: users render -->
+
+        <!-- begin: status render -->
+        <ng-container *ngSwitchCase="'status'">
+          <span
+            class="badge badge-light-{{rowData[column.field]?.color || 'primary'}} fs-8 fw-bolder">{{rowData[column.field]?.status}}</span>
+        </ng-container>
+        <!-- end: status render -->
+
+        <!-- begin: progress render -->
+        <ng-container *ngSwitchCase="'progress'">
+          <div class="d-flex align-items-center w-100 mw-125px">
+            <div class="progress h-6px w-100 me-2 bg-light-{{rowData[column.field]?.color || 'primary'}}">
+              <div class="progress-bar bg-{{rowData[column.field]?.color || 'primary'}}" role="progressbar"
+                [style.width.%]="rowData[column.field]?.value" aria-valuenow="rowData[column.field]?.value"
+                aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span class="text-gray-600 fw-bold">{{ rowData[column.field]?.value || 0 }}%</span>
+          </div>
+        </ng-container>
+        <!-- end: progress render -->
+
+        <!-- begin: status render -->
+        <ng-container *ngSwitchCase="'number'">
+          <span class="text-gray-600 fw-bold"> {{ rowData[column.field] }} </span>
+        </ng-container>
+        <!-- end: status render -->
+
+        <!-- begin: default render -->
+        <ng-container *ngSwitchDefault>
+          <span class="text-gray-600 fw-bold"> {{ rowData[column.field] || column.blank }} </span>
+        </ng-container>
+        <!-- end: default render -->
+
+
+
+      </ng-container>
+
+    </td>
+  </ng-container>
+</ng-container>
+<!-- end: body render -->
+
+<!-- begin: action buttons -->
+<td *ngIf="options?.buttons?.buttons && !options?.tableOptions?.leftAction" class="ui-resizable-column text-truncate">
+  <div class="btn-group d-flex">
+    <ng-container *ngFor="let btn of options.buttons?.buttons">
+      <app-button [options]="btn" [data]="rowData" (buttonCallback)="buttonCallback($event)"></app-button>
+    </ng-container>
+  </div>
+</td>
+<!-- begin: action buttons -->
+
+<!-- begin: action column -->
+<td *ngIf="options?.actions && !options?.tableOptions?.leftAction" class="ui-resizable-column text-truncate">
+  <div class="d-flex">
+
+    <!-- begin: clone button -->
+    <ng-container *ngIf="options?.actions.clone">
+      <app-button [options]="options?.actions?.cloneConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: clone button -->
+
+    <!-- begin: view button -->
+    <ng-container *ngIf="options?.actions.view">
+      <app-button [options]="options?.actions?.viewConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: view button -->
+
+    <!-- begin: edit button -->
+    <ng-container *ngIf="options?.actions.edit">
+      <app-button [options]="options?.actions?.editConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: edit button -->
+
+    <!-- begin: delete button -->
+    <ng-container *ngIf="options?.actions?.delete">
+      <app-button [options]="options?.actions?.deleteConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- end: delete button -->
+  </div>
+</td>
+<!-- begin: action column -->

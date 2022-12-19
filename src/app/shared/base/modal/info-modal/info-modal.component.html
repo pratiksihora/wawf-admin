@@ -1,0 +1,8 @@
+<div class="modal-header py-4 px-7">
+    {{ infoModalTitle }}
+    <button type="button" class="btn-close" (click)="modal?.close()"></button>
+</div>
+<div class="modal-body" [innerHTML]="modalContent | safe: 'html'"></div>
+<div class="modal-footer py-3 px-7" *ngIf="footerClose">
+    <button type="button" class="btn btn-light btn-sm py-2" (click)="modal?.close()">Close</button>
+</div>

@@ -1,0 +1,45 @@
+<div [formGroup]="form" class="position-relative" class="ng-select-ant custom-ng-select custom-py-3-editor" [ngClass]="{
+    'ng-select-solid': field?.templateOptions?.solidControl,
+    'ng-select-sm':field?.templateOptions?.smallControl,
+    'ng-select-lg':field?.templateOptions?.largeControl,
+    'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+  }" [hidden]="hidden.value">
+
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+
+  <!-- begin: main control section -->
+  <ng-select #select id="{{id}}"
+    [ngClass]="{ 'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form.get(field.key)?.errors) }"
+    [formControlName]="field.key" [items]="items" [readonly]="field?.readonly || false"
+    [maxSelectedItems]="validators?.max" [addTag]="field?.selectOptions?.tag || false" bindValue="value"
+    bindLabel="text"
+    placeholder="{{ field?.displayOptions?.hidePlaceHolder ? '' : ((field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)}}"
+    notFoundText="{{ field?.displayOptions?.notFound | translate }}"
+    typeToSearchText="{{ (field?.displayOptions?.search || 'COMMON.HINT.SELECT_SEARCH') | translate }}"
+    [appendTo]="field?.selectOptions?.append"
+    [closeOnSelect]="(!field?.templateOptions?.multiple || field?.selectOptions?.tag || !field?.selectOptions?.preventCloseOnSelect)"
+    [clearable]="!field?.selectOptions?.unClear"
+    [dropdownPosition]="field?.selectOptions?.position || placementEnum.AUTO"
+    [selectableGroupAsModel]="field?.selectOptions?.optionGroupSelection"
+    [isOpen]="field?.selectOptions?.open || undefined" [hideSelected]="field?.selectOptions?.hideSelected || false"
+    [searchable]="!field?.selectOptions?.preventSearch" [selectOnTab]="true"
+    [minTermLength]="field?.selectOptions?.minTextForSearch || 0"
+    [virtualScroll]="field?.selectOptions?.virtualScroll || false" [tabIndex]="field?.selectOptions?.tabIndex"
+    (change)="notifyChange($event)">
+
+  </ng-select>
+  <!-- end: main control section -->
+  <!-- end: control section -->
+  <!-- begin: field error section -->
+  <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+  <!-- end: field error section -->
+</div>

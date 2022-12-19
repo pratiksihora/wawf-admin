@@ -1,0 +1,23 @@
+<div #drawer class="bg-white z-999 drawer-shadow" data-kt-drawer="true" data-kt-drawer-name="activities"
+  data-kt-drawer-activate="true" [attr.data-kt-drawer-overlay]="!overlayDisable" [attr.data-kt-drawer-width]="width"
+  [attr.data-kt-drawer-direction]="position">
+
+  <div class="card rounded-0 h-100 w-100 rounded-0">
+    <!-- begin: header template render -->
+    <div class="card-header" *ngIf="drawerTitle">
+      <h3 class="card-title fw-bold text-gray-800" *ngIf="drawerTitle"
+        [innerHTML]="(drawerTitle | translate) | safe: 'html'">
+      </h3>
+      <div class="card-toolbar">
+        <button type="button" (click)="close()" class="btn-close">
+          <!-- <span [inlineSVG]="'./assets/media/inline-svg/gallery/close-icon.svg'" class="svg-icon svg-icon-1"></span> -->
+        </button>
+      </div>
+    </div>
+    <!-- end: header template render -->
+
+    <!-- begin: body template render -->
+    <ng-content></ng-content>
+    <!-- end: body template render -->
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value">
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <div class="input-group input-group-sm input-group-solid mb-5">
+    <span class="input-group-text svg-icon svg-icon-muted svg-icon-2 py-0"
+      [inlineSVG]="'assets/media/inline-svg/editor/drawer/close.svg'">
+    </span>
+    <input type="text" class="form-control" placeholder="icon name" />
+  </div>
+</div>

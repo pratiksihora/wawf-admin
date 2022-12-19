@@ -1,0 +1,32 @@
+<div [formGroup]="form" [hidden]="hidden.value">
+  <!-- begin: pre seperator for border -->
+  <div *ngIf="field.templateOptions?.preSeperator" class="separator separator-dashed my-3"></div>
+  <!-- end: pre seperator for border -->
+
+  <!-- begin: label section-->
+  <app-form-control-layout [hidden]="hidden.value" [bolder]="true" [prefix]="prefix || ''" [field]="field" [form]="form"
+    [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+    <div class="row" [formGroupName]="field.key">
+
+      <!-- begin: render form group fields section -->
+      <ng-container *ngFor="let subfield of field.fieldGroups;">
+        <div [ngClass]="[subfield.classNames?.row || '']" [hidden]="form.get(subfield.key + '_hidden')?.value">
+          <!-- begin: render from control selector -->
+          <app-control-selector [formConfig]="formConfig" [fieldConfig]="subfield" [parentForm]="form"
+            [form]="getFormGroup()" [options]="options && options[subfield.key]"
+            [values]="values && values[subfield.key]" (valueChange)="valueChange.emit($event)"
+            (iconAction)="iconAction.emit($event)" (labelAction)="labelAction.emit($event)"
+            (detectAction)="detectAction.emit($event)">
+          </app-control-selector>
+          <!-- end: render from control selector -->
+        </div>
+      </ng-container>
+      <!-- end: render form group fields section -->
+    </div>
+  </app-form-control-layout>
+  <!-- end: label section-->
+
+  <!-- begin: post seperator for border -->
+  <div *ngIf="field.templateOptions?.postSeperator" class="separator separator-dashed my-3"></div>
+  <!-- end: post seperator for border -->
+</div>

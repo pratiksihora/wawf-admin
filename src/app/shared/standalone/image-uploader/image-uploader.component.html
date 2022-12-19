@@ -1,0 +1,211 @@
+<div class="h-90vh flex-fill d-flex flex-column">
+  <div class="modal-header">
+    <h4 class="modal-title">{{ 'COMMON.TITLE.CHOOSE_IMAGE' | translate }}</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+      (click)="close()"></button>
+  </div>
+
+  <div class="d-flex modal-body overflow-y-hidden p-0" [ngClass]="{ 'd-none': selectedImage }">
+    <div class="stepper stepper-pills stepper-column d-flex flex-fill flex-column flex-lg-row"
+      id="kt_stepper_example_vertical">
+      <div class="d-flex w-lg-350px p-3 bg-efefef border-end h-100 overflow-y-auto">
+        <div class="stepper-nav w-100">
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.UPLOAD)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.UPLOAD }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/folder.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Upload image
+              </h3>
+              <div class="stepper-desc">
+                Upload an image or GIF from your system
+              </div>
+            </div>
+          </div>
+          <!-- <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.LINK)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.LINK }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/url.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                From URL
+              </h3>
+              <div class="stepper-desc">
+                You can upload files and images directly from a URL.
+              </div>
+            </div>
+          </div> -->
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100"
+            (click)="tabClick(tabEnum.UNSPLASH)" data-kt-stepper-element="nav"
+            [ngClass]=" { 'current': currentTab === tabEnum.UNSPLASH }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/unsplash.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Unsplash
+              </h3>
+              <div class="stepper-desc">
+                Beautiful, free images and photos that you can download and use for any project.
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.GIPHY)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.GIPHY }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/gif.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Giphy
+              </h3>
+              <div class="stepper-desc">
+                GIPHY is your top source for the best & newest GIFs & Animated Stickers online.
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.PEXELS)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.PEXELS }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/pexels.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Pexels
+              </h3>
+              <div class="stepper-desc">
+                Free stock photos & videos you can use everywhere.
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.PIXABAY)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.PIXABAY }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/pixabay.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Pixabay
+              </h3>
+              <div class="stepper-desc">
+                Pixabay is a vibrant community of creatives, sharing copyright free images, videos and music.
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.TENOR)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.TENOR }">
+            <div class="stepper-icon">
+              <span class="stepper-number">👋</span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Tenor
+              </h3>
+              <div class="stepper-desc">
+                Say more with Tenor. Find the perfect Animated GIFs
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.GALLARY)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.GALLARY }">
+            <div class="stepper-icon">
+              <span class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'./assets/media/inline-svg/workspace-global/gallery.svg'"></span>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Gallery
+              </h3>
+              <div class="stepper-desc">
+                Upload image or GIF from gallery folder
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-fill p-4 w-100 h-100 overflow-y-auto">
+        <app-loader [show]="loading" class="w-100 h-100">
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.UPLOAD}"
+            [hidden]="currentTab !== tabEnum.UPLOAD">
+            <app-upload-link [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.UPLOAD}"
+              [type]="tabEnum.UPLOAD" [allowMultipleImages]="allowMultipleImages" [currentTab]="currentTab"
+              (fileChanged)="fileChange($event)">
+            </app-upload-link>
+          </div>
+          <!-- <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.LINK}"
+            [hidden]="currentTab !== tabEnum.LINK">
+            <app-upload-link [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.LINK}"
+              [type]="tabEnum.LINK" [allowMultipleImages]="false" [currentTab]="currentTab" (imageClicked)="imageClick($event)">
+            </app-upload-link>
+          </div> -->
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.GALLARY}"
+            [hidden]="currentTab !== tabEnum.GALLARY">
+            <app-gallery [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.GALLARY}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-gallery>
+          </div>
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.GIPHY}"
+            [hidden]="currentTab !== tabEnum.GIPHY">
+            <app-giphy [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.GIPHY}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-giphy>
+          </div>
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.PEXELS}"
+            [hidden]="currentTab !== tabEnum.PEXELS">
+            <app-pexels [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.PEXELS}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-pexels>
+          </div>
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.PIXABAY}"
+            [hidden]="currentTab !== tabEnum.PIXABAY">
+            <app-pixabay [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.PIXABAY}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-pixabay>
+          </div>
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.UNSPLASH}"
+            [hidden]="currentTab !== tabEnum.UNSPLASH">
+            <app-unsplash [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.UNSPLASH}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-unsplash>
+          </div>
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.TENOR}"
+            [hidden]="currentTab !== tabEnum.TENOR">
+            <app-tenor [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.TENOR}"
+              (imageClicked)="imageClick($event)" [currentTab]="currentTab"></app-tenor>
+          </div>
+        </app-loader>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex modal-body p-0"
+    [ngClass]="{ 'd-none': ( !selectedImage || (selectedImage && allowMultipleImages  && (currentTab === 'upload') ))}">
+    <app-loader [show]="loading">
+      <div
+        class="preview d-flex flex-column gap-4 justify-content-center align-items-center h-100 w-100 overflow-y-auto">
+        <div
+          class="flex-fill w-100 bgi-size-cover bgi-no-repeat bgi-position-center text-center h-100 p-4 d-flex justify-content-center align-items-center">
+          <img [img-preloader]="selectedImageSrc" alt=""
+            class="h-100 max-w-100 object-contain w-auto max-h-600px">
+        </div>
+      </div>
+    </app-loader>
+  </div>
+  <div class="modal-footer align-items-center justify-content-center gap-3 pb-5"
+    [ngClass]="{ 'd-none': ( !selectedImage || (selectedImage && allowMultipleImages && (currentTab === 'upload') ))}">
+    <button type="button" *ngIf="selectedImageSrc" class="btn btn-sm btn-primary py-2" (click)="uploadLoadedFile()">
+      Upload
+    </button>
+    <button type="button" class="btn btn-sm btn-light py-2" (click)="clearFileSelection()">
+      Cancel
+    </button>
+  </div>
+  <div
+    [ngClass]="{ 'd-none': ( (!selectedImage || (currentTab !== 'upload')) || ( selectedImage && !allowMultipleImages  ))}">
+    <app-multi-image-upload [imagesrc]="selectedImageSrc" [customAPIConfig]="customAPIConfig"
+      [selectedImages]="multipleImages" (multipleImageCallback)="handleMultipleImage($event)"></app-multi-image-upload>
+  </div>
+</div>

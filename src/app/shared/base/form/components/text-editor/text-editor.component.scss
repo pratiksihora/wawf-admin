@@ -1,0 +1,24 @@
+::ng-deep .ql-toolbar {
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  border: none !important;
+}
+
+::ng-deep .ql-container {
+  border-bottom-left-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+  border: none !important;
+}
+
+::ng-deep .ql-snow .ql-editor img {
+  max-width: 30%;
+}
+
+.is-invalid {
+  background-color: #ffebee !important;
+  border-color: rgb(241, 65, 108) !important;
+}
+
+.quill-box {
+  min-height: 200px !important;
+}

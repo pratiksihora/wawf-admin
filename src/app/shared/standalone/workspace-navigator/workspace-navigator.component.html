@@ -1,0 +1,54 @@
+<div class="h-100 d-flex justify-content-center align-items-center ms-5 ms-md-10">
+    <ng-container
+        *ngIf="business?.billing?.user?.ub_br_associate === roleEnum.SYSTEM_ADMIN && business?.billing?.user?.ub_status === userEnum.ACTIVE && business?.billing?.status === planEnum.TRIAL">
+        <div class="d-none d-xl-flex align-items-center flex-nowrap">
+            <div class="d-flex align-items-center flex-nowrap me-4">
+                <span *ngIf="planEnum.TRIAL === business?.billing?.status"
+                    class="bg-light text-gray-600 rounded-pill px-6 py-2 fs-5">Trial expire in&nbsp;<span
+                        class="fw-bolder">{{business?.billing?.remaining}}
+                        days</span>
+                </span>
+                <a (click)="navigateToPlan()"
+                    class="ps-5 text-success fw-bold fs-4 text-decoration-underline cursor-pointer">Upgrade Now</a>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="business?.billing?.user?.ub_br_associate === roleEnum.SYSTEM_ADMIN">
+        <div class="me-4 d-none d-xl-flex">
+            <a type="button" class="btn btn-sm btn-flex btn-light rounded-pill" (click)="navigateToSubscription()">
+                <span class="fs-6">Interaction</span>&nbsp;:&nbsp;<span
+                    class="text-primary fw-semibold">{{integrationCount?.usage_count || 0}}</span>&nbsp;/&nbsp;<span
+                    class="text-primary fw-bold">{{integrationCount?.total_count || 0}}</span>
+            </a>
+        </div>
+    </ng-container>
+    <button type="button"
+        class="btn btn-sm btn-flex btn-light align-items-cenrer justify-content-center justify-content-md-between align-items-lg-cenrer flex-md-content-between btn-color-gray-600 px-0 ps-md-6 pe-md-5 w-30px w-md-200px"
+        data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end"
+        data-kt-menu-flip="bottom">
+        <span class="d-none d-md-inline text-truncate">{{ selectedWorkspace?.ws_name || 'Workspaces' }}</span>
+        <span class="svg-icon svg-icon-4 ms-md-4 me-0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                    fill="currentColor"></path>
+            </svg>
+        </span>
+    </button>
+    <div data-kt-menu="true" #menu
+        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-semibold py-4 fs-6 w-275px pt-0">
+        <div class="menu-item d-flex align-items-center justify-content-between px-3">
+            <div class="menu-content fs-7 text-dark fw-bold px-3 py-4">Select Workspaces</div>
+            <div>
+                <a (click)="navigateToChooseWorkspace()" class="px-3 cursor-pointer py-4"><u>Manage</u></a>
+            </div>
+        </div>
+        <div class="separator mb-3 opacity-75"></div>
+        <div class="max-h-400px overflow-y-auto">
+            <div class="menu-item px-3" *ngFor="let ws of workspaceList">
+                <a href="javascript:void(0)" (click)="navigateToWorkspace(ws)" class="menu-link px-3"
+                    [ngClass]="{ active :  selectedWorkspace?.ws_id == ws.ws_id }">{{ws.ws_name}}</a>
+            </div>
+        </div>
+    </div>
+</div>

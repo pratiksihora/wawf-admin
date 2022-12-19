@@ -1,0 +1,17 @@
+<div class="d-flex gap-2">
+    <div class="d-flex align-items-center position-relative ms-auto">
+        <span class="svg-icon svg-icon-1 position-absolute ms-4 text-dark"
+            [inlineSVG]="'./assets/media/icons/duotune/general/gen021.svg'">
+        </span>
+        <input [(ngModel)]="searchString" type="text" class="form-control form-control-sm form-control-solid ps-14"
+            placeholder="Search Product">
+    </div>
+    <button type="button" class="btn btn-sm py-2 btn-primary" (click)="getImagesCall(true)">Search
+    </button>
+</div>
+<app-image-preview [imageList]="imageList" (imageClick)="imageClicked.emit($event)"></app-image-preview>
+<app-no-result-found *ngIf="!imageList.length" class="mt-20"></app-no-result-found>
+<div class="w-100 d-flex align-items-center justify-content-center py-2">
+    <button class="btn btn-sm btn-primary py-2" *ngIf="totalImages > imageList.length"
+        (click)="getImagesCall()">Load More</button>
+</div>

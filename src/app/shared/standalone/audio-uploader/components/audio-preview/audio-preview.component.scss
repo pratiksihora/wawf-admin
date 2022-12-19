@@ -1,0 +1,32 @@
+// For library overlay
+.image-overlay {
+    position: relative;
+    overflow: hidden;
+  
+    #image {
+      object-fit: cover;
+      height: 150px;
+    }
+  
+    &:hover {
+      .image-overlay_layer {
+        transition: all 0.3s ease;
+        opacity: 1;
+      }
+    }
+  
+    &_layer {
+      position: absolute;
+      // top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      min-height: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      opacity: 0;
+      line-height: 1.5;
+      padding: 0.25rem 0.75rem;
+      font-size: 12px;
+    }
+  }

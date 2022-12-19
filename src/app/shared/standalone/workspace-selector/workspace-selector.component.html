@@ -1,0 +1,46 @@
+<div class="modal-header pt-4 pb-3 px-7">
+  <h3 class="card-title fw-bold text-gray-800">Select Workspace</h3>
+  <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+    (click)="modal?.close()"></button>
+</div>
+<div class="modal-body">
+  <div
+    class="d-flex flex-column flex-lg-row gap-3 align-items-center justify-content-center justify-content-lg-between w-100 mb-5">
+    <div class="d-flex align-items-center position-relative">
+      <span [inlineSVG]="'./assets/media/icons/duotune/global-table-layout/search.svg'"
+        class="svg-icon svg-icon-1 position-absolute ms-4"></span>
+      <input type="text" [(ngModel)]="filterText" (keyup)="searchWs()" placeholder="Search Workspace"
+        class="form-control max-w-100 form-control-solid ps-14 h-40px">
+    </div>
+    <h1 class="fw-semibold fs-6 py-2 py-lg-5 mb-0" *ngIf="count > 0">{{count}} Selected</h1>
+    <div class="btn-group" role="group">
+      <label class="btn btn-sm py-2 btn-outline-primary border" (click)="selectOption('all')">All</label>
+      <label class=" btn btn-sm py-2 btn-outline-primary border" (click)="selectOption('none')">None</label>
+      <label class="btn btn-sm py-2 btn-outline-primary border" (click)="selectOption('inverse')">Inverse</label>
+    </div>
+  </div>
+  <app-loader [show]="loading">
+    <ng-container *ngIf="wsFilterList">
+      <ng-container *ngFor="let ws of wsFilterList; let i = index">
+        <div class="form-check px-3 form-check-custom form-check-solid">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="ws.selected" id="worspace{{i}}" />
+          <label class="form-check-label fw-semibold fs-6 py-5 ms-5 mb-0" for="worspace{{i}}">
+            {{ ws.ws_name }}
+          </label>
+        </div>
+        <div class="separator separator-dashed" *ngIf="(wsFilterList?.length - 1) !== i"></div>
+      </ng-container>
+      <p *ngIf="wsFilterList?.length === 0">No Result</p>
+    </ng-container>
+    <div class="d-flex justify-content-end mt-8">
+      <button type="button" class="btn btn-light me-3" (click)="close()">Close</button>
+      <button type="submit" class="btn btn-primary" (click)="select()">
+        <span class="indicator-label">Select</span>
+        <span class="indicator-progress">
+          Please wait...
+          <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+        </span>
+      </button>
+    </div>
+  </app-loader>
+</div>

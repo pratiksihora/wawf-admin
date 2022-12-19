@@ -1,0 +1,26 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value"
+  [ngClass]="{ 'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }">
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <!-- begin: text-editor -->
+  <quill-editor class="form-control p-0 border-none" [formats]="formats"
+    [styles]="{ minHeight: '200px', wordBreak: 'break-all', backgroundColor: 'var(--bs-gray-200)' }" name="editor" [formControlName]="field.key"
+    [id]="field.key" [modules]="editorConfig"
+    [placeholder]="((this.field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)"
+    [ngClass]="{ 'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form.get(field.key)?.errors) }"
+    (onContentChanged)="notifyChange($event)">
+  </quill-editor>
+  <!-- end: text-editor -->
+
+  <!-- begin: field error section -->
+  <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+  <!-- end: field error section -->
+</div>

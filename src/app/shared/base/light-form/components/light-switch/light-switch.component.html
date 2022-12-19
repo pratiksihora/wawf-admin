@@ -1,0 +1,15 @@
+<div [formGroup]="form" class="d-flex justify-content-between align-items-center custom-py-3-editor light-switch" [hidden]="hidden.value" >
+  <label for="{{id}}" class="{{ field?.classNames?.label || 'form-label fw-medium fs-6 mb-0' }}">
+    {{ field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <div class="form-check form-switch form-check-custom form-check-solid">
+    <input [formControlName]="field.key" (change)="notifyChange($event)" id="{{id}}" type="checkbox"
+      class="form-check-input h-15px w-30px cursor-pointer">
+  </div>
+</div>

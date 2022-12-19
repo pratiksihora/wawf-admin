@@ -1,0 +1,31 @@
+<div [formGroup]="form" [hidden]="hidden.value"
+    [ngClass]="{ 'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }"
+    class="custom-py-3-editor">
+    <div class="d-flex align-items-center justify-content-between pb-3">
+        <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 m-0' }}" for="{{id}}"
+            [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+            field?.displayOptions?.label | translate }}
+            <!-- begin: tooltip icon -->
+            <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+                [container]="field?.tooltipOptions?.append"
+                ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}" triggers="manual" #t="ngbTooltip"
+                (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+                class="bi bi-exclamation-circle ms-1 fs-7"></i>
+            <!-- end: tooltip icon -->
+        </label>
+        <div class="input-range-status" [id]="subId" contenteditable="true" (blur)="changeValue($event)">{{
+            form?.get(field.key)?.value || 0 }}</div>
+    </div>
+    <input type="range" class="form-range" [value]="form?.get(field.key)?.value || 0" id="{{id}}"
+        [min]="field?.rangeOptions?.min" [max]="field?.rangeOptions?.max" [step]="field?.rangeOptions?.step"
+        placeholder="{{ field?.displayOptions?.hidePlaceHolder ? '' : ((field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)}}"
+        [formControlName]="field?.key" (change)="changeValue($event)" [ngClass]="{
+            'form-range-solid': field?.templateOptions?.solidControl,
+            'form-range-lg': field?.templateOptions?.largeControl,
+            'form-range-sm': field?.templateOptions?.smallControl,
+            'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+        }" />
+    <!-- begin: field error section -->
+    <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+    <!-- end: field error section -->
+</div>

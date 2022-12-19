@@ -1,0 +1,35 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value"
+  [ngClass]="{ 'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }">
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <div [formGroup]="form" class="position-relative"
+    [ngClass]="{'d-flex align-items-center flex-wrap gap-3 h-40px': field?.templateOptions?.inlineControl}">
+
+    <ng-container *ngIf="!field?.templateOptions?.optionLayout">
+      <!-- begin: render radio list section -->
+      <ng-container *ngFor="let option of items ;let i = index">
+        <!--begin::Radio-->
+        <label class="form-check form-check-custom" [ngClass]="{
+        'form-check-inline': field?.templateOptions?.inlineControl,
+        'form-check-solid': field?.templateOptions?.solidControl,
+        'form-check-sm':field?.templateOptions?.smallControl,
+        'form-check-lg':field?.templateOptions?.largeControl }">
+          <input type="radio" class="form-check-input" id="{{id}}-{{ option.value }}-{{ i }}"
+            name="{{ field.key }}" [formControlName]="field.key" [value]="option.value" (change)="notifyChange($event)">
+          <span class="fw-light ps-2 fs-6">
+            {{ option.text | translate }}
+          </span>
+        </label>
+        <!--end::Radio-->
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

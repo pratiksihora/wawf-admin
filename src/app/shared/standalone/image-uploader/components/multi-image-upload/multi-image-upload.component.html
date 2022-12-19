@@ -1,0 +1,66 @@
+<div class="card-header d-flex align-items-center justify-content-between p-5 border-bottom">
+    <div class="me-3">
+        <a (click)="clearFileSelection(true)"
+            class="btn btn-icon btn-sm btn-color-muted rounded-circle btn-active-light btn-active-color-primary">
+            <span class="svg-icon m-0 svg-icon-4"
+                [inlineSVG]="'./assets/media/inline-svg/campaign/back-icon.svg'"></span>
+        </a>
+    </div>
+    <div *ngIf="imagesUploaded === null || imagesUploaded !== true">
+        <button type="button" [disabled]="!selectedImages?.length || imagesUploaded === false" class="btn btn-sm btn-light-primary py-2 me-2" (click)="clearFileSelection()">
+            Clear all
+        </button>
+        <button [disabled]="!selectedImages?.length || imagesUploaded === false" type="button"
+            class="btn btn-sm btn-primary py-2 me-2" (click)="uploadImages()">
+            Upload ({{ selectedImages?.length }})
+        </button>
+        <button type="button" [disabled]="selectedImages.length >= MAX_IMAGE_UPLOAD_COUNT || imagesUploaded === false" class="btn btn-sm btn-light-primary py-2" (click)="addMore()">
+            Add More
+        </button>
+    </div>
+    <div *ngIf="imagesUploaded">
+        <button type="button" class="btn btn-sm btn-light-primary py-2 me-2" (click)="clearFileSelection(true, true)">
+            Done
+        </button>
+    </div>
+</div>
+<input hidden type="file" id="fileUploader" #fileInput name="single_file"
+    (change)="emitFileChange($any($event)?.target?.files)" accept="image/jpg, image/png, image/jpeg, image/gif"
+    [multiple]="true" />
+<div class="m-10 d-flex gap-10 flex-wrap">
+    <div *ngFor="let image of selectedImages; let i = index;" class="mt-0 col-md-4 col-lg-3 col-xl-2 py-5">
+        <div class="card overlay overflow-hidden form-check-clip w-100 gallery-check shadow-sm-light rounded-3">
+            <div [ngClass]="'border-solid ' + (image?.status !== 'failed' ? 'border': 'border-danger') + ' border-3 shadow-sm-light p-4'">
+                <div class="overlay-wrapper h-100 w-100">
+                    <input class="btn-check cursor-pointer" type="checkbox" [checked]="(image?.progress === 100)"
+                        value="true" name="option" />
+                    <div class="form-check-wrapper h-100 w-100">
+                        <div class="form-check-indicator z-index-3"></div>
+                        <div class="gallery-img-container-grid">
+                            <img [defaultImage]="defaultImage" loading="lazy" class="gallery-check-image-grid object-cover rounded form-check-content z-index-1"
+                                [lazyLoad]="image.data" /><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center invalid-feedback d-block">{{ image?.error }}</div>
+            <div *ngIf="image.status === 'in-progress' && image?.progress !== 100"
+                class="overlay-default bg-dark bg-opacity-25 z-index-2">
+                <div class="progress progress-xs w-100 text-center position-relative mx-6">
+                    <div class="position-absolute w-100 h-100 text-center"> {{image.progress}} %</div>
+                    <div class="progress-bar bg-primary p-3" role="progressbar"
+                        [style]="{'width': image.progress + '%'}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div *ngIf="(image.status !== 'in-progress') || (image?.progress === 100)"
+                Class="overlay-layer gallery-overlay bg-dark bg-opacity-25 z-index-2">
+                <div (click)="viewImage(image)" class="svg-icon svg-icon-2x svg-icon-inverse cursor-pointer p-3"
+                    [inlineSVG]="'./assets/media/inline-svg/gallery/eye-icon.svg'">
+                </div>
+                <div (click)="deleteImage(i)" *ngIf="imagesUploaded !== false" class="svg-icon svg-icon-2x svg-icon-inverse cursor-pointer p-3"
+                    [inlineSVG]="'assets/media/inline-svg/gallery/delete-icon.svg'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

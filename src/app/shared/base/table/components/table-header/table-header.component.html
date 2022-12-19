@@ -1,0 +1,93 @@
+<!-- begin: expandable section -->
+<th [ngStyle]="{ width: tableEnum.WIDTH }" [attr.data-column]="'expandable'" *ngIf="options?.tableOptions?.expandable"
+  pResizableColumn [pResizableColumnDisabled]="options?.tableOptions?.rowExpansionResizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.tableOptions?.rowExpansionReorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.tableOptions?.rowExpansionReorderDisable }">
+</th>
+<!-- end: expandable section -->
+
+<!-- begin: reorder rows -->
+<th [ngStyle]="{ width: tableEnum.WIDTH }" [attr.data-column]="'reorderableRows'"
+  *ngIf="options?.tableOptions?.reorderableRows" pResizableColumn
+  [pResizableColumnDisabled]="options?.tableOptions?.rowResizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.tableOptions?.rowReorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.tableOptions?.rowReorderDisable }">
+</th>
+<!-- end: reorder rows -->
+
+<!-- begin: header checkbox selection -->
+<th [ngStyle]="{ width: tableEnum.WIDTH }" [attr.data-column]="'checkbox'" *ngIf="options?.tableOptions?.checkbox"
+  pResizableColumn [pResizableColumnDisabled]="options?.tableOptions?.checkboxResizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.tableOptions?.checkboxReorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.tableOptions?.checkboxReorderDisable }">
+  <div class="text-center">
+    <p-tableHeaderCheckbox *ngIf="actionPermission"></p-tableHeaderCheckbox>
+  </div>
+</th>
+<!-- end: header checkbox selection -->
+
+<!-- begin: action column -->
+<th *ngIf="options?.actions && options?.tableOptions?.leftAction"
+  [ngStyle]="{ width: options?.actions?.width, minWidth: options?.actions?.minWidth }" [attr.data-column]="'actions'"
+  pResizableColumn [pResizableColumnDisabled]="options?.actions?.resizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.actions?.reorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.actions?.reorderDisable }">
+  {{ (options?.displayOptions?.action || 'COMMON.TABLE.ACTION') | translate }}
+</th>
+<!-- begin: action column -->
+
+<!-- begin: action buttons -->
+<th *ngIf="options?.buttons?.buttons && options?.tableOptions?.leftAction"
+  [ngStyle]="{ width: options?.buttons?.width, minWidth: options?.buttons?.minWidth }" [attr.data-column]="'buttons'"
+  pResizableColumn [pResizableColumnDisabled]="options?.buttons?.resizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.buttons?.reorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.buttons?.reorderDisable }">
+  {{ (options?.displayOptions?.button || 'COMMON.TABLE.ACTION_BUTTON') | translate }}
+</th>
+<!-- begin: action buttons -->
+
+<!-- begin: dynamic columns sections -->
+<!-- [ngClass]="{ 'kt-datatable__cell--sorted-active': table.isSorted(column.field) }" -->
+<ng-container *ngFor="let column of columns">
+  <th [attr.data-column]="column.field" *ngIf="column" pResizableColumn
+    [pResizableColumnDisabled]="column?.resizeDisable || !options?.tableOptions?.resizableColumns" pReorderableColumn
+    [pReorderableColumnDisabled]="column?.reorderDisable || !options?.tableOptions?.reorderableColumns"
+    [ngStyle]="{ width: column?.width, minWidth: column?.minWidth }"
+    [pSortableColumn]="(options?.tableOptions?.sortable && !column.sortableDisable) ? column.field : undefined">
+    <span class="cursor-pointer">{{ column.header | translate }}</span>
+    <p-sortIcon *ngIf="options?.tableOptions?.sortable && !column.sortableDisable" [field]="column.field"
+      class="cursor-pointer"></p-sortIcon>
+  </th>
+</ng-container>
+<!-- begin: dynamic columns sections -->
+
+<!-- begin: action switches -->
+<th *ngIf="options?.switch?.switch" [ngStyle]="{ width: options?.switch?.width, minWidth: options?.switch?.minWidth }"
+  [attr.data-column]="'switch'" pResizableColumn [pResizableColumnDisabled]="options?.switch?.resizeDisable"
+  pReorderableColumn [pReorderableColumnDisabled]="options?.switch?.reorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.switch?.reorderDisable }">
+  {{ (options?.displayOptions?.switch || 'COMMON.TABLE.ACTION_SWITCH') | translate }}
+</th>
+<!-- begin: action switches -->
+
+<!-- begin: action buttons -->
+<th *ngIf="options?.buttons?.buttons && !options?.tableOptions?.leftAction"
+  [ngStyle]="{ width: options?.buttons?.width, minWidth: options?.buttons?.minWidth }" [attr.data-column]="'buttons'"
+  pResizableColumn [pResizableColumnDisabled]="options?.buttons?.resizeDisable" pReorderableColumn
+  [pReorderableColumnDisabled]="options?.buttons?.reorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.buttons?.reorderDisable }">
+  {{ (options?.displayOptions?.button || 'COMMON.TABLE.ACTION_BUTTON') | translate }}
+</th>
+<!-- begin: action buttons -->
+
+<!-- begin: action column -->
+<th *ngIf="options?.actions && !options?.tableOptions?.leftAction"
+  [ngStyle]="{ width: actionPermission ? options?.actions?.width: 0, minWidth: actionPermission ? options?.actions?.minWidth : 0 }"
+  [attr.data-column]="'actions'" pResizableColumn [pResizableColumnDisabled]="options?.actions?.resizeDisable"
+  pReorderableColumn [pReorderableColumnDisabled]="options?.actions?.reorderDisable"
+  [ngClass]="{ 'p-reorderable-column-disabled': options?.actions?.reorderDisable }">
+  <ng-container *ngIf="actionPermission">
+    {{ (options?.displayOptions?.action || 'COMMON.TABLE.ACTION') | translate }}
+  </ng-container>
+</th>
+<!-- begin: action column -->

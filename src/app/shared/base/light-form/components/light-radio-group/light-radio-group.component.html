@@ -1,0 +1,22 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value">
+    <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+        [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+        field?.displayOptions?.label | translate }}
+        <!-- begin: tooltip icon -->
+        <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+            [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+            triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+            class="bi bi-exclamation-circle ms-1 fs-7"></i>
+        <!-- end: tooltip icon -->
+    </label>
+    <div class="btn-group btn-group-sm w-100" role="group">
+        <ng-container *ngFor="let radio of items ;let i = index">
+            <input [formControlName]="field.key" type="radio" class="btn-check" [value]="radio.value" [name]="field.key"
+                id="{{id}}-{{ radio.value }}-{{ i }}" autocomplete="off" />
+            <label class="btn p-2 editor-tab-radio-btn border border-gray-200 btn-secondary"
+                for="{{id}}-{{ radio.value }}-{{ i }}">
+                <span [inlineSVG]="radio.svgIcon" class="svg-icon svg-icon-4 m-0"></span>
+            </label>
+        </ng-container>
+    </div>
+</div>

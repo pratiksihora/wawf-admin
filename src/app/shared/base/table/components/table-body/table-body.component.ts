@@ -1,0 +1,60 @@
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+// Enums
+import { TableEventType } from 'src/app/constants/enums/controls/table/table-event-type.enum';
+
+// Interfaces
+import { TableColumn, TableConfig } from 'src/app/constants/models/controls/table/table-config';
+import { environment } from 'src/environments/environment';
+import { ActionType } from '../../../../../constants/enums/common/action/action.enum';
+
+@Component({
+  selector: '[appTableBody]',
+  templateUrl: './table-body.component.html',
+  styleUrls: ['./table-body.component.scss']
+})
+export class TableBodyComponent implements OnInit {
+  /**
+    * External inputs
+    */
+  @Input() columns: TableColumn[];
+  @Input() frozenColumns: TableColumn[];
+  @Input() options: TableConfig;
+
+  @Input() expanded: boolean;
+  @Input() rowData: any;
+  @Input() rowIndex: number;
+
+  /**
+   * External templates inputs
+   */
+  @Input() itemTemplate: any;
+
+  @Input() bodyTemplate: any;
+
+  /**
+  * External outputs
+  */
+  @Output() tableComponentCallback = new EventEmitter<any>();
+  
+  
+
+  ngOnInit(): void {
+  }
+
+  buttonCallback(event) {
+    this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: event.action, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded });
+  }
+
+  switchCallback(event) {
+    this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: event.action, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded });
+  }
+
+  inviteButtonCallback(event) {
+    this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: ActionType.INVITE, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded });
+  }
+
+  nameCallback(event) {
+    this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: ActionType.PREV, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded })
+  }
+}

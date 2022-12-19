@@ -1,0 +1,48 @@
+<div [formGroup]="form" class="position-relative custom-py-3-editor" [hidden]="hidden.value">
+    <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+        [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+        field?.displayOptions?.label | translate }}
+        <!-- begin: tooltip icon -->
+        <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+            [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+            triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+            class="bi bi-exclamation-circle ms-1 fs-7"></i>
+        <!-- end: tooltip icon -->
+    </label>
+    <div class="pb-3" *ngIf="form?.get(field.key)?.value?.name">
+        <div class="row m-0 bg-gray-100 rounded align-items-center p-3">
+            <div class="col-8">
+                <div class="text-truncate w-200px" title="{{form?.get(field.key)?.value?.name}}">{{
+                    form?.get(field.key)?.value?.name || '' }}</div>
+            </div>
+            <div class="col-4 d-flex align-items-center justify-content-end">
+                <span *ngIf="form?.get(field.key)?.value?.name && !isPlaying"
+                    class=" svg-icon cursor-pointer p-1 svg-icon-primary"
+                    [inlineSVG]="'./assets/media/inline-svg/editor/controls/base-control/social/audio play.svg'"
+                    (click)="playAudio()"></span>
+                <span *ngIf="form?.get(field.key)?.value?.name && isPlaying"
+                    class=" svg-icon cursor-pointer p-1 svg-icon-primary"
+                    [inlineSVG]="'./assets/media/inline-svg/editor/controls/base-control/social/stop-button.svg'"
+                    (click)="stopAudio()"></span>
+                <span *ngIf="form?.get(field.key)?.value?.name" class=" svg-icon cursor-pointer p-1 svg-icon-primary"
+                    [inlineSVG]="'./assets/media/inline-svg/editor/controls/base-control/social/delete audio.svg'"
+                    (click)="removeAudio()"></span>
+            </div>
+        </div>
+    </div>
+    <audio #lightaudio loop></audio>
+    <div class="overlay overflow-hidden " *ngIf="!form?.get(field.key)?.value?.name" (click)="openImageUploader()">
+        <div class="p-0">
+            <div class="overlay-wrapper h-150px bg-gray-100">
+                <img [defaultImage]="defaultImage" [lazyLoad]="fileEnum.IMAGE" alt=""
+                    class="w-100 h-100 rounded object-contain" />
+            </div>
+            <div class="overlay-layer bg-dark bg-opacity-25 h-150px rounded">
+                <a href="javascript:void(0)" class="btn btn-primary btn-shadow">Upload</a>
+            </div>
+        </div>
+    </div>
+    <!-- begin: field error section -->
+    <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+    <!-- end: field error section -->
+</div>

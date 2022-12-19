@@ -1,0 +1,71 @@
+<ng-container *ngIf="btnOption && !hidden">
+  <ng-container *ngIf="btnOption?.aTag; then aTemplate; else buttonTemplate">
+  </ng-container>
+</ng-container>
+
+<ng-template #aTemplate>
+  <button [type]="btnOption.type  || 'button'" [ngClass]=" {
+  'btn-xs' : btnOption.size === 'xs', 
+  'btn-sm' : btnOption.size === 'sm', 
+  'btn-lg' : btnOption.size === 'lg'
+}" class=" {{ btnOption.className || 'btn btn-primary' }} {{btnOption.space}}" [disabled]="loading || disabled"
+    ngbTooltip="{{ btnOption.tooltip | translate }}" triggers="manual" #tb="ngbTooltip" (mouseenter)="tb.open()"
+    (mouseleave)="tb.close()" (click)="click()">
+
+    <i *ngIf="btnOption.icon" [class]="btnOption.icon"></i>
+    <span class="svg-icon svg-icon-3" *ngIf="btnOption.iconSVG" [inlineSVG]="btnOption?.iconSVG"></span>
+
+    <ng-container *ngIf="!btnOption.iconOnly">
+      <ng-container *ngIf="btnOption.text">
+        <span class="indicator-label" [hidden]="loading && !btnOption.loadingText">{{ btnOption.text | translate
+          }}</span>
+      </ng-container>
+      <ng-container *ngIf="btnOption.textHTML">
+        <span class="indicator-label" [hidden]="loading && !btnOption.loadingText">{{ btnOption.text | translate
+          }}</span>
+      </ng-container>
+
+      <span class="indicator-progress" [hidden]="!loading && btnOption.loadingText">{{ btnOption.loadingText | translate
+        }}
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+    </ng-container>
+
+    <i *ngIf="btnOption.rightIcon" [class]="btnOption.rightIcon"></i>
+    <span class="svg-icon svg-icon-3" *ngIf="btnOption.rightIconSVG" [inlineSVG]="btnOption?.rightIconSVG"></span>
+  </button>
+</ng-template>
+
+<ng-template #buttonTemplate>
+  <a href="javascript:void(0);" [ngClass]=" {
+    'btn-xs' : btnOption.size === 'xs',
+    'btn-sm' : btnOption.size === 'sm', 
+    'btn-lg' : btnOption.size === 'lg'
+  }" class=" {{ btnOption.className || 'btn btn-primary' }} {{btnOption.space}}"
+    ngbTooltip="{{ btnOption.tooltip | translate }}" triggers="manual" #tb="ngbTooltip" (mouseenter)="tb.open()"
+    (mouseleave)="tb.close()" (click)="!(loading || disabled) && click()">
+
+    <i *ngIf="btnOption.icon" [class]="btnOption.icon"></i>
+    <span class="{{ btnOption.iconClass || 'svg-icon svg-icon-3'}}" *ngIf="btnOption.iconSVG"
+      [inlineSVG]="btnOption?.iconSVG"></span>
+
+    <ng-container *ngIf="!btnOption.iconOnly">
+      <ng-container *ngIf="btnOption.text">
+        <span class="indicator-label" [hidden]="loading && !btnOption.loadingText">{{ btnOption.text | translate
+          }}</span>
+      </ng-container>
+      <ng-container *ngIf="btnOption.textHTML">
+        <span class="indicator-label" [hidden]="loading && !btnOption.loadingText">{{ btnOption.text | translate
+          }}</span>
+      </ng-container>
+
+      <span class="indicator-progress" [hidden]="!loading && btnOption.loadingText">{{ btnOption.loadingText | translate
+        }}
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+    </ng-container>
+
+    <i *ngIf="btnOption.rightIcon" [class]="btnOption.rightIcon"></i>
+    <span class="svg-icon svg-icon-3" *ngIf="btnOption.rightIconSVG" [inlineSVG]="btnOption?.rightIconSVG"></span>
+  </a>
+</ng-template>

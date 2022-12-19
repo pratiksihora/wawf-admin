@@ -1,0 +1,16 @@
+<div class="row my-5">
+  <div class="col-lg-4 mb-5" *ngFor="let gif of imageList" (click)="imageClickEvent(gif)">
+    <div class="card image-overlay cursor-pointer">
+      <div class="card-body p-0">
+        <div class="overlay-wrapper">
+          <img [onErrorImage]="defaultImage" [img-preloader]="gif.thumb" alt="{{gif.gif_name}}" class="w-100 rounded" />
+        </div>
+        <div class="image-overlay_layer text-light">
+          <a *ngIf="gif.filename" target="_blank" class="text-light" href="{{gif.navigate}}">{{gif.filename}}</a>
+          <span *ngIf="gif.filename" class="mx-2">|</span>
+          <a target="_blank" class="text-light" href="{{gif.provider_url}}">{{gif.provider}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

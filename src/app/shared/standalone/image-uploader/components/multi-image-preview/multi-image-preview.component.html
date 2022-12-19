@@ -1,0 +1,16 @@
+<div class="modal-header pt-4 pb-3 px-7">
+    <h4 class="text-dark">{{image.name }} <strong>( {{ image.size }} MB)</strong></h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal?.close()"></button>
+</div>
+<div class="modal-body pb-0 modal-body-style" style="min-height: 500px;">
+    <div class="preview d-flex flex-column gap-4 justify-content-center align-items-center h-100 w-100 overflow-y-auto">
+        <div
+            class="flex-fill w-100 bgi-size-cover bgi-no-repeat bgi-position-center text-center h-100 p-4 d-flex justify-content-center align-items-center">
+            <img [defaultImage]="defaultImage" [lazyLoad]="bucketAwsUrl+image.data" alt=""
+                class="h-100 max-w-100 object-contain w-auto max-h-600px">
+        </div>
+    </div>
+</div>
+<div class="modal-footer border-0 pt-4 pb-3 px-7">
+</div>

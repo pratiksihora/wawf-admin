@@ -1,0 +1,54 @@
+<!--begin::Card widget 17-->
+<div class="card card-flush" [ngClass]="cssClass">
+  <!--begin::Header-->
+  <div class="card-header pt-5">
+    <div class="d-flex flex-center me-5 pt-2">
+      <div [id]="id" [ngStyle]="{'min-width': chartSize + 'px', 'min-height': chartSize + 'px'}"
+        [attr.data-kt-size]="chartSize" [attr.data-kt-line]="chartLine">
+      </div>
+    </div>
+  </div>
+  <!--end::Header-->
+
+  <!--begin::Card body-->
+  <div class="card-body pt-2 pb-4 d-flex flex-wrap align-items-center">
+    <!--begin::Labels-->
+    <div class="d-flex flex-column content-justify-center flex-row-fluid">
+      <!--begin::Label-->
+      <div class="d-flex fw-semibold align-items-center my-3">
+        <!--begin::Bullet-->
+        <div class="bullet w-8px h-3px rounded-2  me-3" style="background-color: #714407"></div>
+        <!--end::Bullet-->
+
+        <!--begin::Label-->
+        <div class="text-gray-500 flex-grow-1 me-4 text-capitalize">Total reward
+          count</div>
+        <!--end::Label-->
+
+        <!--begin::Stats-->
+        <div class="fw-bolder text-gray-700 text-xxl-end">{{data?.total_reward_count}}</div>
+        <!--end::Stats-->
+      </div>
+      <!--end::Label-->
+
+      <!--begin::Label-->
+      <div class="d-flex fw-semibold align-items-center">
+        <!--begin::Bullet-->
+        <div class="bullet w-8px h-3px bg-primary rounded-2 me-3"></div>
+        <!--end::Bullet-->
+
+        <!--begin::Label-->
+        <div class="text-gray-500 flex-grow-1 me-4 text-capitalize">Total redeem count</div>
+        <!--end::Label-->
+
+        <!--begin::Stats-->
+        <div class=" fw-bolder text-gray-700 text-xxl-end">{{data?.total_redeem_count}}</div>
+        <!--end::Stats-->
+      </div>
+      <!--end::Label-->
+    </div>
+    <!--end::Labels-->
+  </div>
+  <!--end::Card body-->
+</div>
+<!--end::Card widget 17-->

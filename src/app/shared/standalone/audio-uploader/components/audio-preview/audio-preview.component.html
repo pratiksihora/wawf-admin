@@ -1,0 +1,30 @@
+<div class="row my-5">
+    <div class="col-lg-3 mb-5" *ngFor="let audio of audioList" (click)="chooseAudio($event,audio)">
+        <div class="card image-overlay cursor-pointer">
+            <div class="card-body p-0">
+                <div class="overlay-wrapper">
+                    <div #image style="height: 130px;"
+                        [inlineSVG]="'assets/media/inline-svg/editor/controls/base-control/social/music placeholder.svg'"
+                        alt="" class="svg-icon svg-icon-fluid"></div>
+                </div>
+                <div class="text-center">
+                    <a *ngIf="audio.filename" class="text-dark m-2">{{audio.filename}}</a>
+                </div>
+                <div class="d-flex flex-grow-1 align-items-center justify-content-around pb-3">
+                    <span *ngIf="!audio.isPlayed" class="svg-icon svg-icon-primary cursor-pointer p-1"
+                        [inlineSVG]="'assets/media/inline-svg/editor/controls/base-control/social/audio play.svg'"
+                        (click)="playAudio($event, audio)"></span>
+                    <span *ngIf="audio.isPlayed" class="svg-icon svg-icon-primary cursor-pointer p-1"
+                        [inlineSVG]="'assets/media/inline-svg/editor/controls/base-control/social/pause audio.svg'"
+                        (click)="pauseAudio($event, audio)"></span>
+                    <span class="svg-icon d-flex h-100 align-items-center svg-icon-3 me-2"
+                        (click)="chooseAudio($event, audio)"
+                        [inlineSVG]="'assets/media/inline-svg/editor/header/landing-page.svg'">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio #previewaudio loop></audio>

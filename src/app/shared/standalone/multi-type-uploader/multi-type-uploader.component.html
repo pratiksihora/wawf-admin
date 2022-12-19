@@ -1,0 +1,129 @@
+<div class="h-90vh flex-fill d-flex flex-column">
+  <div class="modal-header">
+    <h4 class="modal-title">Choose {{ config?.type }}</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+      (click)="close()"></button>
+  </div>
+
+  <div class="d-flex modal-body overflow-y-hidden p-0" [ngClass]="{ 'd-none': selectedFile }">
+    <div class="stepper stepper-pills stepper-column d-flex flex-fill flex-column flex-lg-row"
+      id="kt_stepper_example_vertical">
+      <div class="d-flex w-lg-350px p-3 bg-efefef border-end h-100 overflow-y-auto">
+        <div class="stepper-nav w-100">
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100"
+            (click)="tabClick(tabEnum.AUDIO_LIBRARY)" data-kt-stepper-element="nav"
+            [ngClass]=" { 'current': currentTab === tabEnum.AUDIO_LIBRARY }">
+            <div class="stepper-icon">
+              <div class="stepper-number svg-icon svg-icon-2qx"
+                [inlineSVG]="config?.type === 'Cursor' ? './assets/media/inline-svg/editor/controls/base-control/social/cursor-library.svg': './assets/media/inline-svg/editor/controls/base-control/social/Foreground-icon.svg'">
+              </div>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                {{ config?.type }} Library
+              </h3>
+              <div class="stepper-desc">
+                Choose {{ config?.type | lowercase }} file from gamify library.
+              </div>
+            </div>
+          </div>
+          <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.UPLOAD)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.UPLOAD }">
+            <div class="stepper-icon">
+              <div class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'../../../../assets/media/inline-svg/workspace-global/folder.svg'"></div>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                Upload {{ config?.type }}
+              </h3>
+              <div class="stepper-desc">
+                Upload file from your system
+              </div>
+            </div>
+          </div>
+          <!-- <div class="stepper-item align-items-center cursor-pointer flex-row w-100" (click)="tabClick(tabEnum.LINK)"
+            data-kt-stepper-element="nav" [ngClass]=" { 'current': currentTab === tabEnum.LINK }">
+            <div class="stepper-icon">
+              <div class="stepper-number svg-icon svg-icon-3"
+                [inlineSVG]="'../../../../assets/media/inline-svg/workspace-global/url.svg'"></div>
+            </div>
+            <div class="stepper-label">
+              <h3 class="stepper-title">
+                From URL
+              </h3>
+              <div class="stepper-desc">
+                Upload files directly from a URL, without needing to have them on your computer!
+              </div>
+            </div>
+          </div> -->
+          <ng-container *ngIf="config?.type === 'Foreground'">
+            <div class="stepper-item align-items-center cursor-pointer flex-row w-100"
+              (click)="tabClick(tabEnum.GALLARY)" data-kt-stepper-element="nav"
+              [ngClass]=" { 'current': currentTab === tabEnum.GALLARY }">
+              <div class="stepper-icon">
+                <span class="stepper-number svg-icon svg-icon-3"
+                  [inlineSVG]="'./assets/media/inline-svg/workspace-global/gallery.svg'"></span>
+              </div>
+              <div class="stepper-label">
+                <h3 class="stepper-title">
+                  Gallery
+                </h3>
+                <div class="stepper-desc">
+                  Upload image or GIF from gallery folder
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="d-flex flex-fill p-4 w-100 h-100 overflow-y-auto">
+        <app-loader [show]="loading" class="w-100 h-100">
+          <div class="fv-row w-100 h-100" [hidden]="currentTab !== tabEnum.AUDIO_LIBRARY">
+            <app-multi-type-file-library [config]="config" [currentTab]="currentTab" (fileClick)="fileClick($event)">
+            </app-multi-type-file-library>
+          </div>
+          <div class="fv-row w-100 h-100" [hidden]="currentTab !== tabEnum.UPLOAD">
+            <app-multi-type-file-upload [type]="tabEnum.UPLOAD" [config]="config" [currentTab]="currentTab"
+              (fileChanged)="fileChange($event)">
+            </app-multi-type-file-upload>
+          </div>
+          <!-- <div class="fv-row w-100 h-100" [hidden]="currentTab !== tabEnum.LINK">
+            <app-multi-type-file-upload [type]="tabEnum.LINK" [currentTab]="currentTab" (fileClick)="fileClick($event)">
+            </app-multi-type-file-upload>
+          </div> -->
+          <div class="fv-row w-100 h-100" [ngClass]="{'d-flex flex-column' : currentTab === tabEnum.GALLARY}"
+            [hidden]="currentTab !== tabEnum.GALLARY">
+            <app-multi-type-file-gallery [ngClass]="{'d-flex flex-column flex-fill' : currentTab === tabEnum.GALLARY}"
+              (imageClicked)="fileClick($event)" [currentTab]="currentTab"></app-multi-type-file-gallery>
+          </div>
+        </app-loader>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex modal-body overflow-y-hidden p-0" [ngClass]="{ 'd-none': !selectedFile }">
+    <app-loader [show]="loading">
+      <div class="preview d-flex flex-column gap-4 justify-content-center align-items-center h-100 w-100 ">
+        <div
+          class="flex-fill overflow-y-auto flex-column w-100 bgi-size-cover bgi-no-repeat bgi-position-center text-center h-100 p-4 d-flex justify-content-center align-items-center">
+          <div *ngIf="config?.category === 'Audio'"
+            [inlineSVG]=" '../../../../assets/media/inline-svg/editor/controls/base-control/social/music placeholder.svg'"
+            alt="" class="svg-icon svg-icon-fluid"></div><br>
+          <img [errorImgSource]="defaultImage" class="h-100 max-w-100 object-contain w-auto "
+            [ngClass]="config?.customClass ? config?.customClass : 'max-h-600px'" *ngIf="config?.category === 'Image'"
+            [img-preloader]="currentTab === tabEnum.UPLOAD ?  selectedFileUrl : (bucketAwsUrl + selectedFileUrl)"
+            [alt]="fileName">
+          <span class="mt-5" *ngIf="fileName">{{fileName}}</span>
+        </div>
+        <div class="d-flex align-items-center justify-content-center gap-3 pb-5">
+          <button type="button" class="btn btn-sm btn-primary py-2" (click)="uploadFile()">
+            Upload
+          </button>
+          <button type="button" class="btn btn-sm btn-light py-2" (click)="clearFile()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </app-loader>
+  </div>
+</div>

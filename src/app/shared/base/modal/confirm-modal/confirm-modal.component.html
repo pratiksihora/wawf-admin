@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ options.title }}</h4>
+  <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+    (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <p *ngIf="options?.message"><span *ngIf="options.icon"><i class="{{options.icon}} me-3"></i></span><strong>{{(
+      options.message || 'ERROR.GLOBAL_ERROR' )}}</strong></p>
+  <p *ngIf="options?.messageHTML" [innerHTML]="(options.messageHTML) | safe: 'html'"></p>
+  <p *ngIf="options?.description" [innerHTML]="(options.description) | safe: 'html'"></p>
+</div>
+<div class="modal-footer">
+  <button *ngIf="options.button1" type="button" class="{{ options.button1Class || 'btn btn-primary' }}"
+    (click)="button1Click()"><i *ngIf="options.button1Icon" class="{{options.button1Icon}}"></i> {{
+    (options.button1Text || 'COMMON.BUTTON.OK' ) }}</button>
+  <button *ngIf="options.button2" type="button" class="{{ options.button2Class || 'btn btn-light' }}"
+    (click)="button2Click()"><i *ngIf="options.button2Icon" class="{{options.button2Icon}}"></i>
+    {{ (options.button2Text || 'COMMON.BUTTON.CLOSE') }}
+  </button>
+</div>

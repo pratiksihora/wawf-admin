@@ -1,0 +1,20 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value">
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <div class="row m-0">
+    <ng-container *ngFor="let option of items ;let i = index">
+      <div class="col-3 ps-0 cursor-pointer" [ngClass]="{ 'text-primary' : option.value === form.get(field.key)?.value  }"
+        (click)="notifyChange(option.value)">
+        <div class="py-2 h-100 px-3 fs-8 rounded-1 d-flex flex-center {{option.className}}" [ngClass]="{ 'border-type-active' : option.value === form.get(field.key)?.value  }">{{option.text}}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

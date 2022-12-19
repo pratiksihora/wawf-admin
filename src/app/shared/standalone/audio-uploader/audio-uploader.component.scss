@@ -1,0 +1,76 @@
+.stepper.stepper-pills {
+    .stepper-item {
+        padding: 0.5rem;
+        margin-bottom: 0.75rem;
+
+        .stepper-icon {
+            .stepper-number {
+                --kt-icon-folder: #fcd53f;
+                --kt-icon-url: var(--kt-inverse-black);
+                --kt-icon-audio: var(--kt-inverse-black);
+                --kt-icon-unsplash: var(--kt-inverse-black);
+                --kt-icon-gif-1: #04ff8e;
+                --kt-icon-gif-2: #8e2eff;
+                --kt-icon-gif-3: #00c5ff;
+                --kt-icon-gif-4: #fff152;
+                --kt-icon-gif-5: #ff5b5b;
+                --kt-icon-gif-6: #551c99;
+                --kt-icon-gif-7: #999131;
+                --kt-icon-pexels: #05a081;
+                --kt-icon-pixabay: #48a947;
+                --kt-icon-gallery: var(--kt-inverse-black);
+            }
+            margin-right: 10px;
+        }
+        .stepper-label {
+            .stepper-title {
+                font-size: 1.1rem;
+            }
+            .stepper-desc {
+                font-size: 0.7rem;
+            }
+        }
+
+        .stepper-icon {
+            background-color: var(--kt-inverse-white);
+            .svg-icon-url,
+            .svg-icon-unsplash {
+                color: var(--kt-inverse-black) !important;
+            }
+        }
+        &.current {
+            background-color: var(--kt-primary);
+            border-radius: 6px;
+            &:last-child .stepper-icon .stepper-number {
+                display: block;
+            }
+
+            .stepper-icon {
+                color: var(--kt-inverse-white);
+                .stepper-number {
+                    --kt-icon-folder: var(--kt-primary);
+                    --kt-icon-url: var(--kt-primary);
+                    --kt-icon-unsplash: var(--kt-primary);
+                    --kt-icon-gif-1: var(--kt-primary);
+                    --kt-icon-gif-2: var(--kt-primary);
+                    --kt-icon-gif-3: var(--kt-primary);
+                    --kt-icon-gif-4: var(--kt-primary);
+                    --kt-icon-gif-5: var(--kt-primary);
+                    --kt-icon-gif-6: var(--kt-primary);
+                    --kt-icon-gif-7: var(--kt-primary);
+                    --kt-icon-pexels: var(--kt-primary);
+                    --kt-icon-pixabay: var(--kt-primary);
+                    --kt-icon-gallery: var(--kt-primary);
+                    --kt-icon-audio: var(--kt-primary);
+                }
+            }
+
+            .stepper-label {
+                .stepper-title,
+                .stepper-desc {
+                    color: var(--kt-inverse-color);
+                }
+            }
+        }
+    }
+}

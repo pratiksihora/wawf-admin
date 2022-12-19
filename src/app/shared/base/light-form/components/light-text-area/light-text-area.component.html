@@ -1,0 +1,36 @@
+<div [formGroup]="form" class="custom-py-3-editor" [hidden]="hidden.value"
+  [ngClass]="{ 'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }">
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+  <div [formGroup]="form" class="position-relative">
+    <!--begin::Textarea-->
+    <textarea autocomplete="off" class="form-control"
+      placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate }}"
+      [formControlName]="field.key" id="{{id}}" (keyup)="notifyChange($event)" [ngClass]="{
+              'form-control-solid': field?.templateOptions?.solidControl,
+              'form-control-lg': field?.templateOptions?.largeControl,
+              'form-control-sm': field?.templateOptions?.smallControl,
+              'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+            }" [rows]=" (field?.templateOptions?.rows || 4)"></textarea>
+    <!--end::Textarea-->
+
+    <!-- begin: right side inline text for max length -->
+    <span class="textarea-count" *ngIf="validators?.maxLength && (form?.get(field.key)?.value || '').length" [ngClass]="{
+            'text-danger': ((form?.get(field.key)?.value || '').length > validators?.maxLength)
+           }">
+      {{ (form?.get(field.key)?.value || '').length }}/{{ validators?.maxLength }}
+    </span>
+    <!-- end: right side inline icon for max length -->
+  </div>
+  <!-- begin: field error section -->
+  <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+  <!-- end: field error section -->
+</div>

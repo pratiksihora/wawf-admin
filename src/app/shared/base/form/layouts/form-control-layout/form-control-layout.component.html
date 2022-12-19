@@ -1,0 +1,88 @@
+<div class="fv-row  {{ field?.classNames?.controlMargin || 'mb-2' }}"
+  [class.row]="field?.templateOptions?.layout === layoutEnum.HORIZONTAL">
+  <div *ngIf="!field.templateOptions?.withoutLabel" [ngClass]="{
+    'd-flex flex-stack': field?.displayOptions?.rightLabel || field?.formArrayOptions?.add || field?.component === componentEnum.RANGE,
+    'text-right': field?.templateOptions?.rightLabel
+  }"
+    class="{{ field.classNames?.horizontalLabel || (layoutEnum.HORIZONTAL === field?.templateOptions?.layout && 'col-lg-4 col-md-4 col-sm-4') }} {{ field?.classNames?.labelMargin }}">
+    <!--begin::Label-->
+    <label *ngIf="!field.templateOptions?.withoutLabel" for="{{prefix}}{{field.key}}"
+      class="{{ field?.classNames?.label }}" [ngClass]="{
+      'required': validators?.required,
+      'form-label text-dark mb-2' : !field?.classNames?.label && !bolder && !field?.templateOptions?.bolderLabel,
+      'fs-4 fw-bolder text-dark mb-3' : !field?.classNames?.label && (bolder || field?.templateOptions?.bolderLabel),
+      'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors),
+      'col-form-label': layoutEnum.HORIZONTAL === field?.templateOptions?.layout
+    }">
+
+      <span
+        [ngClass]="{ 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }">
+        <!--  begin: render label text -->
+        <span *ngIf="field?.displayOptions?.label " class="{{ field.classNames?.labelFont }}">{{
+          field?.displayOptions?.label | translate }}</span>
+        <!--  end: render label text -->
+
+        <!--  begin: render label template text -->
+        <span *ngIf="field?.displayOptions?.labelHTML"
+          [innerHTML]="(field?.displayOptions?.labelHTML | translate) | safe: 'html'"></span>
+        <!--  end: render label template text -->
+      </span>
+
+      <!-- begin: tooltip icon -->
+      <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+        [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+        triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+        class="bi bi-exclamation-circle ms-1 fs-7"></i>
+      <!-- end: tooltip icon -->
+
+      <!-- begin: label hint section -->
+      <span class="form-text text-muted ms-1" *ngIf="field?.displayOptions?.labelInfo">{{
+        field?.displayOptions?.labelInfo | translate }}</span>
+      <!-- end: label hint section -->
+
+      <!-- begin: right add button for form array -->
+      <a href="javascript:void(0)" *ngIf="field?.formArrayOptions?.leftAdd"
+        class="ms-2 {{ field.classNames?.button || 'btn btn-light-primary btn-sm' }}"
+        (click)="buttonAction.emit(field)">
+        {{ (field?.displayOptions?.button || 'COMMON.BUTTON.ADD') | translate }} </a>
+      <!-- end: right add button for form array -->
+    </label>
+    <!-- end: label section -->
+
+    <!-- begin: right lable -->
+    <span href="javascript:void(0)" *ngIf="field?.component === componentEnum.RANGE"
+      class="{{ field.classNames?.rightLabel || 'fs-5 fw-bolder' }}" (click)="labelAction.emit(field)"> {{
+      form?.get(field.key)?.value }}{{field?.templateOptions?.rangeSuffix}}</span>
+    <!-- end: right lable -->
+
+    <!-- begin: right lable -->
+    <a href="javascript:void(0)" *ngIf="field?.displayOptions?.rightLabel"
+      class="{{ field.classNames?.rightLabel || 'link-primary fs-5 fw-bolder' }}" (click)="labelAction.emit(field)">{{
+      field?.displayOptions?.rightLabel | translate }} </a>
+    <!-- end: right lable -->
+
+    <!-- begin: right add button for form array -->
+    <a href="javascript:void(0)" *ngIf="field?.formArrayOptions?.add"
+      class="{{ field.classNames?.button || 'btn btn-light-primary btn-sm' }}" (click)="buttonAction.emit(field)">
+      {{ (field?.displayOptions?.button || 'COMMON.BUTTON.ADD') | translate }} </a>
+    <!-- end: right add button for form array -->
+  </div>
+  <!-- begin: control section (note: inline form=> 'col-*')-->
+  <div
+    class="{{ field.classNames?.parentElement }}{{ field?.classNames?.horizontalControl || (layoutEnum.HORIZONTAL === field?.templateOptions?.layout ? 'col-lg-8 col-md-4 col-sm-8' : '') }}">
+
+    <!-- begin: field section -->
+    <ng-content></ng-content>
+    <!-- end: field section -->
+
+    <!-- begin: field error section -->
+    <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+    <!-- end: field error section -->
+
+    <!-- begin: hint section -->
+    <span class="form-text text-muted fs-7" *ngIf="field?.displayOptions?.hint"
+      [innerHTML]="(field?.displayOptions?.hint | translate) | safe: 'html'"> </span>
+    <!-- end: hint section -->
+  </div>
+  <!-- end: control section -->
+</div>

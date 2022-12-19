@@ -1,0 +1,32 @@
+<ng-container *ngIf="type === 'upload'">
+  <div class="h-100 w-100 flex-fill d-flex align-items-center justify-content-center p-6">
+    <div class="dropzone d-flex justify-content-center align-items-center h-100 w-100 dz-clickable" appDroppableFile
+      (click)="openFile()" (fileDropped)="fileChanged.emit($event);_clearNativeFile();">
+      <div class="dz-message needsclick">
+        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+        <div class="ms-4">
+          <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
+          <span class="fs-7 fw-bold text-primary opacity-75">Upload only JPEG, JPG, PNG & GIF images.</span><br>
+          <span class="fs-7 fw-bold text-primary opacity-75" *ngIf="config.type !== 'Cursor'">Max suppoted size is 20 MB. </span>
+          <span class="fs-7 fw-bold text-primary opacity-75">{{config.type === 'Cursor' ? 'Max resolution should be 20px x 20px' : '' }}</span>
+        </div>
+        <input hidden type="file" id="fileUploader" #fileInput name="single_file" (change)="fileChanged.emit($any($event)?.target?.files);_clearNativeFile();"
+          accept="image/jpg, image/png, image/jpeg, image/gif" />
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="type === 'link'">
+  <div class="d-flex flex-column align-items-center justify-content-center py-5 h-100">
+    <div
+      class="text-center h-150px w-150px bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-10">
+      <i class="bi bi-clipboard-check display-1 text-primary"></i>
+    </div>
+    <h5 class="text-center my-5">Paste the link of a image</h5>
+    <div class="d-flex gap-2 w-100 w-xl-500px mx-auto">
+      <input type="text" [(ngModel)]="url" placeholder="https://yourlink.com"
+        class="form-control form-control-sm form-control-solid">
+      <button type="button" class="btn btn-primary" (click)="linkClick()">Search</button>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,42 @@
+<div [formGroup]="form" [hidden]="hidden.value"
+  [ngClass]="{ 'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) }"
+  class="custom-py-3-editor">
+
+  <label class="{{ field?.classNames?.label || 'form-label fw-medium fs-7 pb-2 mb-0' }}"
+    *ngIf="!field?.templateOptions?.withoutLabel" for="{{id}}"
+    [ngClass]="{  'required': validators?.required, 'text-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors) } ">{{
+    field?.displayOptions?.label | translate }}
+    <!-- begin: tooltip icon -->
+    <i *ngIf="field?.displayOptions?.tooltip" [placement]="field?.tooltipOptions?.position || 'auto'"
+      [container]="field?.tooltipOptions?.append" ngbTooltip="{{ field?.displayOptions?.tooltip | translate }}"
+      triggers="manual" #t="ngbTooltip" (click)="t.open()" (mouseenter)="t.open()" (mouseleave)="t.close()"
+      class="bi bi-exclamation-circle ms-1 fs-7"></i>
+    <!-- end: tooltip icon -->
+  </label>
+
+  <div class="input-group" [ngClass]="{
+    'input-group-sm': field?.templateOptions?.smallControl, 
+    'input-group-lg': field?.templateOptions?.largeControl,
+    'input-group-solid': field?.templateOptions?.solidControl, 
+    'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+  }">
+    <span class="input-group-text p-2 color-portion">
+      <span class="w-100 color-radius" id="{{id}}" [style.background]="form?.get(field.key)?.value"
+        [colorPicker]="form?.get(field.key)?.value" (colorPickerChange)="notifyChange($event)"
+        [cpColorMode]="field.colorOptions?.colorMode || 'color'" [cpPosition]="field.colorOptions?.position || 'bottom'"
+        [cpPresetColors]="field.colorOptions?.presetColors || presetColors" [cpEyeDropper]="true"
+        [cpSaveClickOutside]="true" [cpCancelButton]="!field.colorOptions?.cancelHide"
+        [cpCancelButtonClass]="field.classNames?.cancel || 'btn btn-sm btn-secondary'"
+        [cpOKButton]="!field.colorOptions?.okHide" [cpOKButtonClass]="field.classNames?.ok || 'btn btn-sm btn-primary'"
+        [cpPositionRelativeToArrow]="field.colorOptions?.positionRelativeToArrow" [cpIgnoredElements]="[]"
+        [(cpToggle)]="open" [cpPositionOffset]="field.colorOptions?.positionOffset || '-20%'">&nbsp;</span>
+    </span>
+    <input type="text" (click)="iconClick(); open = true;" readonly autocomplete="off"
+      class="form-control input-border-none {{ field?.classNames?.control }}" id="{{id}}"
+      placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate }}"
+      [formControlName]="field.key" />
+  </div>
+  <!-- begin: field error section -->
+  <app-form-error [field]="field" [form]="form" [validators]="validators" [messages]="messages"></app-form-error>
+  <!-- end: field error section -->
+</div>

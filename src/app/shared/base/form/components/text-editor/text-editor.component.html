@@ -1,0 +1,14 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+
+  <div [formGroup]="form" class="position-relative">
+    <!-- begin: text-editor -->
+    <quill-editor class="form-control p-0 border-none" [formats]="formats" [styles]="{ minHeight: '200px', wordBreak: 'break-all' }"
+      name="editor" [formControlName]="field.key" [id]="field.key" [modules]="editorConfig"
+      [placeholder]="((this.field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)"
+      [ngClass]="{ 'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form.get(field.key)?.errors) }"
+      (onContentChanged)="notifyChange($event)">
+    </quill-editor>
+    <!-- end: text-editor -->
+  </div>
+</app-form-control-layout>

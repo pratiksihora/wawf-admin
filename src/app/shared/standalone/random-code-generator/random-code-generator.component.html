@@ -1,0 +1,96 @@
+<div class="modal-header pt-4 pb-3 px-7">
+    <h3 class="card-title fw-bold text-gray-800">Random code generator</h3>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal?.close()"></button>
+</div>
+<form class="d-flex flex-column flex-fill h-100" [formGroup]="form" (submit)="submit()">
+    <div class="modal-body">
+        <div class="d-flex h-100 flex-column scroll-y">
+            <div class="d-flex h-100 flex-column scroll-y">
+                <div class="d-flex h-100 flex-column h-100">
+                    <div class="flex-fill h-100 overflow-y-auto">
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-input [fieldConfig]="formFields.number_codes" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-input>
+                                    <span class="text-muted">Max codes should be 100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-input [fieldConfig]="formFields.single_length" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-input>
+                                    <span class="text-muted">Max character length should be 20</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-input [fieldConfig]="formFields.code_prefix" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-input>
+                                    <span class="text-muted">Pre fix are additional characters</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-input [fieldConfig]="formFields.code_postfix" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-input>
+                                    <span class="text-muted">Suffix are additional characters</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="Uppercase"
+                                            formControlName="Uppercase">
+                                        <label class="fw-bold fs-6 ps-1" for="Uppercase">
+                                            Uppercase</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="Lowercase"
+                                            formControlName="Lowercase">
+                                        <label class="fw-bold fs-6 ps-1" for="Lowercase">
+                                            Lowercase</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="Digit"
+                                            formControlName="Digit">
+                                        <label class="fw-bold fs-6 ps-1" for="Digit">
+                                            Digit</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer px-5 py-3">
+        <button type="submit" (click)="generateCodes()" class="btn btn-md py-2 btn-primary">Generate Codes</button>
+    </div>
+</form>

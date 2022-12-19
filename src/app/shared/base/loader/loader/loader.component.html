@@ -1,0 +1,63 @@
+<div class="d-flex flex-column flex-fill w-100" [ngClass]="{ 'loader-parent': !position }">
+
+  <!-- start: loader -->
+  <div *ngIf="show" class="preloader-spinner">
+    <div class="status">
+      <!-- small loader starts -->
+      <div *ngIf="type === 'small'" class="small-loader-spinner">
+        <div class="loadingio-spinner-spinner-abwpzq69c1k">
+          <div class="ldio-uk4kw4dp25p">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <!-- small loader end -->
+      <!-- large loader starts -->
+      <div *ngIf="!type" class="d-flex justify-content-center pt-250px">
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <!-- large loader end -->
+
+    </div>
+  </div>
+  <!-- loader ends -->
+
+  <!-- content starts -->
+  <!-- <div class="d-flex flex-column flex-fill w-100" [ngClass]="{ 'opacity-up' : show }"> -->
+    <ng-content></ng-content>
+  <!-- </div> -->
+
+  <!-- content ends -->
+</div>
+
+<!-- <div class="d-flex flex-column flex-fill w-100" [ngClass]="{ 'loader-parent': !position }">
+
+  <div *ngIf="show" class="preloader-spinner d-flex justify-content-center pt-250px">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div> -->
+
+<!-- content starts -->
+<!-- <ng-content></ng-content> -->
+<!-- content ends -->
+<!-- </div> -->

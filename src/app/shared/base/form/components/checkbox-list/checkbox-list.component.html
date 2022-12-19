@@ -1,0 +1,27 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+
+  <div [formGroup]="form" class="position-relative d-flex h-100">
+    <div [formArrayName]="field.key" [ngClass]="{'d-flex align-items-center flex-wrap gap-3': field?.templateOptions?.inlineControl}">
+      <!-- begin: render checkbox list section -->
+      <ng-container *ngFor="let option of getFormArray()?.controls ;let i = index">
+        <ng-container [formGroupName]="i">
+          <!--begin::Checkbox-->
+          <label class="form-check form-check-custom" [ngClass]="{
+            'form-check-inline': field?.templateOptions?.inlineControl,
+            'form-check-solid': field?.templateOptions?.solidControl,
+            'form-check-sm':field?.templateOptions?.smallControl,
+            'form-check-lg':field?.templateOptions?.largeControl }">
+            <input type="checkbox" class="form-check-input" formControlName="selected" id="{{prefix}}{{field.key + i}}"
+              (change)="notifyChange($event)">
+            <span class="fw-bold ps-5 fs-6">
+              {{ option.value.text | translate }}
+            </span>
+          </label>
+          <!--end::Checkbox-->
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+</app-form-control-layout>

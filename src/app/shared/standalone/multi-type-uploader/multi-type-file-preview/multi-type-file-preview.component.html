@@ -1,0 +1,18 @@
+<div class="row my-5">
+  <div class="col-lg-2 col-md-3 col-6 mb-5" *ngFor="let file of fileList" (click)="fileClickEvent(file)">
+    <div class="card image-overlay cursor-pointer h-100px w-100 bg-eee">
+      <div class="card-body p-0 h-100 w-100">
+        <div class="overlay-wrapper h-100 w-100 d-flex justify-content-center align-items-center"> {{
+          config?.customPreviewStyle?.width }}
+          <!-- [width]="config?.customPreviewStyle?.width ? config?.customPreviewStyle?.width : '35px'"  -->
+          <img [img-preloader]="bucketAwsUrl+file?.url" alt="{{file?.filename}}" width="35px"
+            height="35px" [class]="config?.customClass ? config?.customClass : ''" />
+        </div>
+        <div class="image-overlay_layer text-light">
+          <a *ngIf="file?.filename" class="text-light">{{file?.filename}}</a>
+          <!-- <span *ngIf="gif.filename" class="mx-2">|</span> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
