@@ -1,0 +1,75 @@
+<div [formGroup]="form" class="form-array" [hidden]="hidden.value">
+  <!-- begin: pre seperator for border -->
+  <div *ngIf="field.templateOptions?.preSeperator" class="separator separator-dashed my-3"></div>
+  <!-- end: pre seperator for border -->
+
+  <!-- begin: label section-->
+  <app-form-control-layout [hidden]="hidden.value" [bolder]="true" [prefix]="prefix || ''" [field]="field" [form]="form"
+    [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)"
+    (buttonAction)="addNewItem()">
+    <div [formArrayName]="field.key">
+
+      <!-- begin: form array items render -->
+      <ng-container *ngFor="let option of getFormArray().controls; let i = index">
+        <ng-container [formGroupName]="i">
+          <div class="form-array--item">
+            <div class="row">
+              <!-- begin: render form group fields section -->
+              <ng-container *ngFor="let subfield of field.fieldGroups;">
+                <div [ngClass]="[subfield.classNames?.row || '']" [hidden]="option.get(subfield.key + '_hidden')?.value">
+                  <!-- begin: render from control selector -->
+                  <app-control-selector [formConfig]="formConfig" [fieldConfig]="subfield" [parentForm]="form"
+                    [form]="option" [options]="options && options[subfield.key]"
+                    [values]="values && values[i] && values[i][subfield.key]" (valueChange)="valueChange.emit($event)"
+                    (iconAction)="iconAction.emit($event)" (labelAction)="labelAction.emit($event)"
+                    (detectAction)="detectAction.emit($event)">
+                  </app-control-selector>
+                  <!-- end: render from control selector -->
+                </div>
+              </ng-container>
+              <!-- end: render form group fields section -->
+            </div>
+
+            <!-- begin: delete item section -->
+            <button (click)="deleteItem(i)" type="button"
+              class="btn btn-icon btn-flex btn-active-light-danger w-20px h-20px me-1"
+              ngbTooltip="{{ (field?.displayOptions?.remove || 'COMMON.TOOLTIP.REMOVE') | translate }}" container="body"
+              triggers="manual" #ri="ngbTooltip" (mouseenter)="ri.open()" (mouseleave)="ri.close()">
+              <i class="bi bi-trash"></i>
+            </button>
+            <!-- end: delete item section -->
+          </div>
+          <!-- begin: seperator between items  -->
+          <div class="separator separator-dashed my-5"
+            *ngIf="field.formArrayOptions?.seperator && getFormArray()?.controls && ((getFormArray().controls.length - 1) !== i)">
+          </div>
+          <!-- end: seperator between items -->
+        </ng-container>
+      </ng-container>
+      <!-- end: form array items render -->
+    </div>
+
+    <!-- begin: bottom add button section -->
+    <button
+      *ngIf="field?.formArrayOptions?.bottomAdd && !(field?.formArrayOptions?.notFound && !getFormArray().controls?.length)"
+      type="button" class="btn btn-light-primary me-auto" (click)="addNewItem()">
+      {{ (field?.displayOptions?.button || 'COMMON.BUTTON.ADD') | translate }}</button>
+    <!-- end: bottom add button section -->
+
+    <!-- begin: no record found section -->
+    <div class="card-px text-center py-10"
+      *ngIf="field?.formArrayOptions?.notFound && !getFormArray().controls?.length">
+      <p class="text-gray-400 fs-4 fw-bold mb-10">
+        {{ (field?.displayOptions?.notFound || 'COMMON.HINT.NO_RECORD_FOUND') | translate }}</p>
+      <a *ngIf="field?.formArrayOptions?.bottomAdd" href="javascript:void(0)" class="btn btn-primary"
+        (click)="addNewItem()">{{ (field?.displayOptions?.button || 'COMMON.BUTTON.ADD') | translate }}</a>
+    </div>
+    <!-- end: no record found section -->
+
+  </app-form-control-layout>
+  <!-- end: label section-->
+
+  <!-- begin: post seperator for border -->
+  <div *ngIf="field.templateOptions?.postSeperator" class="separator separator-dashed my-3"></div>
+  <!-- end: post seperator for border -->
+</div>

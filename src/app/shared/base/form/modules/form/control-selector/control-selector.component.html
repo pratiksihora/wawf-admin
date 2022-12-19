@@ -1,0 +1,140 @@
+<!-- begin: render component base on type -->
+<ng-container [ngSwitch]="fieldConfig.component">
+
+  <!-- begin: render input component -->
+  <app-input *ngSwitchCase="componentEnum.INPUT" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-input>
+  <!-- end: render input component -->
+
+  <!-- begin: render textarea component -->
+  <app-text-area *ngSwitchCase="componentEnum.TEXTAREA" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-text-area>
+  <!-- end: render textarea component -->
+
+  <!-- begin: render text editor component -->
+  <app-text-editor *ngSwitchCase="componentEnum.TEXT_EDITOR" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-text-editor>
+
+  <!-- end: render text editor component -->
+
+  <!-- begin: render checkbox component -->
+  <app-checkbox *ngSwitchCase="componentEnum.CHECKBOX" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-checkbox>
+  <!-- end: render checkbox component -->
+
+  <!-- begin: render checkbox list component -->
+  <app-checkbox-list *ngSwitchCase="componentEnum.CHECKBOX_LIST" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-checkbox-list>
+  <!-- end: render checkbox list component -->
+
+  <!-- begin: render radio component-->
+  <app-radio *ngSwitchCase="componentEnum.RADIO" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-radio>
+  <!-- end: render radio component -->
+
+  <!-- begin: render switch component -->
+  <app-switch *ngSwitchCase="componentEnum.SWITCH" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-switch>
+  <!-- end: render switch component -->
+
+  <!-- begin: render select component -->
+  <app-select *ngSwitchCase="componentEnum.SELECT" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-select>
+  <!-- end: render select component -->
+
+  <!-- begin: render color input component -->
+  <app-color-input *ngSwitchCase="componentEnum.COLOR_INPUT" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-color-input>
+  <!-- end: render color input component -->
+
+  <!-- begin: render image upload component -->
+  <app-image-upload *ngSwitchCase="componentEnum.IMAGE_UPLOAD" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-image-upload>
+  <!-- end: render image upload component -->
+
+  <!-- begin: render multi image upload -->
+  <app-multi-image-upload *ngSwitchCase="componentEnum.MULTI_IMAGE_UPLOAD" [formConfig]="formConfig"
+    [fieldConfig]="fieldConfig" [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-multi-image-upload>
+  <!-- end: render multi image upload -->
+
+  <!-- begin: render file attachment component -->
+  <app-file-attachment *ngSwitchCase="componentEnum.FILE_ATTACHMENT" [formConfig]="formConfig"
+    [fieldConfig]="fieldConfig" [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-file-attachment>
+  <!-- end: render file attachment component -->
+
+  <!-- begin: render date picker component -->
+  <app-date-picker *ngSwitchCase="componentEnum.DATE_PICKER" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-date-picker>
+  <!-- end: render date picker component -->
+
+  <!-- begin: render date time picker component -->
+  <app-date-time-picker *ngSwitchCase="componentEnum.DATE_TIME_PICKER" [formConfig]="formConfig"
+    [fieldConfig]="fieldConfig" [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-date-time-picker>
+  <!-- end: render date time picker component -->
+
+  <!-- begin: render date range component -->
+  <app-date-range *ngSwitchCase="componentEnum.DATE_RANGE_PICKER" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-date-range>
+  <!-- end: render date range component -->
+
+  <!-- begin: render range component -->
+  <app-range *ngSwitchCase="componentEnum.RANGE" [formConfig]="formConfig" [fieldConfig]="fieldConfig"
+    [parentForm]="parentForm" [form]="form" [options]="options" [values]="values"
+    (valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+    (labelAction)="labelAction.emit($event)" (detectAction)="detectAction.emit($event)">
+  </app-range>
+  <!-- end: render range component -->
+
+  <!-- begin: render for template type component-->
+  <ng-container *ngSwitchCase="componentEnum.TEMPLATE">
+    <div [ngClass]="[fieldConfig.classNames?.template || '']" [innerHTML]="fieldConfig?.template | safe: 'html'"></div>
+  </ng-container>
+  <!-- end: render for template type component-->
+
+</ng-container>
+<!-- end: render component base on type-->

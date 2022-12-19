@@ -1,0 +1,21 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative"
+    [ngClass]="{'d-flex align-items-center flex-wrap gap-3 h-45px': field?.templateOptions?.layout === layoutEnum.HORIZONTAL }">
+
+    <!--begin::Switch-->
+    <label class="form-check form-switch form-check-custom" [ngClass]="{
+      'form-check-solid': field?.templateOptions?.solidControl}">
+      <input type="checkbox" checked="checked" name="switch" class="form-check-input cursor-pointer" [formControlName]="field.key"
+        id="{{prefix}}{{field.key}}" (change)="notifyChange($event)"
+        [ngClass]="{ 
+        'w-45px h-30px': field?.templateOptions?.largeControl, 
+        'w-30px h-20px': field?.templateOptions?.smallControl,
+        'border-danger': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)}">
+      <span class="form-check-label fw-bold text-muted" *ngIf="field?.displayOptions?.label2">{{
+        field?.displayOptions?.label2 | translate }}</span>
+    </label>
+    <!--end::Switch-->
+
+  </div>
+</app-form-control-layout>

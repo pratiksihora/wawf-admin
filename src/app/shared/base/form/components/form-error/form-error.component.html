@@ -1,0 +1,226 @@
+<div *ngIf="(form.get(field.key)?.touched || form.get(field.key)?.dirty) && form.get(field.key)?.invalid"
+  class="invalid-feedback d-block">
+
+  <!-- begin: required messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.required">
+    <ng-container *ngIf="!messages?.required">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.REQUIRED' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.required">{{ messages?.required | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: required messages -->
+
+  <!-- begin: min messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.min">
+    <ng-container *ngIf="!messages?.min">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MIN' | translate: { 'min':
+      validators.min
+      } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.min">{{ messages?.min | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: min messages -->
+
+  <!-- begin: max messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.max">
+    <ng-container *ngIf="!messages?.max">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MAX' | translate: { 'max':
+      validators.max
+      } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.max">{{ messages?.max | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: max messages -->
+
+  <!-- begin: min length messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.minlength">
+    <ng-container *ngIf="!messages?.minLength">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MIN_LENGTH' | translate: { 'minLength':
+      validators.minLength } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.minLength">{{ messages?.minLength | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: min length messages -->
+
+  <!-- begin: max length messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.maxlength">
+    <ng-container *ngIf="!messages?.maxLength">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MAX_LENGTH' | translate: { 'maxLength':
+      validators.maxLength } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.maxLength">{{ messages?.maxLength | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: max length messages -->
+
+  <!-- begin: pattern messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.pattern">
+    <ng-container *ngIf="!messages?.pattern">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.PATTERN' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.pattern">{{ messages?.pattern | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: pattern messages -->
+  <!-- begin: required checkbox selection messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.reqSelection">
+    <ng-container *ngIf="!messages?.reqSelection">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.REQ_SELECTION' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.reqSelection">
+      {{ messages?.reqSelection | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: required checkbox selection messages -->
+
+  <!-- begin: min selection messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.minSelection">
+    <ng-container *ngIf="!messages?.minSelection">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MIN_SELECTION' | translate: {
+      'minSelection':
+      validators.minSelection } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.minSelection">
+      {{ messages?.minSelection | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: min selection  messages -->
+
+  <!-- begin: max selection messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.maxSelection">
+    <ng-container *ngIf="!messages?.maxSelection">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.MAX_SELECTION' | translate: {
+      'maxSelection':
+      validators.maxSelection } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.maxSelection">
+      {{ messages?.maxSelection | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: max selection messages -->
+
+  <!-- begin: multi email messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.multiEmail">
+    <ng-container *ngIf="!messages?.multiEmail">
+      {{ 'ERROR.VALIDATION.MULTI_EMAIL' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.multiEmail">
+      {{ messages?.multiEmail | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: multi email messages -->
+
+  <!-- begin: confirm password messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.confirmPassword">
+    <ng-container *ngIf="!messages?.confirmPassword">
+      {{ field.displayOptions?.label | translate }} {{ 'ERROR.VALIDATION.CONFIRM_PASSWORD' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.confirmPassword">
+      {{ messages?.confirmPassword | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: confirm password messages -->
+
+  <!-- begin: file allowed extension messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.allowedExtensions">
+    <ng-container *ngIf="!messages?.allowedExtensions">
+      {{ 'ERROR.VALIDATION.ALLOWED_EXTENSIONS' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.allowedExtensions">
+      {{ messages?.allowedExtensions | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: file allowed extension messages -->
+
+  <!-- begin: min file size messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.minFileSize">
+    <ng-container *ngIf="!messages?.minFileSize">
+      {{ 'ERROR.VALIDATION.MIN_FILE_SIZE' | translate: { 'minFileSize': validators.minFileSize } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.minFileSize">
+      {{ messages?.minFileSize | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: min file size messages -->
+
+  <!-- begin: max file size messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.maxFileSize">
+    <ng-container *ngIf="!messages?.maxFileSize">
+      {{ 'ERROR.VALIDATION.MAX_FILE_SIZE' | translate: { 'maxFileSize': validators.maxFileSize } }}
+    </ng-container>
+    <ng-container *ngIf="messages?.maxFileSize">
+      {{ messages?.maxFileSize | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: max file size messages -->
+
+  <!-- begin: greater than date messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.greaterThanDateKey">
+    <ng-container *ngIf="!messages?.greaterThanDateKey">
+      {{'ERROR.VALIDATION.GREATER_THAN_DATE' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.greaterThanDateKey">
+      {{ messages?.greaterThanDateKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: greater than date messages -->
+
+  <!-- begin: less than date messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.lessThanDateKey">
+    <ng-container *ngIf="!messages?.lessThanDateKey">
+      {{ 'ERROR.VALIDATION.LESS_THAN_DATE' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.lessThanDateKey">
+      {{ messages?.lessThanDateKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: less than date messages -->
+
+  <!-- begin: greater than time messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.greaterThanTimeKey">
+    <ng-container *ngIf="!messages?.greaterThanTimeKey">
+      {{ 'ERROR.VALIDATION.GREATER_THAN_TIME' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.greaterThanTimeKey">
+      {{ messages?.greaterThanTimeKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: greater than time messages -->
+
+  <!-- begin: less than time messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.lessThanTimeKey">
+    <ng-container *ngIf="!messages?.lessThanTimeKey">
+      {{ 'ERROR.VALIDATION.LESS_THAN_TIME' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.lessThanTimeKey">
+      {{ messages?.lessThanTimeKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: less than time messages -->
+
+  <!-- begin: greater than number messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.greaterThanNumberKey">
+    <ng-container *ngIf="!messages?.greaterThanNumberKey">
+      {{ 'ERROR.VALIDATION.GREATER_THAN_NUMBER' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.greaterThanNumberKey">
+      {{ messages?.greaterThanNumberKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: greater than number messages -->
+
+  <!-- begin: less than number messages -->
+  <ng-container *ngIf="form.get(field.key)?.errors?.lessThanNumberKey">
+    <ng-container *ngIf="!messages?.lessThanNumberKey">
+      {{ 'ERROR.VALIDATION.LESS_THAN_NUMBER' | translate }}
+    </ng-container>
+    <ng-container *ngIf="messages?.lessThanNumberKey">
+      {{ messages?.lessThanNumberKey | translate }}
+    </ng-container>
+  </ng-container>
+  <!-- end: less than number messages -->
+</div>

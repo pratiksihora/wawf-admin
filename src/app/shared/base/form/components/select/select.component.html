@@ -1,0 +1,85 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)" [ngClass]="customClassFormControl">
+
+  <!-- begin: control section -->
+  <div [formGroup]="form" class="position-relative" class="ng-select-ant custom-ng-select" [ngClass]="{
+    'ng-select-solid': field?.templateOptions?.solidControl,
+    'ng-select-sm':field?.templateOptions?.smallControl,
+    'ng-select-lg':field?.templateOptions?.largeControl }">
+    <!-- begin: main control section -->
+    <ng-select #select
+      [ngClass]="{ 'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form.get(field.key)?.errors) }"
+      [formControlName]="field.key" [items]="items$ | async" [loading]="loading"
+      [multiple]="field?.templateOptions?.multiple || false" [readonly]="field?.readonly || false"
+      [maxSelectedItems]="validators?.max" [addTag]="field?.selectOptions?.tag || false" bindValue="value"
+      bindLabel="text"
+      placeholder="{{ field?.displayOptions?.hidePlaceHolder ? '' : ((field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)}}"
+      addTagText="{{ field?.displayOptions?.add | translate }}"
+      clearAllText="{{ field?.displayOptions?.clear | translate }}"
+      notFoundText="{{ field?.displayOptions?.notFound ? (field?.displayOptions?.notFound | translate) : 'No Item Found' }}"
+      typeToSearchText="{{ (field?.displayOptions?.search || 'COMMON.HINT.SELECT_SEARCH') | translate }}"
+      loadingText="{{ field?.displayOptions?.loading | translate }}" [appendTo]="field?.selectOptions?.append"
+      [typeahead]="typeahead$" [editableSearchTerm]="true"
+      [closeOnSelect]="(!field?.templateOptions?.multiple || field?.selectOptions?.tag || !field?.selectOptions?.preventCloseOnSelect)"
+      [clearable]="!field?.selectOptions?.unClear" [groupBy]="field?.selectOptions?.groupKey || ''"
+      [selectableGroup]="field?.selectOptions?.groupSelection"
+      [dropdownPosition]="field?.selectOptions?.position || placementEnum.AUTO"
+      [selectableGroupAsModel]="field?.selectOptions?.optionGroupSelection"
+      [isOpen]="field?.selectOptions?.open || undefined" [hideSelected]="field?.selectOptions?.hideSelected || false"
+      [searchable]="!field?.selectOptions?.preventSearch" [selectOnTab]="true"
+      [minTermLength]="field?.selectOptions?.minTextForSearch || 0"
+      [virtualScroll]="field?.selectOptions?.virtualScroll || false" [inputAttrs]="field?.selectOptions?.inputAttrs"
+      [tabIndex]="field?.selectOptions?.tabIndex" (change)="notifyChange($event)" (open)="openDropDown()">
+
+      <ng-container *ngIf="field?.selectOptions?.innerSearch || field?.selectOptions?.allSelection">
+        <ng-template ng-header-tmp>
+          <div class="text-start">
+            <input type="text" class="form-control form-control-sm" #searchInput
+              *ngIf="field?.selectOptions?.innerSearch"
+              placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label)  | translate }}"
+              (input)="field?.selectOptions?.typeahead ? '' : select.filter($any($event)?.target?.value)" />
+            <!-- <span class="clear fa fa-times" (click)="select.filter(''); filterText = ''"></span> -->
+
+            <!-- select all button starts -->
+            <ng-container *ngIf="field?.selectOptions?.allSelection">
+              <button type="button" (click)="selectAll()" class="select-header-btn btn btn-sm btn-primary mt-2">Select
+                All</button>
+            </ng-container>
+            <!-- select all button ends -->
+
+            <!-- unselect all button starts -->
+            <ng-container *ngIf="field?.selectOptions?.allSelection">
+              <button type="button" (click)="unSelectAll()"
+                class="select-header-btn btn btn-sm btn-primary mt-2 ms-2">Unselect
+                All</button>
+            </ng-container>
+            <!-- unselect all button ends -->
+          </div>
+        </ng-template>
+      </ng-container>
+
+      <ng-container *ngIf="field?.selectOptions?.checkbox">
+        <!-- dropdown template start -->
+        <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index"
+          *ngIf="field.selectOptions?.groupKey">
+          <label for="" class="form-check form-check-custom form-check-sm form-check-solid">
+            <input class="form-check-input" type="checkbox" name="item" [ngModel]="item$.selected"
+              [ngModelOptions]="{ standalone: true }">
+            <span class="ps-2 fs-6">{{ item[field?.selectOptions?.groupKey || ''] }}</span>
+          </label>
+        </ng-template>
+
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+          <label for="" class="form-check form-check-custom form-check-sm form-check-solid">
+            <input class="form-check-input" type="checkbox" id="item-{{ index }}" name="item" [ngModel]="item$.selected"
+              [ngModelOptions]="{ standalone: true }">
+            <span class="fw-bold ps-2 fs-6">{{item.text}}</span>
+          </label>
+        </ng-template>
+        <!-- dropdown template end -->
+      </ng-container>
+    </ng-select>
+    <!-- end: main control section -->
+  </div>
+  <!-- end: control section -->
+</app-form-control-layout>

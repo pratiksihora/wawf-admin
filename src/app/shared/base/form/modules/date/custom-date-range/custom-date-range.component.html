@@ -1,0 +1,30 @@
+<div [ngClass]="{  
+  'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+}">
+  <input readonly type="text" #dateRangeInput name="daterangeInput" daterangepicker [options]="dateOptions"
+    (selected)="select($event)" (applyDaterangepicker)="calendarApplied($event)"
+    (cancelDaterangepicker)="cancelApplied($event)" autocomplete="off"
+    class="form-control {{ field?.classNames?.control }}"
+    placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate }}"
+    id="{{prefix}}{{field.key}}" [disabled]="disabled" [ngClass]="{
+    'form-control-solid': field?.templateOptions?.solidControl,
+    'form-control-lg': field?.templateOptions?.largeControl,
+    'form-control-sm': field?.templateOptions?.smallControl,
+    'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+  }" />
+
+  <!-- begin: right side add on icon section -->
+  <span *ngIf="dateRangeInput?.value && !field.templateOptions?.unClear"
+    class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-25 ms-n2"
+    (click)="close(); $event.stopPropagation();">
+    <i class="bi bi-x fs-2"></i>
+  </span>
+
+  <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+    [ngClass]="{'pe-6': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)}"
+    (click)="dateRangeInput.focus(); $event.stopPropagation();iconAction.emit({});">
+    <i class="bi bi-calendar fs-2"></i>
+  </span>
+
+  <!-- end: right side add on icon section -->
+</div>

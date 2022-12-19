@@ -1,0 +1,48 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative"
+    [ngClass]="{'d-flex align-items-center flex-wrap gap-3 h-40px': field?.templateOptions?.inlineControl}">
+
+    <ng-container *ngIf="!field?.templateOptions?.optionLayout">
+      <!-- begin: render radio list section -->
+      <ng-container *ngFor="let option of items ;let i = index">
+        <!--begin::Radio-->
+        <label class="form-check form-check-custom" [ngClass]="{
+        'form-check-inline': field?.templateOptions?.inlineControl,
+        'form-check-solid': field?.templateOptions?.solidControl,
+        'form-check-sm':field?.templateOptions?.smallControl,
+        'form-check-lg':field?.templateOptions?.largeControl }">
+          <input type="radio" class="form-check-input" id="{{prefix}}{{field.key}}-{{ option.value }}-{{ i }}"
+            name="{{ field.key }}" [formControlName]="field.key" [value]="option.value" (change)="notifyChange($event)">
+          <span class="fw-bold ps-2 fs-6">
+            {{ option.text | translate }}
+          </span>
+        </label>
+        <!--end::Radio-->
+      </ng-container>
+    </ng-container>
+
+    <div *ngIf="field?.templateOptions?.optionLayout === layout.VERTICAL && items?.length">
+      <ng-container *ngFor="let option of items ;let i = index">
+        <div class="d-flex fv-row">
+          <div class="form-check form-check-custom" [ngClass]="{
+          'form-check-inline': field?.templateOptions?.inlineControl,
+          'form-check-solid': field?.templateOptions?.solidControl,
+          'form-check-sm':field?.templateOptions?.smallControl,
+          'form-check-lg':field?.templateOptions?.largeControl }">
+            <input type="radio" class="form-check-input me-3" id="{{prefix}}{{field.key}}-{{ option.value }}-{{ i }}"
+              name="{{ field.key }}" [formControlName]="field.key" [value]="option.value"
+              (change)="notifyChange($event)">
+            <label for="{{prefix}}{{field.key}}-{{ option.value }}-{{ i }}" class="form-check-label">
+              <div class="fw-bold text-gray-800 fs-5"> {{ option.text | translate }}</div>
+              <div class="text-gray-600"> {{ option.descr | translate }}
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="separator separator-dashed my-5" *ngIf="(items.length - 1) !== i"></div>
+      </ng-container>
+    </div>
+
+  </div>
+</app-form-control-layout>

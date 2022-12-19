@@ -1,0 +1,71 @@
+<div [formGroup]="form">
+	<!-- begin: fields loop start -->
+	<div *ngFor="let field of fieldConfig; let formIndex = index;">
+		<!-- begin: render base on control type -->
+		<ng-container [ngSwitch]="field.type">
+
+			<!-- begin: render for component control type -->
+			<ng-container *ngSwitchCase="controlType.COMPONENT">
+				<!-- begin: render from control selector -->
+				<app-control-selector [formConfig]="formConfig" [fieldConfig]="field" [form]="form"
+					[options]="options && options[field.key]" [values]="values && values[field.key]"
+					(valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+					(labelAction)="labelAction.emit($event)" (detectAction)="detectAction($event)">
+				</app-control-selector>
+				<!-- end: render from control selector -->
+			</ng-container>
+			<!-- end: render for component control type -->
+
+			<!-- begin: render for row control type -->
+			<ng-container *ngSwitchCase="controlType.ROW">
+				<div class="row">
+					<ng-container *ngFor="let subfield of field.fieldGroups;">
+						<div [ngClass]="[subfield.classNames?.row || '']" [hidden]="form.get(subfield.key + '_hidden')?.value">
+							<!-- begin: render from control selector -->
+							<app-control-selector [formConfig]="formConfig" [fieldConfig]="subfield" [form]="form"
+								[options]="options && options[subfield.key]" [values]="values && values[subfield.key]"
+								(valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+								(labelAction)="labelAction.emit($event)" (detectAction)="detectAction($event)">
+							</app-control-selector>
+							<!-- end: render from control selector -->
+						</div>
+					</ng-container>
+				</div>
+			</ng-container>
+			<!-- end: render for row control type -->
+
+			<!-- begin: render for template type -->
+			<ng-container *ngSwitchCase="controlType.TEMPLATE">
+				<div [ngClass]="[field.classNames?.template || '']" [innerHTML]="field?.template | safe: 'html'"></div>
+			</ng-container>
+			<!-- end: render for template type -->
+
+			<!-- begin: render from form array component -->
+			<ng-container *ngSwitchCase="controlType.FORM_GROUP">
+				<!-- begin: render from form array selector -->
+				<app-form-group [formConfig]="formConfig" [fieldConfig]="field" [form]="form"
+					[options]="options && options[field.key]" [values]="values && values[field.key]"
+					(valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+					(labelAction)="labelAction.emit($event)" (detectAction)="detectAction($event)">
+				</app-form-group>
+				<!-- end: render from form array selector -->
+			</ng-container>
+			<!-- end: render from form array component -->
+
+			<!-- begin: render from form array component -->
+			<ng-container *ngSwitchCase="controlType.FORM_ARRAY">
+				<!-- begin: render from form array selector -->
+				<app-form-array [formConfig]="formConfig" [fieldConfig]="field" [form]="form"
+					[options]="options && options[field.key]" [values]="values && values[field.key]"
+					(valueChange)="valueChange.emit($event)" (iconAction)="iconAction.emit($event)"
+					(labelAction)="labelAction.emit($event)" (detectAction)="detectAction($event)">
+				</app-form-array>
+				<!-- end: render from form array selector -->
+			</ng-container>
+			<!-- end: render from form array component -->
+
+		</ng-container>
+		<!-- end: render base on control type -->
+	</div>
+	<!-- begin: fields loop end -->
+</div>

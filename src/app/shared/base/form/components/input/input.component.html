@@ -1,0 +1,84 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" [ngClass]="{ 
+    'input-group': (field?.iconOptions?.leftAddonIcon || field?.iconOptions?.rightAddonIcon),
+    'input-group-sm': field?.templateOptions?.smallControl, 
+    'input-group-lg': field?.templateOptions?.largeControl,
+    'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors),
+    'position-relative': (field?.iconOptions?.leftInlineIcon || field?.iconOptions?.rightInlineIcon || field?.subType === 'password')
+  }">
+
+    <!-- begin: left side add on icon section -->
+    <button type="button" *ngIf="field?.iconOptions?.leftAddonIcon" class="btn btn-icon btn-light" [ngClass]="{ 
+      'btn-sm': field?.templateOptions?.smallControl, 
+      'btn-lg': field?.templateOptions?.largeControl
+    }" (click)="iconClick(field?.iconOptions?.leftAddonIcon)">
+      <span class="svg-icon svg-icon-2">
+        <span class="{{ field?.iconOptions?.leftAddonIcon?.class }}" *ngIf="field?.iconOptions?.leftAddonIcon?.svg"
+          [inlineSVG]="field?.iconOptions?.leftAddonIcon?.svg"></span>
+        <i *ngIf="field?.iconOptions?.leftAddonIcon?.icon"
+          class="{{ field?.iconOptions?.leftAddonIcon?.icon }} {{ field?.iconOptions?.leftAddonIcon?.class }}"></i>
+        {{field?.iconOptions?.leftAddonIcon?.text}}
+      </span>
+      <!--end::Svg Icon-->
+    </button>
+    <!-- end: left side add on icon section -->
+
+    <span *ngIf="field?.iconOptions?.leftInlineIcon"
+      class="btn btn-sm btn-icon position-absolute translate-middle top-50 start-0 ms-8"
+      (click)="iconClick(field?.iconOptions?.leftInlineIcon)">
+      <span class="{{ field?.iconOptions?.leftInlineIcon?.class }}" *ngIf="field?.iconOptions?.leftInlineIcon?.svg"
+        [inlineSVG]="field?.iconOptions?.leftInlineIcon?.svg"></span>
+      <i *ngIf="field?.iconOptions?.leftInlineIcon?.icon"
+        class="{{ field?.iconOptions?.leftInlineIcon?.icon }} {{ field?.iconOptions?.leftInlineIcon?.class }}"></i>
+    </span>
+
+    <!--begin::Input-->
+    <input type="{{ field?.subType === 'password' && toogle ? 'text' : (field.subType || 'text') }}" autocomplete="off"
+      class="form-control {{ field?.classNames?.control }}"
+      placeholder="{{ field?.displayOptions?.hidePlaceHolder ? '' : ((field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate)}}"
+      [formControlName]="field.key" id="{{prefix}}{{field.key}}" (keyup)="notifyChange($event)" [ngClass]="{
+            'ps-15': field?.iconOptions?.leftInlineIcon,
+            'pe-15': field?.iconOptions?.rightInlineIcon,
+            'form-control-solid': field?.templateOptions?.solidControl,
+            'form-control-lg': field?.templateOptions?.largeControl,
+            'form-control-sm': field?.templateOptions?.smallControl,
+            'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+          }">
+    <!--end::Input-->
+
+    <!-- begin: right side inline password icon -->
+    <span *ngIf="field?.subType === 'password'"
+      class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+      (click)="passwordToogle();iconClick();">
+      <i *ngIf="toogle" class="bi bi-eye-slash fs-2"></i>
+      <i *ngIf="!toogle" class="bi bi-eye fs-2"></i>
+    </span>
+    <!-- end: right side inline password icon -->
+
+    <span *ngIf="field?.iconOptions?.rightInlineIcon"
+      class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
+      (click)="iconClick(field?.iconOptions?.rightInlineIcon)">
+      <span class="{{ field?.iconOptions?.rightInlineIcon?.class }}" *ngIf="field?.iconOptions?.rightInlineIcon?.svg"
+        [inlineSVG]="field?.iconOptions?.rightInlineIcon?.svg"></span>
+      <i *ngIf="field?.iconOptions?.rightInlineIcon?.icon"
+        class="{{ field?.iconOptions?.rightInlineIcon?.icon }} {{ field?.iconOptions?.rightInlineIcon?.class }}"></i>
+    </span>
+
+    <!-- begin: right side add on icon section -->
+    <button type="button" *ngIf="field?.iconOptions?.rightAddonIcon" class="btn btn-icon btn-light" [ngClass]="{ 
+      'btn-sm': field?.templateOptions?.smallControl, 
+      'btn-lg': field?.templateOptions?.largeControl
+    }" (click)="iconClick(field?.iconOptions?.rightAddonIcon)">
+      <span class="svg-icon svg-icon-2">
+        <span class="{{ field?.iconOptions?.rightAddonIcon?.class }}" *ngIf="field?.iconOptions?.rightAddonIcon?.svg"
+          [inlineSVG]="field?.iconOptions?.rightAddonIcon?.svg"></span>
+        <i *ngIf="field?.iconOptions?.rightAddonIcon?.icon"
+          class="{{ field?.iconOptions?.rightAddonIcon?.icon }} {{ field?.iconOptions?.rightAddonIcon?.class }}"></i>
+        {{field?.iconOptions?.rightAddonIcon?.text}}
+      </span>
+      <!--end::Svg Icon-->
+    </button>
+    <!-- end: right side add on icon section -->
+  </div>
+</app-form-control-layout>

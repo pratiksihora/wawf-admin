@@ -1,0 +1,85 @@
+<div class="modal-header">
+  <h4 class="modal-title">Advance Filter</h4>
+  <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+    (click)="close()"></button>
+</div>
+<div class="modal-body">
+  <div class="table-responsive">
+    <table class="table table-fix-layout gy-2 gs-2">
+      <thead>
+        <tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
+          <th> Column Name</th>
+          <th> Filter Type</th>
+          <th> Search Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let column of filterOptions.fields; let formIndex = index;">
+          <tr>
+            <th>
+              <app-input [fieldConfig]="filterOptions.form[column.field]" [formConfig]="globalFormConfig" [form]="form">
+              </app-input>
+              <app-input [fieldConfig]="filterOptions.form[column.field + '_data_type']" [formConfig]="globalFormConfig"
+                [form]="form">
+              </app-input>
+              <app-input [fieldConfig]="filterOptions.form[column.field + '_config']" [formConfig]="globalFormConfig"
+                [form]="form">
+              </app-input>
+            </th>
+            <th>
+              <app-select [fieldConfig]="filterOptions.form[column.field + '_type']" [formConfig]="globalFormConfig"
+                [form]="form">
+              </app-select>
+            </th>
+            <th>
+              <div
+                [hidden]="!(form.get(column.field + '_type')?.value !== 'nnl' && form.get(column.field + '_type')?.value !== 'nl')">
+
+                <!-- begin: date fields config-->
+                <div *ngIf="form.get(column.field + '_config')?.value?.filterType === 'date'">
+                  <app-control-selector [hidden]="form.get(column.field + '_type')?.value === 'ltegte'"
+                    [formConfig]="globalFormConfig" [fieldConfig]="filterOptions.form[column.field + '_value']"
+                    [form]="form">
+                  </app-control-selector>
+                  <ng-container *ngIf="filterOptions.form[column.field + '_value1']">
+                    <app-control-selector [hidden]="form.get(column.field + '_type')?.value !== 'ltegte'"
+                      [formConfig]="globalFormConfig" [fieldConfig]="filterOptions.form[column.field + '_value1']"
+                      [form]="form">
+                    </app-control-selector>
+                  </ng-container>
+                </div>
+                <!-- begin: date fields config-->
+
+                <!-- begin: other fields config-->
+                <div *ngIf="form.get(column.field + '_config')?.value?.filterType !== 'date'">
+                  <app-control-selector [hidden]="form.get(column.field + '_type')?.value === 'ltegte'"
+                    [formConfig]="globalFormConfig" [fieldConfig]="filterOptions.form[column.field + '_value']"
+                    [form]="form">
+                  </app-control-selector>
+
+                  <ng-container
+                    *ngIf="filterOptions.form[column.field + '_value1'] && filterOptions.form[column.field + '_value2']">
+                    <app-control-selector [hidden]="form.get(column.field + '_type')?.value !== 'ltegte'"
+                      [formConfig]="globalFormConfig" [fieldConfig]="filterOptions.form[column.field + '_value1']"
+                      [form]="form">
+                    </app-control-selector>
+                    <app-control-selector [hidden]="form.get(column.field + '_type')?.value !== 'ltegte'"
+                      [formConfig]="globalFormConfig" [fieldConfig]="filterOptions.form[column.field + '_value2']"
+                      [form]="form">
+                    </app-control-selector>
+                  </ng-container>
+                </div>
+                <!-- begin: date config-->
+              </div>
+            </th>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-active-light me-3" (click)="close()">Close</button>
+  <button type="button" class="btn btn-active-light me-3" (click)="clear()">Reset Filter</button>
+  <button type="button" class="btn btn-primary" (click)="save()">Filter</button>
+</div>

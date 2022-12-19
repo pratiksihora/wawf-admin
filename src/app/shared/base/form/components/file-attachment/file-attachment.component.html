@@ -1,0 +1,91 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+
+  <div [formGroup]="form">
+    <div class="dropzone dz-clickable" appDroppableFile (click)="openFile()" (fileDropped)="fileChange($event)">
+      <!-- begin: message -->
+      <div class="dz-message needsclick">
+        <!-- begin: icon -->
+        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+        <!-- end: icon -->
+
+        <!-- begin: info -->
+        <div class="ms-4">
+          <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload. <a href="javascript:void(0)"
+              class="fs-5 fw-bold text-primary" *ngIf="getFormArray()?.controls?.length"
+              (click)="removeAllFile($event)">
+              &nbsp; Remove All</a></h3>
+          <span class="fs-7 fw-bold text-gray-400" *ngIf="validators?.maxFileAllowed">Upload up to
+            {{validators?.maxFileAllowed}} files</span>
+          <span class="fs-7 fw-bold text-gray-400" *ngIf="!validators?.maxFileAllowed">Upload up to
+            unlimimted files</span>
+        </div>
+        <!-- end: info -->
+        <input hidden id="{{prefix}}{{field?.key}}" multiple type="file" #fileInput name="multi_file"
+          [formControlName]="controlKey" (change)="fileChange($any($event)?.target?.files)"
+          accept="{{ field?.fileOptions?.accepts }}" />
+      </div>
+      <!-- end: message -->
+    </div>
+
+    <!-- begin: dropzone -->
+    <div class="dropzone dropzone-queue mb-2">
+      <!-- begin: file items -->
+      <div class="dropzone-items wm-200px">
+        <ng-container *ngFor="let file of getFormArray()?.controls; let i = index">
+          <div class="dropzone-item p-5 dz-image-preview">
+
+            <!-- start: file type icon/image -->
+            <div class="mr-2 attachment-line-height-1"
+              *ngIf="file.value.type === fileIconEnum.ICON || !file.value.path">
+              <span class="fs-1 {{file.value.icon}}"></span>&nbsp;
+            </div>
+            <div class="mr-2 attachment-line-height-1"
+              *ngIf="file.value.type === fileIconEnum.IMAGE && file.value.path">
+              <img [defaultImage]="defaultImage" [lazyLoad]="bucketAwsUrl + file.value.path" height="28" width="28">
+              &nbsp;
+            </div>
+            <!-- end: file type icon/image -->
+
+            <!-- begin: file -->
+            <div class="dropzone-file">
+              <div class="dropzone-filename text-dark" title="{{file.value.name}}"> <span>{{file.value.name}}</span>
+                <strong *ngIf="file.value.size"> (<span><strong>{{file.value.size}}</strong> MB</span>)</strong>
+              </div>
+              <div *ngIf="file.value.error" class="dropzone-error mt-0">{{file.value.error}}</div>
+            </div>
+            <!-- end: file -->
+
+            <!-- begin: progress -->
+            <div class="dropzone-progress">
+              <div class="progress bg-light-primary" *ngIf="fileStatusEnum.IN_PROGRESS === file.value.status">
+                <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                  aria-valuenow="0" [style.width.%]="file.value.progress"></div>
+              </div>
+            </div>
+            <!-- end: progress -->
+
+            <!-- begin: toolbar -->
+            <div class="dropzone-toolbar" *ngIf="fileStatusEnum.IN_PROGRESS !== file.value.status">
+              <span class="dropzone-delete" (click)="removeFile(i);"><i class="bi bi-x fs-1"></i></span>
+            </div>
+            <!-- end: toolbar -->
+          </div>
+        </ng-container>
+      </div>
+      <!-- end: items -->
+      <div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button>
+      </div>
+    </div>
+    <!-- end: dropzone -->
+
+    <!-- begin: display error message -->
+    <span *ngIf="error" class="invalid-feedback fs-6 d-block">{{error}}<a *ngIf="clear" href="javascript:void(0);"
+        (click)="_clearMessage()" ngbTooltip="{{ 'COMMON.TOOLTIP.RESET' | translate }}" container="body"
+        triggers="manual" #reset="ngbTooltip" (click)="reset.open()" (mouseenter)="reset.open()"
+        (mouseleave)="reset.close()">&nbsp;{{
+        'COMMON.LABEL.RESET' | translate }}</a>
+    </span>
+    <!--end: display error message -->
+  </div>
+</app-form-control-layout>

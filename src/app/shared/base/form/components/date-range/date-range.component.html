@@ -1,0 +1,11 @@
+<app-form-control-layout [hidden]="hidden.value"  [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative">
+    <!--begin:: Date Range-->
+    <app-custom-date-range [form]="form" [field]="field" [prefix]="prefix" [type]="datePickerTypeEnum.DateRange"
+      [formControlName]="field.key" [minDate]="minDate" [maxDate]="maxDate" (valueChange)="notifyChange($event)"
+      (iconAction)="iconClick($event)">
+    </app-custom-date-range>
+    <!--end:: Date Range-->
+  </div>
+</app-form-control-layout>

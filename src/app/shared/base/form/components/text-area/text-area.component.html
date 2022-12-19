@@ -1,0 +1,25 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative">
+
+    <!--begin::Textarea-->
+    <textarea autocomplete="off" class="form-control {{ field?.classNames?.control }}"
+      placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate }}"
+      [formControlName]="field.key" id="{{prefix}}{{field.key}}" (keyup)="notifyChange($event)" [ngClass]="{
+        'form-control-solid': field?.templateOptions?.solidControl,
+        'form-control-lg': field?.templateOptions?.largeControl,
+        'form-control-sm': field?.templateOptions?.smallControl,
+        'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+      }" [rows]=" (field?.templateOptions?.rows || 4)"></textarea>
+    <!--end::Textarea-->
+
+    <!-- begin: right side inline text for max length -->
+    <span class="textarea-count" *ngIf="validators?.maxLength && (form?.get(field.key)?.value || '').length" [ngClass]="{
+      'text-danger': ((form?.get(field.key)?.value || '').length > validators?.maxLength)
+     }">
+      {{ (form?.get(field.key)?.value || '').length }}/{{ validators?.maxLength }}
+    </span>
+    <!-- end: right side inline icon for max length -->
+
+  </div>
+</app-form-control-layout>

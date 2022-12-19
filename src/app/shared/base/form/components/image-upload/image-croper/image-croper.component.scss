@@ -1,0 +1,15 @@
+app-image-croper {
+    image-cropper {
+        img {
+            max-height: calc(100vh - 200px) !important;
+            width: auto;
+            object-fit: contain;
+
+        }
+    }
+
+    .btn.btn-icon svg {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}

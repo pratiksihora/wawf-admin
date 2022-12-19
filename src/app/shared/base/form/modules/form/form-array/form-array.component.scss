@@ -1,0 +1,11 @@
+.form-array {
+  &--item {
+    position: relative;
+    padding: 0rem 5rem 0rem 0rem;
+    .btn {
+      position: absolute;
+      right: 0;
+      top: 10px;
+    }
+  }
+}

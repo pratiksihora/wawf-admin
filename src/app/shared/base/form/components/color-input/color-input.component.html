@@ -1,0 +1,27 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="input-group" [ngClass]="{
+    'input-group-sm': field?.templateOptions?.smallControl, 
+    'input-group-lg': field?.templateOptions?.largeControl,
+    'input-group-solid': field?.templateOptions?.solidControl, 
+    'control-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors),
+    'is-invalid': ((form?.get(field.key)?.dirty || form?.get(field.key)?.touched) && form?.get(field.key)?.errors)
+  }">
+    <span class="input-group-text p-2 color-portion">
+      <span class="w-100 color-radius" id="{{prefix}}{{field.key}}" [style.background]="form?.get(field.key)?.value"
+        [colorPicker]="form?.get(field.key)?.value" (colorPickerChange)="notifyChange($event)"
+        [cpColorMode]="field.colorOptions?.colorMode || 'color'" [cpPosition]="field.colorOptions?.position || 'bottom'"
+        [cpPresetColors]="field.colorOptions?.presetColors || presetColors" [cpEyeDropper]="true"
+        [cpSaveClickOutside]="true" [cpCancelButton]="!field.colorOptions?.cancelHide"
+        [cpCancelButtonClass]="field.classNames?.cancel || 'btn btn-sm btn-secondary'"
+        [cpOKButton]="!field.colorOptions?.okHide" [cpOKButtonClass]="field.classNames?.ok || 'btn btn-sm btn-primary'"
+        [cpPositionRelativeToArrow]="field.colorOptions?.positionRelativeToArrow" [cpIgnoredElements]="[]"
+        [(cpToggle)]="open" [cpPositionOffset]="field.colorOptions?.positionOffset || '-20%'">&nbsp;</span>
+    </span>
+    <input type="text" (click)="iconClick(); open = true;" readonly autocomplete="off"
+      class="form-control input-border-none {{ field?.classNames?.control }}"
+      placeholder="{{ (field?.displayOptions?.placeholder || field?.displayOptions?.label) | translate }}"
+      [formControlName]="field.key" />
+
+  </div>
+</app-form-control-layout>

@@ -1,0 +1,40 @@
+<div class="modal-content">
+
+    <!-- modal header start -->
+    <div class="modal-header" *ngIf="showHeader && !customHeader">
+        <h4 class="modal-title" [ngClass]="{'d-flex flex-column': description}">{{title }}
+            <ng-container *ngIf="description">
+                <small>{{description}}</small>
+            </ng-container>
+        </h4>
+        <div>
+            <span class="mr-2" *ngIf="rightTitle" style="vertical-align: sub;">
+                <b> {{rightTitle}} </b>
+            </span>
+            <button type="button" (click)="activeModal.close()" class="btn-close" aria-label="Close button"
+                aria-describedby="modal-title"></button>
+        </div>
+    </div>
+    <!-- modal header end -->
+
+    <!-- modal body start -->
+    <div class="modal-header" *ngIf="customHeader && showHeader">
+        <ng-content select="[modal-header]">
+
+        </ng-content>
+    </div>
+    <!-- modal body end -->
+
+    <!-- modal body start -->
+    <div class="modal-body" *ngIf="showBody">
+        <ng-content select="[modal-body]"></ng-content>
+    </div>
+    <!-- modal body end -->
+
+    <!-- modal footer start -->
+    <div class="modal-footer" *ngIf="showFooter">
+        <ng-content select="[modal-footer]"></ng-content>
+    </div>
+    <!-- modal footer end -->
+
+</div>

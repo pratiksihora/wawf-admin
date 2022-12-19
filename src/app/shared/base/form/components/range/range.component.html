@@ -1,0 +1,13 @@
+<app-form-control-layout [hidden]="hidden.value" [prefix]="prefix || ''" [field]="field" [form]="form"
+  [validators]="validators" [messages]="messages" (labelAction)="labelAction.emit($event)">
+  <div [formGroup]="form" class="position-relative">
+    <!--begin::range slider-->
+    <div class="form-control form-control-solid user-select-none px-5 py-2" *ngIf="form.get(field.key)">
+      <nouislider [ngClass]="{
+      'noUi-lg': field?.templateOptions?.largeControl,
+      'noUi-sm': field?.templateOptions?.smallControl
+    }" [config]="rangeConfig" [formControl]="form.get(field.key)" (update)="notifyChange($event)"></nouislider>
+    </div>
+    <!--end::range slider-->
+  </div>
+</app-form-control-layout>
