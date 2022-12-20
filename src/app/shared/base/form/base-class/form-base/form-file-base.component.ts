@@ -5,8 +5,8 @@ import { FormControl } from "@angular/forms";
 import { FormBaseComponent } from "./form-base.component";
 
 // Constants
-import { FILE_API_ACTION } from "src/app/shared/constants/common-constants/file-api";
 import { FileValidationType } from "src/app/shared/constants/enums/controls/file/file-validate-type.enum";
+import { FILE_API_ACTION } from "src/app/constants/common-constants/file-api";
 
 /**
  * Common form class for handle form control options and methods

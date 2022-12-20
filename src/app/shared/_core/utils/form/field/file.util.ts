@@ -1,4 +1,5 @@
 // Enums
+import { FILE_API_ACTION } from "src/app/constants/common-constants/file-api";
 import { ComponentType } from "src/app/shared/constants/enums/controls/form/form-component-type.enum";
 import { ControlDataType } from "src/app/shared/constants/enums/controls/form/form-control-data-type.enum";
 import { ControlType } from "src/app/shared/constants/enums/controls/form/form-control-type.enum";
@@ -6,7 +7,6 @@ import { ControlType } from "src/app/shared/constants/enums/controls/form/form-c
 // Interfaces
 import { Field, FieldOption } from "src/app/shared/constants/models/controls/form/form-field-config";
 import { BasicField, CustomizeOptions, ValidationOption } from "src/app/shared/constants/models/controls/form/form-field-config/config";
-import { FILE_API_ACTION } from "../../../../constants/common-constants/file-api";
 import { ApiAction } from "../../../../constants/models/api";
 
 // Utils

@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbDropdownModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 // Internal Modules
 import { TableModule as PrimeTableModule } from 'src/app/libraries/prime/table';
@@ -27,9 +29,6 @@ import { TableLayoutOneComponent } from '../../components/table-layout-one/table
 // Pipes
 import { FirstLetterPipeModule } from 'src/app/shared/_core/pipes/first-letter-pipe/first-letter-pipe.module';
 import { SafePipeModule } from 'src/app/shared/_core/pipes/safe-pipe/safe-pipe.module';
-import { NgxPermissionsModule } from 'ngx-permissions';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
-
 
 @NgModule({
   declarations: [

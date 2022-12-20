@@ -26,7 +26,7 @@ export class CommonFieldUtil {
     if (basic.url) {
       return {
         api: {
-          module: ApiModule.BUSINESS,
+          module: ApiModule.API,
           httpMethod: HttpMethod.GET,
           url: basic.url,
           response: (data: any) => {
@@ -39,7 +39,7 @@ export class CommonFieldUtil {
     if (!options) return undefined;
 
     if (options.api) {
-      options.api.module = options.api.module || ApiModule.BUSINESS;
+      options.api.module = options.api.module || ApiModule.API;
       options.api.method = options.api.method || ApiMethod.LOOKUP;
       options.api.httpMethod = options.api.httpMethod || HttpMethod.GET;
       options.api.storage = options.api.storage || FormStorageType.DEFAULT;

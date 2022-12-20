@@ -1,12 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActionType } from 'src/app/shared/constants/enums/common/action/action.enum';
 
 // Enums
 import { TableEventType } from 'src/app/shared/constants/enums/controls/table/table-event-type.enum';
 
 // Interfaces
 import { TableColumn, TableConfig } from 'src/app/shared/constants/models/controls/table/table-config';
-import { environment } from 'src/environments/environment';
-import { ActionType } from '../../../../../constants/enums/common/action/action.enum';
 
 @Component({
   selector: '[appTableBody]',

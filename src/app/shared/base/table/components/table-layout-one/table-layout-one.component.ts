@@ -1,18 +1,19 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { TableService } from 'src/app/api/services/common/table/table.service';
+import { TableExportService } from 'src/app/shared/_core/services/table/table-export.service';
 
 // Enums
 import { TableEventType } from 'src/app/shared/constants/enums/controls/table/table-event-type.enum';
-import { ButtonConfig } from 'src/app/shared/constants/models/controls/button/button-config';
+import { ActionType } from 'src/app/shared/constants/enums/common/action/action.enum';
 
 // Interfaces
+import { ButtonConfig } from 'src/app/shared/constants/models/controls/button/button-config';
 import { TableColumn, TableConfig } from 'src/app/shared/constants/models/controls/table/table-config';
-import { Table } from 'src/app/libraries/prime/table';
+
+// Utils
 import { ObjectUtils } from 'src/app/libraries/prime/utils';
-import { TableExportService } from 'src/app/shared/_core/services/table/table-export.service';
 import { ButtonUtil } from 'src/app/shared/_core/utils/button';
-import { ActionType } from '../../../../../constants/enums/common/action/action.enum';
+
 
 @Component({
   selector: 'app-table-layout-one',

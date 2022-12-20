@@ -9,4 +9,3 @@ export * from './select.util';
 export * from './textarea-editor.util';
 export * from './range.util';
 export * from './template.util';
-export * from './shape.util';

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/shared/_core/services/http/http.service';
 
 // Api Actions
-import { ApiAction } from 'src/app/constants/models/api';
+import { ApiAction } from 'src/app/shared/constants/models/api';
 
 @Injectable({ providedIn: 'root' })
 export class LookupService extends HttpService {

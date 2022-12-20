@@ -4,7 +4,7 @@ import { HttpMethod, ApiModule } from "../../api/enums/api-module.enum";
 import { FILE_API_URL, GALLERY_FILE_API_URL } from "../static-constants/api/common/file";
 
 export const FILE_API_ACTION: ApiAction = {
-  module: ApiModule.NOTIFICATION,
+  module: ApiModule.API,
   httpMethod: HttpMethod.UPLOAD,
   url: FILE_API_URL.FILE,
   response: (response: any) => {
