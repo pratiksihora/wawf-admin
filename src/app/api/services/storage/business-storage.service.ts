@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 
 // Utils
-import { StorageUtil } from "src/app/_core/utils/storage";
+import { StorageUtil } from "src/app/shared/_core/utils/storage";
 
 @Injectable({ providedIn: 'root' })
 export class BusinessStorageService {

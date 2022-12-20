@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 // External Modules
 import { BehaviorSubject, catchError, Observable, map, } from "rxjs";
 import { ApiAction } from "src/app/constants/models/api";
-import { ApiUtil } from "src/app/_core/utils/api";
-import { StorageUtil } from "src/app/_core/utils/storage";
+import { ApiUtil } from "src/app/shared/_core/utils/api";
+import { StorageUtil } from "src/app/shared/_core/utils/storage";
 import { CAMPAIGN_API } from "../../constants/campaign/campaign-api";
 import { ApiModule } from "../../enums/api-module.enum";
 import { CampaignService } from "../campaign/campaign.service";

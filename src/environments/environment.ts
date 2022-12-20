@@ -159,6 +159,10 @@ export const environment = {
       thumbnail: './assets/media/demos/demo20.png',
     },
   },
+  imageCompression: {
+    ratio: 70,
+    quality: 65
+  },
 };
 
 /*

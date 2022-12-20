@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Http Services
-import { HttpService } from 'src/app/_core/services/http/http.service';
+import { HttpService } from 'src/app/shared/_core/services/http/http.service';
 
 // Api Actions
 import { ApiAction } from 'src/app/constants/models/api';

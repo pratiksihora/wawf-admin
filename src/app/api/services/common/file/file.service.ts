@@ -1,19 +1,21 @@
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 // External Depedency
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DOC_ORIENTATION, NgxImageCompressService } from 'ngx-image-compress';
 
 // Http Services
-import { HttpService } from 'src/app/_core/services/http/http.service';
+import { HttpService } from 'src/app/shared/_core/services/http/http.service';
 
 // Api Actions
-import { ApiAction } from 'src/app/constants/models/api';
-import { ToastrUtil } from '../../../../_core/utils/toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ApiAction } from 'src/app/shared/constants/models/api';
+import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
+
 import { ToastService } from '../../../../shared/base/toastr/toast-service/toast.service';
-import { DOC_ORIENTATION, NgxImageCompressService } from 'ngx-image-compress';
+
 import { environment } from '../../../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
