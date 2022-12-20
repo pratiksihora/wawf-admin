@@ -13,15 +13,23 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        // loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+        loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: 'history',
-        // loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+        path: 'licence-key',
+        loadChildren: () => import('./licence-key/licence-key.module').then((m) => m.LicenceKeyModule),
       },
       {
         path: 'credit-history',
-        // loadChildren: () => import('./welcome/welcome.module').then((m) => m.WelcomeModule),
+        loadChildren: () => import('./credit-history/credit-history.module').then((m) => m.CreditHistoryModule),
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+      },
+      {
+        path: 'billing',
+        loadChildren: () => import('./billing/billing.module').then((m) => m.BillingModule),
       },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: '**', redirectTo: `dashboard` }

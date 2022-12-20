@@ -9,11 +9,6 @@ import { LoginGuard } from 'src/app/shared/_core/guards/login.guard';
 
 const routes: Routes = [
   {
-    path: 'app',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./app/app.module').then((m) => m.AppModule),
-  },
-  {
     path: 'auth',
     canActivate: [LoginGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
@@ -21,6 +16,11 @@ const routes: Routes = [
   {
     path: 'error',
     loadChildren: () => import('./errors/errors.module').then((m) => m.ErrorsModule),
+  },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./app/app.module').then((m) => m.AppModule),
   },
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   { path: '**', redirectTo: `/error` }

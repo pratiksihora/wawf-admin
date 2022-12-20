@@ -4,7 +4,7 @@ const Routing: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('../modules/app/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'builder',

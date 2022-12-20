@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -14,10 +14,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { QuillModule } from 'ngx-quill';
 
 // Internal Modules
-// import { UiModule } from './modules/ui.module';
+import { UiModule } from 'src/app/modules/ui.module';
 import { ConfirmModalModule } from 'src/app/shared/base/modal/confirm-modal/confirm-modal.module';
 import { ToastrModule } from 'src/app/shared/base/toastr/toastr.module';
-import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
@@ -42,7 +41,7 @@ import { AuthInterceptor } from 'src/app/shared/_core/interceptor/auth.intercept
     NgSelectModule,
     ClipboardModule,
     /*** INTERNAL MODULES ***/
-    AppRoutingModule,
+    UiModule,
     ConfirmModalModule,
     ToastrModule,
   ],
