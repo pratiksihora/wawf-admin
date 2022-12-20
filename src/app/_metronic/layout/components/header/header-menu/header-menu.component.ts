@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { LayoutType } from '../../../core/configs/config';
 import { LayoutInitService } from '../../../core/layout-init.service';
 import { LayoutService } from '../../../core/layout.service';
+import { PageInfoService } from '../../../core/page-info.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -10,9 +12,12 @@ import { LayoutService } from '../../../core/layout.service';
   styleUrls: ['./header-menu.component.scss'],
 })
 export class HeaderMenuComponent implements OnInit {
-  constructor(private router: Router, private layout: LayoutService, private layoutInit: LayoutInitService) {}
+  title$: Observable<string>;
+  constructor(private router: Router, private layout: LayoutService, private layoutInit: LayoutInitService,private pageInfo: PageInfoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.title$ = this.pageInfo.title.asObservable();
+  }
 
   calculateMenuItemCssClass(url: string): string {
     return checkIsActive(this.router.url, url) ? 'active' : '';
