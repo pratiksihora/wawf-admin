@@ -5,10 +5,9 @@ import { Router } from '@angular/router';
 
 // Rxjs
 import { Observable, of } from 'rxjs';
-import { catchError, finalize, switchMap } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 
 import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.service';
-import { ROUTE_CONSTANTS } from '../../../constants/static-constants/routing';
 import { ToastrUtil } from '../utils/toastr';
 
 // Service
@@ -55,7 +54,7 @@ export class AuthInterceptor implements HttpInterceptor {
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
     if (err.status === 401) {
       TokenUtil.clear();
-      this.router.navigate([ROUTE_CONSTANTS.AUTH, ROUTE_CONSTANTS.LOGIN]);
+      this.router.navigate(['auth', 'login']);
     }
     throw err;
   }

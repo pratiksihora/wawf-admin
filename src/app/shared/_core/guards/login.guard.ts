@@ -8,9 +8,6 @@ import { Observable, of } from 'rxjs';
 // Utils
 import { TokenUtil } from '../utils/token';
 
-// CONSTANT
-import { ROUTE_CONSTANTS } from 'src/app/shared/constants/static-constants/routing';
-
 /**
  * This component used to verify access token if exists navigate to default page
  * @author Vikas thakkar <vikasthakkar@saeculumsolutions.com>
@@ -51,7 +48,7 @@ export class LoginGuard implements CanActivate, CanActivateChild {
 
     // validate access token
     if (TokenUtil.validateAccessToken()) {
-      this.router.navigate([ROUTE_CONSTANTS.MAIN_ROUTE]);
+      this.router.navigate(['app']);
       return of(false);
     } else {
       return of(true);

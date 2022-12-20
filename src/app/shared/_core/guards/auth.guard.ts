@@ -8,9 +8,6 @@ import { Observable, of } from 'rxjs';
 // Utils
 import { TokenUtil } from '../utils/token';
 
-// CONSTANT
-import { ROUTE_CONSTANTS } from 'src/app/shared/constants/static-constants/routing';
-
 /**
  * This component used to verify accesstoken exists navigate to default page
  * @author Pratik Shihora <pratik@saeculumsolutions.com>
@@ -53,7 +50,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (TokenUtil.validateAccessToken()) {
       return of(true);
     } else {
-      this.router.navigate([ROUTE_CONSTANTS.AUTH], { queryParams: { returnUrl: state.url } });
+      this.router.navigate(['auth', 'login'], { queryParams: { returnUrl: state.url } });
       return of(false);
     }
   }

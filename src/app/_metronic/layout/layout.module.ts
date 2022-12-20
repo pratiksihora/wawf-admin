@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg-2';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import {
   NgbDropdownModule,
   NgbProgressbarModule,
@@ -11,7 +11,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TranslationModule } from 'src/app/i18n';
 import { LayoutComponent } from './layout.component';
 import { ExtrasModule } from '../partials/layout/extras/extras.module';
-import { Routing } from '../../pages/routing';
 import { AsideComponent } from './components/aside/aside.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ContentComponent } from './components/content/content.component';
@@ -41,14 +40,6 @@ import { ExtendedComponent } from './components/toolbar/extended/extended.compon
 import { ReportsComponent } from './components/toolbar/reports/reports.component';
 import { SaasComponent } from './components/toolbar/saas/saas.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: Routing,
-  },
-];
-
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -76,7 +67,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    RouterModule,
     TranslationModule,
     InlineSVGModule,
     NgbDropdownModule,
@@ -92,4 +83,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class LayoutModule {}
+export class LayoutModule { }
