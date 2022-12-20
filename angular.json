@@ -22,6 +22,8 @@
           "options": {
             "outputPath": "dist/demo1",
             "allowedCommonJsDependencies": [
+              "lodash",
+              "quill",
               "object-path",
               "apexcharts",
               "clipboard.js",
@@ -37,6 +39,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@ng-select/ng-select/themes/default.theme.css",
+              "node_modules/ng2-daterangepicker/assets/daterangepicker.css",
+              "node_modules/quill/dist/quill.snow.css",
               "src/styles.scss"
             ],
             "scripts": []
