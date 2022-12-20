@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // External Modules
@@ -28,7 +28,8 @@ import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent  extends TableApiComponent implements OnInit {
+export class UserComponent extends TableApiComponent implements OnInit {
+  @HostBinding('class') class = 'flex-fill';
 
   config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'ub_id', module: ApiModule.API, action: 'user', title: 'User' });
   tableConfig: TableConfig;

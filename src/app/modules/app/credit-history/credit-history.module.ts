@@ -4,10 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CreditHistoryComponent } from './credit-history.component';
 
+// Internal Modules
+import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
+import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
+
 const routes: Routes = [
   {
-      path: '',
-      component: CreditHistoryComponent
+    path: '',
+    component: CreditHistoryComponent
   }
 ];
 
@@ -15,7 +19,10 @@ const routes: Routes = [
   declarations: [CreditHistoryComponent],
   imports: [
     CommonModule,
+    /*** INTERNAL MODULES ***/
     RouterModule.forChild(routes),
+    LoaderModule,
+    TableModule
   ]
 })
 export class CreditHistoryModule { }

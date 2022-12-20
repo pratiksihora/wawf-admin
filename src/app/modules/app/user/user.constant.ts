@@ -54,6 +54,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       csvDisable: false,
       excelDisable: false,
     },
-
+    add: false,
   }, translate, permission, data)
 }

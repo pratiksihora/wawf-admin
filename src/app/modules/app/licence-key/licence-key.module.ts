@@ -4,10 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LicenceKeyComponent } from './licence-key.component';
 
+// Internal Modules
+import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
+import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
+
 const routes: Routes = [
   {
-      path: '',
-      component: LicenceKeyComponent
+    path: '',
+    component: LicenceKeyComponent
   }
 ];
 
@@ -17,7 +21,10 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    /*** INTERNAL MODULES ***/
+    RouterModule.forChild(routes),
+    LoaderModule,
+    TableModule
   ]
 })
 export class LicenceKeyModule { }

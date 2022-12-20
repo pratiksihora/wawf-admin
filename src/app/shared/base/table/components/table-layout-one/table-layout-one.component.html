@@ -1,13 +1,12 @@
 <div class="d-flex gap-2 flex-column flex-md-row align-items-center justify-content-between mb-4"
     *ngIf="!selection?.length">
     <div class="d-flex align-items-center position-relative me-md-0">
-        <span [inlineSVG]="'./assets/media/icons/duotune/global-table-layout/search.svg'"
+        <span [inlineSVG]="'./assets/media/svg/new-svg-icons/search.svg'"
             class="svg-icon svg-icon-3 position-absolute ms-3"></span>
         <input type="text" [(ngModel)]="globalFilter" (input)="filterChange($event.target.value)"
             class="form-control form-control-sm min-h-auto max-w-100 form-control-solid ps-11 h-31px"
             placeholder="Search....">
     </div>
-
     <div class="d-flex align-items-center gap-2">
         <!-- <app-button [hidden]="options?.tableOptions?.filterDisable" [options]="filterConfig"
             (buttonCallback)="buttonCallback($event)"></app-button> -->

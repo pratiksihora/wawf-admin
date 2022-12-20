@@ -1,1 +1,12 @@
-<p>credit-history works!</p>
+<app-loader [show]="loading">
+    <div class="card shadow-sm w-100 rounded-4 mb-5 mb-xl-10">
+        <div class="card-body border-top pt-7 py-4 px-8">
+            <app-table #table [options]="tableConfig" [count]="count" [rows]="tableList"
+                (tableCallback)="tableCallback($event)" [emptyTemplate]="noResultFound">
+            </app-table>
+            <ng-template #noResultFound>
+                <app-no-result-found *ngIf="!loading" class="py-20"></app-no-result-found>
+            </ng-template>
+        </div>
+    </div>
+</app-loader>

@@ -4,10 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BillingComponent } from './billing.component';
 
+// Internal Modules
+import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
+import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
+
 const routes: Routes = [
   {
-      path: '',
-      component: BillingComponent
+    path: '',
+    component: BillingComponent
   }
 ];
 
@@ -17,7 +21,10 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    /*** INTERNAL MODULES ***/
     RouterModule.forChild(routes),
+    LoaderModule,
+    TableModule
   ]
 })
 export class BillingModule { }
