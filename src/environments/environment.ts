@@ -163,6 +163,7 @@ export const environment = {
     ratio: 70,
     quality: 65
   },
+  api: 'https://api.moretus.click/api'
 };
 
 /*

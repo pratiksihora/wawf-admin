@@ -1,7 +1,9 @@
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { of } from 'rxjs';
 import { Observable, Subscription } from 'rxjs';
 import { TranslationService } from 'src/app/i18n';
-import { AuthService, UserType } from '../../../../../../modules/auth';
+import { TokenUtil } from 'src/app/shared/_core/utils/token';
+import { UserType } from '../../../../../../modules/auth';
 
 @Component({
   selector: 'app-user-inner',
@@ -18,17 +20,16 @@ export class UserInnerComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = [];
 
   constructor(
-    private auth: AuthService,
     private translationService: TranslationService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.user$ = this.auth.currentUserSubject.asObservable();
+    this.user$ = of(TokenUtil.getUser());
     this.setLanguage(this.translationService.getSelectedLanguage());
   }
 
   logout() {
-    this.auth.logout();
+    TokenUtil.clearSession();
     document.location.reload();
   }
 

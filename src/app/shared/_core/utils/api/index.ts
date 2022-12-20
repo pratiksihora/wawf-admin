@@ -17,35 +17,9 @@ export class ApiUtil {
   static getApiUrl(domain: string | any, provider: string = null) {
     let apiUrl = '';
     switch (domain) {
-      case ApiModule.IDENTITY:
-        apiUrl = environment.apis.identity;
+      case ApiModule.API:
+        apiUrl = environment.api;
         break;
-      case ApiModule.MASTER:
-        apiUrl = environment.apis.master;
-        break;
-      case ApiModule.BUSINESS:
-        apiUrl = environment.apis.business;
-        break;
-      case ApiModule.WORKSPACE:
-        apiUrl = environment.apis.workspace;
-        break;
-      case ApiModule.CAMPAIGN:
-        apiUrl = environment.apis.campaign;
-        break;
-      case ApiModule.CAMPAIGN_RESULT:
-        apiUrl = environment.apis.campaign_result;
-        break;
-      case ApiModule.NOTIFICATION:
-        apiUrl = environment.apis.notification;
-        break;
-      case ApiModule.PLAYER:
-        apiUrl = environment.apis.player;
-        break;
-      case ApiModule.THIRD_PARTY:
-        apiUrl = environment.apis.third_party[provider];
-        break;
-      default:
-        apiUrl = environment.apis.business;
     }
     return apiUrl;
   }
@@ -172,7 +146,7 @@ export class ApiUtil {
     return {
       url,
       httpMethod: HttpMethod.POST,
-      module: module || ApiModule.BUSINESS,
+      module: module || ApiModule.API,
       response,
       promise,
       queryParams,

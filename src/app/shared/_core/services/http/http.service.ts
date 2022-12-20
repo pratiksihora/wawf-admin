@@ -14,12 +14,12 @@ import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.ser
 import { HttpMethod } from 'src/app/api/enums/http-method.enum';
 import { ApiAction } from 'src/app/shared/constants/models/api';
 import { NotificationType } from 'src/app/shared/constants/enums/common/notification/notification-type.enum';
-import { ToastrConfig } from 'src/app/shared/constants/models/controls/toastr/toastr-config';
 
 // Utils
 import { TokenUtil } from '../../utils/token';
 import { ApiUtil } from '../../utils/api';
 import { ToastrUtil } from '../../utils/toastr';
+import { ToastrConfig } from 'src/app/shared/constants/models/controls/toastr/toastr-config';
 
 /**
  * This service is base service to make all api call.
@@ -130,14 +130,8 @@ export class HttpService {
       headers = new HttpHeaders();
     }
 
-    if (body?.bs_id || TokenUtil.getBsId())
-      headers = headers.set('BToken', btoa(body?.bs_id || TokenUtil.getBsId()));
-    if (body?.ub_id || TokenUtil.getUbId())
-      headers = headers.set('UBToken', btoa(TokenUtil.getUbId() || body?.ub_id));
-    if (body?.ws_id || TokenUtil.getWsId())
-      headers = headers.set('WSToken', btoa(body?.ws_id || TokenUtil.getWsId()));
-    if (!config.skipCToken && (body?.cmp_id || TokenUtil.getCmpId()))
-      headers = headers.set('CToken', btoa(body?.cmp_id || TokenUtil.getCmpId()));
+    if (body?.unique || TokenUtil.getUniqueId())
+      headers = headers.set('UToken', btoa(body?.unique || TokenUtil.getUniqueId()));
 
     return headers;
   }
@@ -169,14 +163,8 @@ export class HttpService {
         ];
       }
 
-      if (body?.bs_id || TokenUtil.getBsId())
-        headers = headers.set('BToken', btoa(body?.bs_id || TokenUtil.getBsId()));
-      if (body?.ub_id || TokenUtil.getUbId())
-        headers = headers.set('UBToken', btoa(TokenUtil.getUbId() || body?.ub_id));
-      if (body?.ws_id || TokenUtil.getWsId())
-        headers = headers.set('WSToken', btoa(body?.ws_id || TokenUtil.getWsId()));
-      if (!config.skipCToken && (body?.cmp_id || TokenUtil.getCmpId()))
-        headers = headers.set('CToken', btoa(body?.cmp_id || TokenUtil.getCmpId()));
+      if (body?.unique || TokenUtil.getUniqueId())
+        headers = headers.set('UToken', btoa(body?.unique || TokenUtil.getUniqueId()));
 
       return headers;
     } catch (error) {

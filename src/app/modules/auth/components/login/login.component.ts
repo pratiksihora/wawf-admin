@@ -1,10 +1,17 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { UserModel } from '../../models/user.model';
-import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+
+// Services
+import { AuthService } from 'src/app/api/services/auth/auth.service';
+
+import { ApiAction } from 'src/app/shared/constants/models/api';
+import { ApiModule } from 'src/app/api/enums/api-module.enum';
+import { ApiUtil } from 'src/app/shared/_core/utils/api';
+import { AUTH_API } from 'src/app/api/constants/auth/auth-api';
+import { ChangeDetectorRef } from '@angular/core';
+import { TokenUtil } from 'src/app/shared/_core/utils/token';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   hasError: boolean;
   returnUrl: string;
-  isLoading$: Observable<boolean>;
+  loading: boolean;
 
   // private fields
   private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
@@ -29,13 +36,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
-    this.isLoading$ = this.authService.isLoading$;
-    // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
-    }
   }
 
   ngOnInit(): void {
@@ -53,7 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   initForm() {
     this.loginForm = this.fb.group({
       email: [
-        this.defaultAuth.email,
+        '',
         Validators.compose([
           Validators.required,
           Validators.email,
@@ -62,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         ]),
       ],
       password: [
-        this.defaultAuth.password,
+        '',
         Validators.compose([
           Validators.required,
           Validators.minLength(3),
@@ -73,15 +76,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   submit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
     this.hasError = false;
-    const loginSubscr = this.authService
-      .login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe((user: UserModel | undefined) => {
-        if (user) {
-          this.router.navigate([this.returnUrl]);
-        } else {
+    this.loading = true;
+    const common: ApiAction = ApiUtil.configurePost({ module: ApiModule.API, url: AUTH_API.LOGIN })
+    const loginSubscr = this.authService.authCommon(common, this.loginForm.value)
+      .subscribe({
+        next: (res) => {
+          this.loading = false;
+          TokenUtil.setUser(res.data);
+          TokenUtil.setAccessToken(res.data.token)
+          this.router.navigate(['']);
+          this.cdr.detectChanges();
+        }, error: (err) => {
+          console.log(err)
+          this.loading = false;
           this.hasError = true;
+          this.cdr.detectChanges();
         }
       });
     this.unsubscribe.push(loginSubscr);

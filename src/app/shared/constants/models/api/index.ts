@@ -2,8 +2,8 @@
 import { NotificationConfig } from "../notification";
 
 // Enums
-import { ApiMethod, ApiModule } from "../../../api/enums/api-module.enum";
-import { HttpMethod } from "../../../api/enums/http-method.enum";
+import { ApiMethod, ApiModule } from "src/app/api/enums/api-module.enum";
+import { HttpMethod } from "src/app/api/enums/http-method.enum";
 
 export interface ApiAction extends NotificationConfig {
   fullUrl?: string;

@@ -5,15 +5,7 @@ export * from './http-method.enum';
  */
 
 export enum ApiModule {
-  MASTER = 'master',
-  IDENTITY = 'identity',
-  BUSINESS = 'business',
-  WORKSPACE = 'workspace',
-  CAMPAIGN = 'campaign',
-  CAMPAIGN_RESULT = 'campaignresult',
-  CAMPAIGN_FOLDER = 'campaignFolder',
-  PLAYER = 'player',
-  NOTIFICATION = 'notification',
+  API = 'api',
   THIRD_PARTY = 'third_party',
 }
 

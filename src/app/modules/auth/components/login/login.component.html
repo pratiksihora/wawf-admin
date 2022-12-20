@@ -85,7 +85,7 @@
     <label class="form-label fs-6 fw-bolder text-dark">Email</label>
     <input class="form-control bg-transparent" type="email" name="email" formControlName="email" autocomplete="off"
       [ngClass]="{
-        'is-invalid': loginForm.controls['email'].invalid,
+        'is-invalid': loginForm.controls['email'].invalid && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty),
         'is-valid': loginForm.controls['email'].valid
       }" />
     <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
@@ -118,7 +118,7 @@
 
     <input class="form-control bg-transparent" type="password" name="password" autocomplete="off"
       formControlName="password" [ngClass]="{
-        'is-invalid': loginForm.controls['password'].invalid,
+        'is-invalid': loginForm.controls['password'].invalid && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty),
         'is-valid': loginForm.controls['password'].valid
       }" />
     <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
@@ -155,13 +155,13 @@
   <!--begin::Action-->
   <div class="d-grid mb-10">
     <button type="submit" id="kt_sign_in_submit" class="btn btn-primary" [disabled]="loginForm.invalid">
-      <ng-container *ngIf="isLoading$ | async">
+      <ng-container *ngIf="loading">
         <span class="indicator-progress" [style.display]="'block'">
           Please wait...
           <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
         </span>
       </ng-container>
-      <ng-container *ngIf="(isLoading$ | async) === false">
+      <ng-container *ngIf="!loading">
         <span class="indicator-label">Continue</span>
       </ng-container>
     </button>
