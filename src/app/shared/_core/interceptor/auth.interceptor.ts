@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, finalize, switchMap } from 'rxjs/operators';
 
 import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.service';
-import { ROUTE_CONSTANTS } from '../../constants/static-constants/routing';
+import { ROUTE_CONSTANTS } from '../../../constants/static-constants/routing';
 import { ToastrUtil } from '../utils/toastr';
 
 // Service

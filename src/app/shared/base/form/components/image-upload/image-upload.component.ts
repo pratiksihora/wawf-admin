@@ -30,7 +30,7 @@ export class ImageUploadComponent extends FormFileBaseComponent implements OnIni
 
   imageUrl: string = FileConstant.IMAGE_URL;
   permissionConst = PERMISSION;
-  bucketAwsUrl = environment.bucketAwsUrl;
+  bucketAwsUrl = '';
 
   constructor(public fileService: FileService,
     public permissionService: NgxPermissionsService,

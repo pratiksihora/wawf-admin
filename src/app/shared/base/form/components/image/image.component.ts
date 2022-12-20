@@ -19,8 +19,8 @@ import { environment } from 'src/environments/environment';
 export class ImageComponent extends FormBaseComponent implements OnInit {
 
   fileEnum = DefaultFile;
-  defaultImage = environment.defaultImgUrl;
-  bucketAwsUrl = environment.bucketAwsUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
+  bucketAwsUrl = '';
   constructor(public modalService: NgbModal, public permissionService: NgxPermissionsService, public cdr: ChangeDetectorRef) {
     super(permissionService, cdr);
   }

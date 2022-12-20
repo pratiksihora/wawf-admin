@@ -18,7 +18,7 @@ import { environment } from 'src/environments/environment';
 export class TableComponent extends TableBaseComponent implements OnInit {
 
   colSpan;
-  defaultImage = environment.defaultImgUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
   constructor(public modalService: NgbModal, public cdr: ChangeDetectorRef) {
     super(modalService, cdr);
   }

@@ -36,8 +36,8 @@ export class TableBodyComponent implements OnInit {
   * External outputs
   */
   @Output() tableComponentCallback = new EventEmitter<any>();
-  defaultImage = environment.defaultImgUrl;
-  bucketAwsUrl = environment.bucketAwsUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
+  bucketAwsUrl = '';
 
   ngOnInit(): void {
   }

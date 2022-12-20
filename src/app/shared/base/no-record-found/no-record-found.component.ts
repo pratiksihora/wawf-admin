@@ -15,7 +15,7 @@ export class NoRecordFoundComponent implements OnInit {
   @Output() callback = new EventEmitter();
   permissionConst = PERMISSION;
   actionAllowed = false;
-  defaultImage = environment.defaultImgUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
 
   constructor(
     public permissionService: NgxPermissionsService

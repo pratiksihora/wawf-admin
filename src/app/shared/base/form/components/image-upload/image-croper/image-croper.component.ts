@@ -25,8 +25,8 @@ export class ImageCroperComponent implements OnInit {
 
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
-  defaultImage = environment.defaultImgUrl;
-  bucketAwsUrl = environment.bucketAwsUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
+  bucketAwsUrl = '';
 
   constructor(public activeModal: NgbActiveModal) {
     this.loading = true;

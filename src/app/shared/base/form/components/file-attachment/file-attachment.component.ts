@@ -15,8 +15,8 @@ import { FormMultipleFileBaseComponent } from '../../base-class/form-base/form-m
   styleUrls: ['./file-attachment.component.scss']
 })
 export class FileAttachmentComponent extends FormMultipleFileBaseComponent implements OnInit {
-  defaultImage = environment.defaultImgUrl;
-  bucketAwsUrl = environment.bucketAwsUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
+  bucketAwsUrl = '';
 
   constructor(
     public permissionService: NgxPermissionsService,

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NoResultFoundComponent implements OnInit {
   @HostBinding('class') class = 'text-center mt-0 d-flex gap-3 flex-column justify-content-center flex-fill';
-  defaultImage = environment.defaultImgUrl;
+  defaultImage = './assets/media/placeholder/lazyImageLoad.png';
 
   constructor() { }
 

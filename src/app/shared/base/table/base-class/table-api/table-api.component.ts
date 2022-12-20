@@ -369,7 +369,7 @@ export abstract class TableApiComponent implements OnInit {
     const extraData = cloneDeep(data);
     const modifiedPayload = this.modifyPayloadBeforeDownloadCall({ ...payload, ...extraData });
     try {
-      await fetch((environment.propxyUrl + environment.bucketAwsUrl + data.gl_filepath))
+      await fetch((data.gl_filepath))
         .then(res => res.blob())
         .then((blob) => {
           saveAs(blob, (data.gl_name.name + data.gl_type));
