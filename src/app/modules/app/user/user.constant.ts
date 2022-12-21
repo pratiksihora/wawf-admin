@@ -17,34 +17,16 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'ub_id',
     columns: [
       {
-        field: 'ub_first_name', exportDisable: false, hidden: true, header: 'FirstName', type: 'user-invite', filterType: ColumFilterType.STRING
+        field: 'flag', header: 'Flag'
       },
       {
-        field: 'ub_last_name', exportDisable: false, hidden: true, header: 'LastName', type: 'user-invite', filterType: ColumFilterType.STRING
+        field: 'conatct_number', header: 'Contact Number'
       },
       {
-        field: 'ub_email', header: 'CONTROL.EMAIL'
+        field: 'name_email', header: 'Name & Email'
       },
       {
-        field: 'ub_br_name', header: 'CONTROL.ROLE', type: 'status', prepareColumn: (data) => ({
-          status: data.ub_br_name, color: UserRoleColor[data.ub_br_associate],
-        })
-      },
-      {
-        field: 'ub_workspace_count', header: 'CONTROL.WORKSPACE', filterDisable: true, globalFilterDisable: true, sortableDisable: true, prepareColumn: (data) => (
-          data.ub_br_associate === UserRoleAssociate.SYSTEM_ADMIN ? 'All' : `${data.ub_workspace_count || '-'}`
-        )
-      },
-      { field: 'ub_created_at', header: 'CONTROL.CREATED_DATE', type: 'date', minWidth: '130px' },
-      // {
-      //   field: 'ub_is_default', header: 'Default', filterType: ColumFilterType.BOOLEAN, filterOptions: {
-      //     options: [{ text: 'true', value: 'true' }, { text: 'false', value: 'false' }]
-      //   }
-      // },
-      {
-        field: 'ub_status', header: 'CONTROL.STATUS', type: 'status', minWidth: '100px', prepareColumn: (data) => ({
-          status: data.ub_status, color: UserStatusColor[data.ub_status]
-        })
+        field: 'created_date', header: 'Created Date'
       },
     ],
     tableOptions: {
@@ -55,5 +37,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       excelDisable: false,
     },
     add: false,
+    actions:false
   }, translate, permission, data)
 }

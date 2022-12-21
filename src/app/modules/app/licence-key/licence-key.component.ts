@@ -46,4 +46,8 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
   }
 
+  onAddEdit(value: any = null) {
+    console.log('log');
+  }
+
 }

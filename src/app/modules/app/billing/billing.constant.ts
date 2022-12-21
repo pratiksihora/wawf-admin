@@ -40,5 +40,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       excelDisable: false,
     },
     add: false,
+    actions:false
   }, translate, permission, data)
 }

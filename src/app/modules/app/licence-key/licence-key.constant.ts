@@ -45,6 +45,9 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       csvDisable: false,
       excelDisable: false,
     },
-
+    edit:false,
+    addConfig: {
+      text: 'Create Licence Key',
+    }
   }, translate, permission, data)
 }
