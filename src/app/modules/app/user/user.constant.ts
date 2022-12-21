@@ -14,7 +14,7 @@ import { TableUtil } from "src/app/shared/_core/utils/table"
 export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
   return TableUtil.configure({
     type: 'lazy',
-    dataKey: 'ub_id',
+    dataKey: 'user_id',
     columns: [
       {
         field: 'flag', header: 'Flag'
@@ -35,8 +35,11 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
+      sortField: 'user_id',
+      sortOrder: 1
     },
     add: false,
-    actions:false
+    actions:false,
+    
   }, translate, permission, data)
 }

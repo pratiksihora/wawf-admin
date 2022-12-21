@@ -17,10 +17,13 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'ub_id',
     columns: [
       {
-        field: 'date', header: 'Date'
+        field: 'email', header: 'Email'
       },
       {
         field: 'amount', header: 'Amount'
+      },
+      {
+        field: 'credit', header: 'Credit'
       },
       {
         field: 'status', header: 'Status'
@@ -30,7 +33,10 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       },
       {
         field: 'recipt', header: 'Recipt'
-      }
+      },
+      {
+        field: 'date', header: 'Date'
+      },
     ],
     tableOptions: {
       globalFilterDisable: false,
@@ -40,6 +46,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       excelDisable: false,
     },
     add: false,
-    actions:false
+    actions: false
   }, translate, permission, data)
 }

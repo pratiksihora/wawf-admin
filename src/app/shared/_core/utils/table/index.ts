@@ -536,14 +536,12 @@ export class TableUtil {
 
   static getTablePayload(data, tableConfig: TableConfig, intialFilter: any = null) {
     const payload: any = {};
-    payload.pageNumber = ((data.first / data.rows) + 1) || 1;
-    payload.pageSize = data.rows || 10;
+    payload.page_index = ((data.first / data.rows) + 1) || 1;
+    payload.page_size = data.rows || 10;
 
     if (data.sortField && data.sortOrder) {
-      payload.sort = [{
-        "field": data.sortField,
-        "direction": data.sortOrder === 1 ? 'asc' : 'desc'
-      }]
+      payload.sort_order = data.sortOrder === 1 ? 'asc' : 'desc';
+      payload.sort_by = data.sortField;
     }
 
     if (data && data.filters) {

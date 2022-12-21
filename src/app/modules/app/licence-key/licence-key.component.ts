@@ -37,7 +37,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   @HostBinding('class') class = 'flex-fill';
 
-  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'ub_id', module: ApiModule.API, action: 'user', title: 'User' });
+  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'sk_id', module: ApiModule.API, paggingUrl: '/v1/reseller/subscription/pagging', title: 'User' });
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService,
@@ -47,30 +47,12 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     super(tableService, activatedRoute, cdr, exportService)
   }
 
-  // folder action config
-  actionConfig: any = {
-    open: false,
-    data: null
-  }
-
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
   }
 
   onAddEdit(value) {
     this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
-  }
-
-  // drawer callback actions
-  actionCallback(event) {
-    this.actionConfig = {
-      open: false,
-      data: null
-    }
-
-    if (event.reload) {
-      this.table.table.clear();
-    }
   }
 
   tableActionExtend() {
