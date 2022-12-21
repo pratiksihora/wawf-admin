@@ -75,7 +75,7 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     }
   }
 
-  tableActionExtend(event) {
+  tableActionExtend() {
     this.modalService.open(ExtendComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
     return;
   }

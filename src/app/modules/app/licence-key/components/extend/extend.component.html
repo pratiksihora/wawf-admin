@@ -1,17 +1,46 @@
 <div class="modal-header pt-4 pb-3 px-7">
-    <h3 class="card-title fw-bold text-gray-800">Onboarding Details</h3>
+    <h3 class="card-title fw-bold text-gray-800">Extend</h3>
     <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
         (click)="close()"></button>
 </div>
-<div class="modal-body">
-    <img src="https://static.tildacdn.com/tild3237-6137-4031-b537-643664386434/The_approach_you_hav.gif"
-        alt="Girl in a jacket" width="100%" height="600">
-    <!-- <img [defaultImage]="defaultImage"
-        [lazyLoad]="'https://static.tildacdn.com/tild3237-6137-4031-b537-643664386434/The_approach_you_hav.gif'"
-        alt="Girl in a jacket" width="100%" height="600"> PROBLEM -->
-    <div class="pt-5 text-center fs-4">Onboarding Text</div>
-    <div class="pt-3 text-center text-gray-300 fs-6">Onboarding Description</div>
-</div>
-<div class="modal-footer py-2">
-    <button type="button" class="btn btn-light-primary" (click)="close()">Close</button>
-</div>
+<form class="d-flex flex-column flex-fill h-100" [formGroup]="form">
+    <div class="modal-body">
+        <div class="d-flex h-100 flex-column scroll-y">
+            <div class="d-flex h-100 flex-column scroll-y">
+                <div class="d-flex h-100 flex-column h-100">
+                    <div class="flex-fill h-100 overflow-y-auto">
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-select #select [fieldConfig]="formFields.time_to_extend"
+                                        [formConfig]="formConfig" [form]="form">
+                                    </app-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    <app-input [fieldConfig]="formFields.number_of_device" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-5">
+                            <div class="row m-0">
+                                <div class="col-12">
+                                    Credit Used : 5 Credit
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer px-5 py-3">
+        <button type="button" class="btn btn-light-primary" (click)="close()">Close</button>
+        <button type="submit" class="btn btn-md py-2 btn-primary">Extend</button>
+    </div>
+</form>
