@@ -13,7 +13,8 @@ import { TableExportService } from 'src/app/shared/_core/services/table/table-ex
 import { TableApiComponent } from 'src/app/shared/base/table/base-class/table-api/table-api.component';
 import { ExtendComponent } from './components/extend/extend.component';
 import { DeviceHistoryComponent } from './components/device-history/device-history.component';
-import { CreditHistoryComponent } from '../credit-history/credit-history.component';
+import { CreditHistoryComponent } from './components/credit-history/credit-history.component';
+import { CreateLicenceKeyComponent } from './components/create-licence-key/create-licence-key.component';
 
 // Interfaces && Enums
 import { TableConfig } from 'src/app/shared/constants/models/controls/table/table-config';
@@ -57,10 +58,7 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   }
 
   onAddEdit(value) {
-    this.actionConfig = {
-      open: true,
-      data: value?.rowData
-    }
+    this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
   }
 
   // drawer callback actions
@@ -80,12 +78,12 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     return;
   }
 
-  tableActionDevice(event) {
+  tableActionDevice() {
     this.modalService.open(DeviceHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
     return;
   }
 
-  tableActionCredit(event) {
+  tableActionCredit() {
     this.modalService.open(CreditHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
     return;
   }

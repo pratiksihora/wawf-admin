@@ -26,7 +26,6 @@ export class ExtendComponent extends FormApiComponent implements OnInit {
   formConfig: FormGlobalConfig = FormConfig;
   formSaveTypeEnum = FormSaveType;
 
-  @Input() actionConfig;
   @Output() closeEvent = new EventEmitter<any>();
 
   constructor(public modal: NgbActiveModal,
