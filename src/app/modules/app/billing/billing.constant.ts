@@ -17,25 +17,27 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'bl_id',
     columns: [
       {
-        field: 'email', header: 'Email'
+        field: 'bl_email', header: 'Email'
       },
       {
-        field: 'amount', header: 'Amount'
+        field: 'bl_amount', header: 'Amount'
       },
       {
         field: 'bl_credit', header: 'Credit'
       },
       {
-        field: 'status', header: 'Status'
+        field: 'bl_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({
+          status: data.bl_status, color: UserRoleColor[data.sk_status],
+        })
       },
       {
-        field: 'payment_type', header: 'Payment Type'
+        field: 'bl_payment_type', header: 'Payment Type'
       },
       {
-        field: 'recipt', header: 'Recipt'
+        field: 'bl_receipt_link', header: 'Recipt'
       },
       {
-        field: 'bl_created_at', header: 'Date'
+        field: 'bl_created_at', header: 'Date', type: 'date', blank: '-'
       },
     ],
     tableOptions: {

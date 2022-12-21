@@ -30,10 +30,10 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'sk_created_at', header: 'Created Date', type: 'date'
       },
       {
-        field: 'sk_start_date', header: 'Used Date', type: 'date', prepareColumn: (data) => `${data.sk_start_date || '-'}`,
+        field: 'sk_start_date', header: 'Used Date', type: 'date', blank: '-',
       },
       {
-        field: 'sk_end_date', header: 'Executed Date', type: 'date', prepareColumn: (data) => `${data.sk_end_date || '-'}`,
+        field: 'sk_end_date', header: 'Executed Date', type: 'date', blank: '-',
       },
       {
         field: 'sk_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({

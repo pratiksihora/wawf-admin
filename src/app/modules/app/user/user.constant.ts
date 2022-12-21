@@ -20,10 +20,10 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'user_unique_id', header: 'Contact Number'
       },
       {
-        field: 'user_name', header: 'Name'
+        field: 'user_name', header: 'Name', blank: '-'
       },
       {
-        field: 'user_email', header: 'Email'
+        field: 'user_email', header: 'Email', blank: '-'
       },
       {
         field: 'user_created_at', header: 'Created Date'
@@ -39,7 +39,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       sortOrder: 1
     },
     add: false,
-    actions:false,
-    
+    actions: false,
+
   }, translate, permission, data)
 }
