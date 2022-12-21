@@ -55,6 +55,6 @@ export enum TableEventType {
   REJECT = 'reject',
   RESEND = 'resend',
   EXTEND = 'extend',
-  DEVISE = 'devise',
+  DEVISE = 'device',
   CREDIT = 'credit',
 }

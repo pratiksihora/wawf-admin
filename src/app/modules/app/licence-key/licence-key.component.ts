@@ -52,11 +52,18 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   }
 
   onAddEdit(value) {
-    this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    const modelRef = this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    modelRef.result.then(res => {
+      this.table.table.reset();
+    })
   }
 
-  tableActionExtend() {
-    this.modalService.open(ExtendComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+  tableActionExtend(data) {
+    const modelRef = this.modalService.open(ExtendComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = data?.rowData;
+    modelRef.result.then(res => {
+      this.table.table.reset();
+    })
     return;
   }
 

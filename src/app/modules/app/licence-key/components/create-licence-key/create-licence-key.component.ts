@@ -15,7 +15,7 @@ import { Field, FormGlobalConfig } from 'src/app/shared/constants/models/control
 import { FormSaveType } from 'src/app/shared/constants/enums/controls/form';
 
 // Constants
-import { FormConfig, FormFields } from './create-licence-key.constant';
+import { FormAPI, FormConfig, FormFields } from './create-licence-key.constant';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -27,7 +27,7 @@ export class CreateLicenceKeyComponent extends FormApiComponent implements OnIni
 
   formFields: { [key: string]: Field } = FormFields;
   formConfig: FormGlobalConfig = FormConfig;
-  // config = FormAPI;
+  config = FormAPI;
 
   formSaveTypeEnum = FormSaveType;
   loading: boolean = false;
@@ -37,6 +37,20 @@ export class CreateLicenceKeyComponent extends FormApiComponent implements OnIni
   constructor(public modal: NgbActiveModal,
     public formService: FormService, public activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef) {
     super(formService, activatedRoute, cdr)
+  }
+
+  modifyPayloadBeforeSave(payload: any, extraValue?: any) {
+    payload = {
+      ...payload,
+      no_of_month: parseInt(payload?.no_of_month)
+    }
+    return payload;
+  }
+
+  submit() {
+    if (!this.validateForm()) return false;
+    this.saveApiCall();
+    this.close();
   }
 
   close() {

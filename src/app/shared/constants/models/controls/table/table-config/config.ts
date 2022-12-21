@@ -36,7 +36,7 @@ export interface TableBaseConfig {
   view?: boolean;
   clone?: boolean;
   extend?: boolean;
-  devise?: boolean;
+  device?: boolean;
   credit?: boolean;
   viewConfig?: ButtonBaseConfig;
   cloneConfig?: ButtonBaseConfig;

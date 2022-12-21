@@ -226,7 +226,7 @@ export class TableUtil {
       delete: config.delete != undefined ? config.delete : true,
       edit: config.edit != undefined ? config.edit : true,
       extend: config.extend != undefined ? config.extend : false,
-      devise: config.devise != undefined ? config.devise : false,
+      device: config.device != undefined ? config.device : false,
       credit: config.credit != undefined ? config.credit : false,
       editConfig: ButtonUtil.configure({ type: 'editIcon', size: 'sm', space: 'me-1', ...config.editConfig, permission: config.viewPermission || config.managePermission }),
       deleteConfig: ButtonUtil.configure({ type: 'deleteIcon', size: 'sm', space: 'me-1', ...config.deleteConfig, permission: config.managePermission }),

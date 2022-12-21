@@ -291,7 +291,7 @@ export interface ActionOption extends ExtraColumnOption {
   view?: boolean;
   clone?: boolean;
   extend?: boolean;
-  devise?: boolean;
+  device?: boolean;
   credit?: boolean;
   delete?: boolean;
   addConfig?: ButtonConfig;

@@ -65,7 +65,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
       // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
-    devise: true,
+    device: true,
     deviseConfig: {
       type: 'custom',
       aTag: false,
