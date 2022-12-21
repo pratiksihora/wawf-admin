@@ -14,7 +14,7 @@ import { TableUtil } from "src/app/shared/_core/utils/table"
 export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
   return TableUtil.configure({
     type: 'lazy',
-    dataKey: 'ub_id',
+    dataKey: 'bl_id',
     columns: [
       {
         field: 'email', header: 'Email'
@@ -23,7 +23,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'amount', header: 'Amount'
       },
       {
-        field: 'credit', header: 'Credit'
+        field: 'bl_credit', header: 'Credit'
       },
       {
         field: 'status', header: 'Status'
@@ -35,7 +35,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'recipt', header: 'Recipt'
       },
       {
-        field: 'date', header: 'Date'
+        field: 'bl_created_at', header: 'Date'
       },
     ],
     tableOptions: {
@@ -44,6 +44,8 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
+      sortField: 'bl_created_at',
+      sortOrder: 1
     },
     add: false,
     actions: false

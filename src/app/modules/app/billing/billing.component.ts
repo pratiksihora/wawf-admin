@@ -31,7 +31,7 @@ import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 export class BillingComponent extends TableApiComponent implements OnInit {
   @HostBinding('class') class = 'flex-fill';
 
-  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'ub_id', module: ApiModule.API, action: 'user', title: 'User' });
+  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'bl_id', module: ApiModule.API,  paggingUrl: '/v1/reseller/billing/pagging', title: 'User' });
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService,
