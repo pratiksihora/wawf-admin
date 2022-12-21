@@ -42,7 +42,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     ],
     tableOptions: {
       globalFilterDisable: false,
-      exportDisable: false,
+      exportDisable: true,
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,

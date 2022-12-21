@@ -41,6 +41,15 @@ export class ExtendComponent extends FormApiComponent implements OnInit {
     super(formService, activatedRoute, cdr)
   }
 
+  ngOnInit(): void {
+    console.log(this.data, '====>data')
+    this.form.reset(this.data);
+    setTimeout(() => {
+      this.form.get("sk_no_of_login")?.patchValue(this.data.sk_no_of_login);
+      this.form.get("sk_no_of_month")?.patchValue(this.data.sk_no_of_month);
+    }, 100);
+  }
+
   setValuesToForm(data: any) {
     console.log(data, 'form data')
     this.form.reset(data);
@@ -54,7 +63,7 @@ export class ExtendComponent extends FormApiComponent implements OnInit {
     if (!this.validateForm()) return false;
     const payload = {
       id: this.data?.sk_id,
-      no_of_month: parseInt(this.form.get('no_of_month')?.value)
+      no_of_month: parseInt(this.form.get('sk_no_of_month')?.value)
     }
     const common = ApiUtil.configurePost({ module: ApiModule.API, url: '/v1/reseller/extend/key', title: 'Extend', success: 'Extend has been update successfully.' });
     this.formService.formCommon(common, payload).subscribe({
@@ -62,7 +71,8 @@ export class ExtendComponent extends FormApiComponent implements OnInit {
         if (res.status === 200) {
           // this.toastrService.show(ToastrUtil.configureSuccess({ type: 'success', title: 'Extend', message: 'Extend key has been update successfully.' }));
         }
-        this.close();
+        this.modal.close('save');
+        this.closeEvent.emit('save');
         this.cdr.detectChanges();
       }, error: (err) => {
         // this.toastrService.show(ToastrUtil.configureError({ type: 'error', title: 'Extend', message: err.message }));

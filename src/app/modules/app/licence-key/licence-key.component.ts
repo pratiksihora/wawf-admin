@@ -54,7 +54,10 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   onAddEdit(value) {
     const modelRef = this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
     modelRef.result.then(res => {
-      this.table.table.reset();
+      console.log(res, '===>')
+      if (res === 'save') {
+        this.table.table.reset();
+      }
     })
   }
 
@@ -62,7 +65,10 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     const modelRef = this.modalService.open(ExtendComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
     modelRef.componentInstance.data = data?.rowData;
     modelRef.result.then(res => {
-      this.table.table.reset();
+      console.log(res, '===>')
+      if (res === 'save') {
+        this.table.table.reset();
+      }
     })
     return;
   }
