@@ -6,9 +6,9 @@ import { Field, FormGlobalConfig } from "src/app/shared/constants/models/control
 import { InputUtil, SelectUtil } from "src/app/shared/_core/utils/form/field"
 
 export const FormFields: { [key: string]: Field } = {
-    time: SelectUtil.configureSelect({ key: 'time', label: 'Anti-Fraud Rule', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: '1 Month', text: '1 Month' }, { value: '2 Month', text: '2 Month' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
-    number_device: InputUtil.configureNumber({ key: 'number_device', label: 'Value', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true }, {}, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
-    plan_type: SelectUtil.configureSelect({ key: 'plan_type', label: 'Anti-Fraud Rule', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: 'platinum', text: 'Platinum' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
+    time: SelectUtil.configureSelect({ key: 'time', label: 'Time', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: '1 Month', text: '1 Month' }, { value: '2 Month', text: '2 Month' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
+    number_device: InputUtil.configureNumber({ key: 'number_device', label: 'Number Of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true }, {}, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
+    plan_type: SelectUtil.configureSelect({ key: 'plan_type', label: 'Plan Type', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: 'platinum', text: 'Platinum' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
 }
 
 export const FormConfig: FormGlobalConfig = {
