@@ -18,25 +18,25 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'ub_id',
     columns: [
       {
-        field: 'license_key', header: 'License Key'
+        field: 'sk_licence_key', header: 'License Key'
       },
       {
         field: 'number_devices', header: 'Number of Devices'
       },
       {
-        field: 'number_month', header: 'Number of Month'
+        field: 'sk_no_of_month', header: 'Number of Month'
       },
       {
-        field: 'created_date', header: 'Created Date'
+        field: 'sk_created_at', header: 'Created Date'
       },
       {
-        field: 'used_date', header: 'Used Date'
+        field: 'sk_start_date', header: 'Used Date'
       },
       {
         field: 'executed_date', header: 'Executed Date'
       },
       {
-        field: 'current_status', header: 'Current Status'
+        field: 'sk_status', header: 'Current Status'
       },
     ],
     tableOptions: {
@@ -60,7 +60,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconOnly: true,
       button: { tooltip: 'Extend' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: 'assets/media/inline-svg/gallery/clone-icon.svg',
+      iconSVG: 'assets/media/inline-svg/gallery/delete.svg',
       // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
     devise: true,
@@ -73,7 +73,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconOnly: true,
       button: { tooltip: 'Device History' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: 'assets/media/inline-svg/gallery/clone-icon.svg',
+      iconSVG: 'assets/media/inline-svg/gallery/delete.svg',
       // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
     credit: true,
@@ -86,7 +86,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconOnly: true,
       button: { tooltip: 'Credit History' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: 'assets/media/inline-svg/gallery/clone-icon.svg',
+      iconSVG: 'assets/media/inline-svg/gallery/delete.svg',
       // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
   }, translate, permission, data)
