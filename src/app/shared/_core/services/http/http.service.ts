@@ -130,8 +130,15 @@ export class HttpService {
       headers = new HttpHeaders();
     }
 
+    if (!headers.has('Authorization')) {
+      const accessToken = TokenUtil.getAccessToken();
+      if (accessToken !== 'undefined' && accessToken && accessToken !== 'null') {
+        headers = headers.set('Authorization', 'Bearer ' + accessToken);
+      }
+    }
+
     if (body?.unique || TokenUtil.getUniqueId())
-      headers = headers.set('UToken', btoa(body?.unique || TokenUtil.getUniqueId()));
+      headers = headers.set('r_unique', body?.unique || TokenUtil.getUniqueId());
 
     return headers;
   }
@@ -163,8 +170,15 @@ export class HttpService {
         ];
       }
 
+      if (!headers.has('Authorization')) {
+        const accessToken = TokenUtil.getAccessToken();
+        if (accessToken !== 'undefined' && accessToken && accessToken !== 'null') {
+          headers = headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+      }
+
       if (body?.unique || TokenUtil.getUniqueId())
-        headers = headers.set('UToken', btoa(body?.unique || TokenUtil.getUniqueId()));
+        headers = headers.set('r_unique', body?.unique || TokenUtil.getUniqueId());
 
       return headers;
     } catch (error) {

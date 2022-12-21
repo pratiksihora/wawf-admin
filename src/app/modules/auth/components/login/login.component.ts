@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         next: (res) => {
           this.loading = false;
           TokenUtil.setUser(res.data);
+          TokenUtil.setUniqueId(res.data.reseller_unique_id);
           TokenUtil.setAccessToken(res.data.token)
           this.router.navigate(['']);
           this.cdr.detectChanges();

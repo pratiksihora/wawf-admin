@@ -17,16 +17,16 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'user_id',
     columns: [
       {
-        field: 'flag', header: 'Flag'
+        field: 'user_unique_id', header: 'Contact Number'
       },
       {
-        field: 'conatct_number', header: 'Contact Number'
+        field: 'user_name', header: 'Name'
       },
       {
-        field: 'name_email', header: 'Name & Email'
+        field: 'user_email', header: 'Email'
       },
       {
-        field: 'created_date', header: 'Created Date'
+        field: 'user_created_at', header: 'Created Date'
       },
     ],
     tableOptions: {
@@ -35,7 +35,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
-      sortField: 'user_id',
+      sortField: 'user_created_at',
       sortOrder: 1
     },
     add: false,
