@@ -29,5 +29,8 @@ export enum ActionType {
   DOWNLOAD = 'download',
   INVITE = 'invite',
   RESEND = 'resend',
-  REFRESH = 'refresh'
+  REFRESH = 'refresh',
+  EXTEND = 'extend',
+  DEVICE = 'device',
+  CREDIT = 'credit'
 }

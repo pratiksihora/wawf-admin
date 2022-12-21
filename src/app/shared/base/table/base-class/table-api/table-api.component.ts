@@ -88,6 +88,15 @@ export abstract class TableApiComponent implements OnInit {
       case TableEventType.EDIT:
         this.onAddEdit(event);
         break;
+      case TableEventType.EXTEND:
+        this.tableActionExtend(event);
+        break;
+      case TableEventType.DEVISE:
+        this.tableActionDevice(event);
+        break;
+      case TableEventType.CREDIT:
+        this.tableActionCredit(event);
+        break;
       case TableEventType.EDITOR:
         this.tableActionEditor(event);
         break;
@@ -187,6 +196,18 @@ export abstract class TableApiComponent implements OnInit {
   }
 
   onAddEdit(value: any = null) {
+  }
+
+  tableActionExtend(event) {
+    return;
+  }
+
+  tableActionDevice(event) {
+    return;
+  }
+
+  tableActionCredit(event) {
+    return;
   }
 
   //#region lazy and local table api call handle

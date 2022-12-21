@@ -35,8 +35,14 @@ export interface TableBaseConfig {
   deleteConfig?: ButtonBaseConfig;
   view?: boolean;
   clone?: boolean;
+  extend?: boolean;
+  devise?: boolean;
+  credit?: boolean;
   viewConfig?: ButtonBaseConfig;
   cloneConfig?: ButtonBaseConfig;
+  extendConfig?: ButtonBaseConfig;
+  deviseConfig?: ButtonBaseConfig;
+  creditConfig?: ButtonBaseConfig;
   add?: boolean;
   addConfig?: ButtonBaseConfig;
 

@@ -11,6 +11,9 @@ import { TableExportService } from 'src/app/shared/_core/services/table/table-ex
 
 // Components
 import { TableApiComponent } from 'src/app/shared/base/table/base-class/table-api/table-api.component';
+import { ExtendComponent } from './components/extend/extend.component';
+import { DeviceHistoryComponent } from './components/device-history/device-history.component';
+import { CreditHistoryComponent } from '../credit-history/credit-history.component';
 
 // Interfaces && Enums
 import { TableConfig } from 'src/app/shared/constants/models/controls/table/table-config';
@@ -22,6 +25,7 @@ import { configureTable } from './licence-key.constant';
 
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-licence-key',
@@ -38,7 +42,7 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   constructor(public tableService: TableService,
     public activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef,
     public exportService: TableExportService, public permissionService: NgxPermissionsService,
-    public translate: TranslateService) {
+    public translate: TranslateService, private modalService: NgbModal,) {
     super(tableService, activatedRoute, cdr, exportService)
   }
 
@@ -48,6 +52,21 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
 
   onAddEdit(value: any = null) {
     console.log('log');
+  }
+
+  tableActionExtend(event) {
+    this.modalService.open(ExtendComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    return;
+  }
+
+  tableActionDevice(event) {
+    this.modalService.open(DeviceHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+    return;
+  }
+
+  tableActionCredit(event) {
+    this.modalService.open(CreditHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+    return;
   }
 
 }
