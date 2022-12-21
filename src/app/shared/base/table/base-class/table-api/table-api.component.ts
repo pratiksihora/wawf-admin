@@ -250,12 +250,12 @@ export abstract class TableApiComponent implements OnInit {
   }
 
   setDataToTable(response) {
-    this.tableList = cloneDeep(response.data);
-    this.count = response.totalCount;
+    this.tableList = cloneDeep(response.data.records);
+    this.count = response.data.count;
   }
 
   tableDataCallback = (response: any, error: boolean = false) => {
-    if (!error && response.succeeded) {
+    if (!error && response.status === 200) {
       const list = this.prepareDataForTable(response);
       this.setDataToTable(list);
       this.tableDataLoaded(response);
