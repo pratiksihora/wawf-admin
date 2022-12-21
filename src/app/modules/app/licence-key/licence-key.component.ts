@@ -46,12 +46,33 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     super(tableService, activatedRoute, cdr, exportService)
   }
 
+  // folder action config
+  actionConfig: any = {
+    open: false,
+    data: null
+  }
+
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
   }
 
-  onAddEdit(value: any = null) {
-    console.log('log');
+  onAddEdit(value) {
+    this.actionConfig = {
+      open: true,
+      data: value?.rowData
+    }
+  }
+
+  // drawer callback actions
+  actionCallback(event) {
+    this.actionConfig = {
+      open: false,
+      data: null
+    }
+
+    if (event.reload) {
+      this.table.table.clear();
+    }
   }
 
   tableActionExtend(event) {

@@ -1,1 +1,48 @@
-<p>create-licence-key works!</p>
+<app-drawer [drawerTitle]="'Create Licence key'" [show]="drawerOptions.open" (closeEvent)="closeDrawer()">
+    <app-loader [show]="loading" class="overflow-y-hidden">
+        <div class="d-flex h-100 flex-column scroll-y">
+            <form [formGroup]="form" (ngSubmit)="submit()" class="d-flex flex-column flex-fill h-100">
+                <div class="d-flex h-100 flex-column h-100">
+                    <div class="flex-fill h-100 overflow-y-auto">
+                        <div class="px-5 px-xl-15 py-7">
+                            <div class="col-12 px-0 pb-4">
+                                <app-select #select [fieldConfig]="formFields.time" [formConfig]="formConfig"
+                                    [form]="form">
+                                </app-select>
+                            </div>
+                        </div>
+                        <div class="px-5 px-xl-15 py-7">
+                            <div class="col-12 px-0 pb-4">
+                                <app-input [fieldConfig]="formFields.number_device" [formConfig]="formConfig"
+                                    [form]="form" (detectAction)="detectAction()">
+                                </app-input>
+                            </div>
+                        </div>
+                        <div class="px-5 px-xl-15 py-7">
+                            <div class="col-12 px-0 pb-4">
+                                <app-select #select [fieldConfig]="formFields.plan_type" [formConfig]="formConfig"
+                                    [form]="form">
+                                </app-select>
+                            </div>
+                        </div>
+                        <div class="px-5 px-xl-15 py-7">
+                            <div class="col-12 px-0 pb-4">
+                                Credit will Used : 5
+                            </div>
+                        </div>
+                        <div class="px-5 px-xl-15 py-7">
+                            <div class="col-12 px-0 pb-4">
+                                Remaing credit : 5
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-4 px-6 text-center bg-gray-100">
+                        <button type="submit" class="btn btn-primary text-nowrap">
+                            <span class="btn-label">Create Licence Key</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </app-loader>
+</app-drawer>
