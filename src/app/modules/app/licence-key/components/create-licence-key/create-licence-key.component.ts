@@ -47,11 +47,10 @@ export class CreateLicenceKeyComponent extends FormApiComponent implements OnIni
     return payload;
   }
 
-  // submit() {
-  //   if (!this.validateForm()) return false;
-  //   // this.saveApiCall();
-  //   this.close();
-  // }
+  formSaved(data: any) {
+    this.modal.close('save');
+    this.closeEvent.emit('save');
+  }
 
   close() {
     this.modal.close('close');
