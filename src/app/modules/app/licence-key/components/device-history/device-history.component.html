@@ -4,7 +4,7 @@
         (click)="close()"></button>
 </div>
 <div class="modal-body">
-    <div class="d-flex flex-stack">
+    <!-- <div class="d-flex flex-stack">
         <div class="text-primary fw-semibold fs-6 me-2">Number</div>
         <div class="d-flex align-items-senter">
             <span class="text-gray-900 fw-bolder fs-6">7.8</span>
@@ -30,5 +30,11 @@
         <div class="d-flex align-items-senter">
             <span class="text-gray-900 fw-bolder fs-6">7.8</span>
         </div>
-    </div>
+    </div> -->
+    <app-table #table [options]="tableConfig" [count]="count" [rows]="tableList"
+        (tableCallback)="tableCallback($event)" [emptyTemplate]="noResultFound">
+      </app-table>
+      <ng-template #noResultFound>
+        <app-no-result-found *ngIf="!loading" class="py-20"></app-no-result-found>
+      </ng-template>
 </div>

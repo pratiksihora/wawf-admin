@@ -76,8 +76,9 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     return;
   }
 
-  tableActionDevice() {
-    this.modalService.open(DeviceHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+  tableActionDevice(data) {
+    const modelRef = this.modalService.open(DeviceHistoryComponent, { centered: true, size: 'xl', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = data?.rowData;
     return;
   }
 
