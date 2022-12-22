@@ -95,13 +95,13 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     messageConfig: {
       type: 'custom',
       aTag: false,
-      action: ActionType.CREDIT,
+      action: ActionType.MESSAGE,
       className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
       text: 'COMMON.BUTTON.DELETE',
       iconOnly: true,
       button: { tooltip: 'Message' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
+      iconSVG: './assets/media/svg/new-svg-icons/message.svg',
     },
     deleteConfig: {
       show: (data) => {

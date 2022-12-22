@@ -27,6 +27,7 @@ import { configureTable } from './licence-key.constant';
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MessageCopyComponent } from './components/message-copy/message-copy.component';
 
 @Component({
   selector: 'app-licence-key',
@@ -78,6 +79,12 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
 
   tableActionCredit() {
     this.modalService.open(CreditHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+    return;
+  }
+
+  tableActionMessage(data) {
+    const modelRef = this.modalService.open(MessageCopyComponent, { centered: true, size: 'lg', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = data?.rowData;
     return;
   }
 

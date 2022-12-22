@@ -16,6 +16,7 @@ import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
 import { DrawerModule } from 'src/app/shared/base/drawer/drawer/drawer.module';
 import { InputModule } from 'src/app/shared/base/form/components/input/input.module';
 import { SelectModule } from 'src/app/shared/base/form/components/select/select.module';
+import { MessageCopyComponent } from './components/message-copy/message-copy.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
     ExtendComponent,
     DeviceHistoryComponent,
     CreditHistoryComponent,
-    CreateLicenceKeyComponent
+    CreateLicenceKeyComponent,
+    MessageCopyComponent
   ],
   imports: [
     CommonModule,
