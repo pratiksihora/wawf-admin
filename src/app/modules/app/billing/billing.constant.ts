@@ -20,6 +20,9 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'bl_email', header: 'Email'
       },
       {
+        field: 'bl_payment_type', header: 'Payment Type'
+      },
+      {
         field: 'bl_amount', header: 'Amount'
       },
       {
@@ -30,12 +33,9 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
           status: data.bl_status, color: UserRoleColor[data.sk_status],
         })
       },
-      {
-        field: 'bl_payment_type', header: 'Payment Type'
-      },
-      {
-        field: 'bl_receipt_link', header: 'Recipt'
-      },
+      // {
+      //   field: 'bl_receipt_link', header: 'Recipt'
+      // },
       {
         field: 'bl_created_at', header: 'Date', type: 'date', blank: '-'
       },
