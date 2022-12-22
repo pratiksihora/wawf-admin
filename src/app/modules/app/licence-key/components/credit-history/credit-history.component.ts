@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, HostBinding, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { cloneDeep } from "lodash";
 
 // External Modules
 import { TranslateService } from '@ngx-translate/core';
@@ -24,6 +25,7 @@ import { configureTable } from './credit-history.constant';
 
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -49,6 +51,10 @@ export class CreditHistoryComponent extends TableApiComponent implements OnInit 
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
     this.config = TableApiUtil.localTable({ idKey: 'ch_id', module: ApiModule.API, allUrl: `/v1/reseller/credit-history-by-key/${this.data?.sk_id}`, title: 'User' });
+  }
+
+  setDataToTable(response) {
+    this.tableList = cloneDeep(response.data);
   }
 
   close() {
