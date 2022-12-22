@@ -62,7 +62,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconOnly: true,
       button: { tooltip: 'Extend' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
+      iconSVG: './assets/media/svg/new-svg-icons/extend.svg',
       show: (data) => {
         return data.sk_start_date ? true : false;
       },
@@ -78,7 +78,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconOnly: true,
       button: { tooltip: 'Device History' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
-      iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
+      iconSVG: './assets/media/svg/new-svg-icons/device-history.svg',
       // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
     credit: true,
@@ -98,6 +98,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       show: (data) => {
         return data.sk_start_date ? false : true;
       },
+      iconSVG: './assets/media/svg/new-svg-icons/delete.svg',
     }
   }, translate, permission, data)
 }

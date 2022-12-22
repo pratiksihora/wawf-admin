@@ -28,5 +28,5 @@ export const FormConfig: FormGlobalConfig = {
 }
 
 export const FormAPI = {
-    add: ApiUtil.configurePost({ module: ApiModule.API, url: '/v1/reseller/generate/key', title: 'Extend', success: 'Extend has been added successfully.' }),
+    add: ApiUtil.configurePost({ module: ApiModule.API, url: '/v1/reseller/generate/key', title: 'Create Licence Key', success: 'Create Licence key has been added successfully.' }),
 }

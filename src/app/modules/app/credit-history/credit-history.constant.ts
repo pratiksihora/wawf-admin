@@ -14,28 +14,28 @@ import { TableUtil } from "src/app/shared/_core/utils/table"
 export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
   return TableUtil.configure({
     type: 'lazy',
-    dataKey: 'ub_id',
+    dataKey: 'ch_id',
     columns: [
-      {
-        field: 'key_type', header: 'Key Type'
-      },
       {
         field: 'license_key', header: 'License Key'
       },
       {
-        field: 'number_devices', header: 'Number of Devices'
+        field: 'ch_type', header: 'Key Type'
       },
       {
-        field: 'number_month', header: 'Number of Month'
+        field: 'ch_no_of_device', header: 'Number of Devices'
       },
       {
-        field: 'credit_used', header: 'Credit Used'
+        field: 'ch_no_of_month', header: 'Number of Month'
+      },
+      {
+        field: 'ch_used_credit', header: 'Credit Used'
       },
       {
         field: 'plan_type', header: 'Plan Type'
       },
       {
-        field: 'created_date', header: 'Created Date'
+        field: 'ch_created_at', header: 'Created Date', type: 'date'
       },
     ],
     tableOptions: {
@@ -44,6 +44,8 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
+      sortField: 'ch_created_at',
+      sortOrder: 1
     },
     add: false,
     actions: false

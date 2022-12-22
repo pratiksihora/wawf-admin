@@ -1,18 +1,6 @@
 <!--begin::Form-->
 <form class="form w-100" [formGroup]="loginForm" novalidate="novalidate" id="kt_login_signin_form"
   (ngSubmit)="submit()">
-  <!-- begin::Alert info-->
-  <ng-container *ngIf="!hasError">
-    <div class="mb-10 bg-light-info p-8 rounded">
-      <div class="text-info">
-        Use account <strong>{{ defaultAuth.email }}</strong> and password
-        <strong>{{ defaultAuth.password }}</strong> to continue.
-      </div>
-    </div>
-  </ng-container>
-  <!-- end::Alert info-->
-
-
   <!-- begin::Alert error-->
   <ng-container *ngIf="hasError">
     <div class="mb-lg-15 alert alert-danger">
@@ -83,20 +71,9 @@
   </div>
   <!--end::Form group-->
 
-  <!--begin::Wrapper-->
-  <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
-    <div></div>
-
-    <!--begin::Link-->
-    <a routerLink="/auth/forgot-password" class="link-primary">
-      Forgot Password ?
-    </a>
-    <!--end::Link-->
-  </div>
-  <!--end::Wrapper-->
 
   <!--begin::Action-->
-  <div class="d-grid mb-10">
+  <div class="d-grid my-10">
     <button type="submit" id="kt_sign_in_submit" class="btn btn-primary" [disabled]="loginForm.invalid">
       <ng-container *ngIf="loading">
         <span class="indicator-progress" [style.display]="'block'">
@@ -105,7 +82,7 @@
         </span>
       </ng-container>
       <ng-container *ngIf="!loading">
-        <span class="indicator-label">Continue</span>
+        <span class="indicator-label">Login</span>
       </ng-container>
     </button>
   </div>
