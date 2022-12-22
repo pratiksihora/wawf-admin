@@ -8,13 +8,13 @@
 
 .preloader-spinner {
   position: absolute;
-  top: 0;
+  top: 40%;
   left: 0;
   right: 0;
   bottom: 0;
   background: transparent;
   z-index: 50;
-  // opacity: 0.6;
+  opacity: 0.6;
 
   .status {
     position: absolute;
@@ -220,16 +220,16 @@
 .lds-ring {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .lds-ring div {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   margin: 8px;
   border: 8px solid #009ef7;
   border-radius: 50%;
