@@ -18,7 +18,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'ch_id',
     columns: [
       {
-        field: 'ch_plan_type', header: 'Type', type: 'copy-button', sortableDisable: true, blank: '-'
+        field: 'ch_plan_type', header: 'Type', sortableDisable: true, blank: '-'
       },
       {
         field: 'ch_no_of_device', header: 'Device', sortableDisable: true, blank: '-'
@@ -36,7 +36,8 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
-      paginator: false
+      paginator: false,
+      refreshDisable: true
     },
     actions: false
   }, translate, permission, data)

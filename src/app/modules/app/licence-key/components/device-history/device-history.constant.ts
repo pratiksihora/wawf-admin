@@ -17,16 +17,16 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'user_id',
     columns: [
       {
-        field: 'user_unique_id', header: 'Contact Number'
+        field: 'user_unique_id', header: 'Number'
       },
       {
         field: 'user_name', header: 'Name', blank: '-'
       },
       {
-        field: 'user_email', header: 'Email', blank: '-'
+        field: 'user_email', header: 'Date of Active', blank: '-'
       },
       {
-        field: 'user_created_at', header: 'Created Date'
+        field: 'user_created_at', header: 'Device Name'
       },
     ],
     tableOptions: {

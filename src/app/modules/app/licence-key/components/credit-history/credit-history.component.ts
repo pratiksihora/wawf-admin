@@ -24,7 +24,6 @@ import { configureTable } from './credit-history.constant';
 
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -49,7 +48,7 @@ export class CreditHistoryComponent extends TableApiComponent implements OnInit 
 
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
-    this.config = TableApiUtil.localTable({ idKey: 'ch_id', module: ApiModule.API, allUrl: `/v1/reseller/credit-history-by-key/${this.data?.sk_id}`, deleteUrl: '/v1/reseller/delete-key/{{sk_id}}', title: 'User' });
+    this.config = TableApiUtil.localTable({ idKey: 'ch_id', module: ApiModule.API, allUrl: `/v1/reseller/credit-history-by-key/${this.data?.sk_id}`, title: 'User' });
   }
 
   close() {
