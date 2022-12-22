@@ -1,9 +1,13 @@
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { of } from 'rxjs';
 import { Observable, Subscription } from 'rxjs';
 import { TranslationService } from 'src/app/i18n';
 import { TokenUtil } from 'src/app/shared/_core/utils/token';
 import { UserType } from '../../../../../../modules/auth';
+
+//component
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @Component({
   selector: 'app-user-inner',
@@ -20,7 +24,8 @@ export class UserInnerComponent implements OnInit, OnDestroy {
   private unsubscribe: Subscription[] = [];
 
   constructor(
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +36,10 @@ export class UserInnerComponent implements OnInit, OnDestroy {
   logout() {
     TokenUtil.clearSession();
     document.location.reload();
+  }
+
+  changePassword() {
+    this.modalService.open(ChangePasswordComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
   }
 
   selectLanguage(lang: string) {
