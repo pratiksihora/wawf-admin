@@ -17,7 +17,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'ch_id',
     columns: [
       {
-        field: 'license_key', header: 'License Key'
+        field: 'ch_licence_key', header: 'License Key', blank: '-'
       },
       {
         field: 'ch_type', header: 'Key Type'
@@ -32,7 +32,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'ch_used_credit', header: 'Credit Used'
       },
       {
-        field: 'plan_type', header: 'Plan Type'
+        field: 'ch_plan_type', header: 'Plan Type', blank: '-'
       },
       {
         field: 'ch_created_at', header: 'Created Date', type: 'date'
