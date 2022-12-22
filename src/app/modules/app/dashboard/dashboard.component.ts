@@ -25,7 +25,10 @@ export class DashboardComponent implements OnInit {
     closeButtonLabel: 'Cancel'
   };
   @ViewChild('modal') private modalComponent: ModalComponent;
+
   getData: any;
+  loading: boolean;
+
   constructor(public tableService: TableService, public cdr: ChangeDetectorRef,) { }
 
   ngOnInit(): void {
@@ -37,9 +40,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllCount() {
+    this.loading = true
     const common: ApiAction = ApiUtil.configureGet({ module: ApiModule.API, url: '/v1/reseller/dashboard', title: 'User' })
     this.tableService.tableCommon(common, {}).subscribe({
       next: (res) => {
+        this.loading = false;
         this.getData = res.data;
         this.cdr.detectChanges();
       }
