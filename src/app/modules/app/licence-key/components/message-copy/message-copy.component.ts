@@ -46,6 +46,9 @@ ${this.data?.sk_licence_key}
 Number of devices:
 ${this.data?.sk_no_of_login}
 
+Month:
+${this.data?.sk_no_of_month}
+
 If you have any questions, do not hesitate to contact us. We are here to help.`);
     this.toast.show(ToastrUtil.configureSuccess({ type: 'success', title: 'License Key', message: 'License Key has been copied successfully.' }))
     close()

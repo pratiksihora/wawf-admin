@@ -26,7 +26,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'user_email', header: 'Email', blank: '-'
       },
       {
-        field: 'user_created_at', header: 'Created Date'
+        field: 'user_created_at', header: 'Created Date', type: 'date'
       },
     ],
     tableOptions: {
