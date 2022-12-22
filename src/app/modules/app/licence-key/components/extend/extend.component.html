@@ -3,7 +3,7 @@
     <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
         (click)="close()"></button>
 </div>
-<form class="d-flex flex-column flex-fill h-100" [formGroup]="form">
+<form class="d-flex flex-column flex-fill h-100" [formGroup]="form" (submit)="submit()">
     <div class="modal-body">
         <div class="d-flex h-100 flex-column scroll-y">
             <div class="d-flex h-100 flex-column scroll-y">
@@ -42,6 +42,6 @@
     </div>
     <div class="modal-footer px-5 py-3">
         <button type="button" class="btn btn-md py-2 btn-light-primary" (click)="close()">Close</button>
-        <button type="button" class="btn btn-md py-2 btn-primary" (click)="saveExtedData()">Extend</button>
+        <button type="submit" class="btn btn-md py-2 btn-primary">Extend</button>
     </div>
 </form>

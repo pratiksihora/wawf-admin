@@ -21,7 +21,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'sk_licence_key', header: 'License Key',
       },
       {
-        field: 'number_devices', header: 'Number of Devices', prepareColumn: (data) => `${data.number_devices || '-'}`,
+        field: 'sk_no_of_login', header: 'Number of Devices', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`,
       },
       {
         field: 'sk_no_of_month', header: 'Number of Month'
