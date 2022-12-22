@@ -250,6 +250,15 @@
         </ng-container>
         <!-- end: status render -->
 
+        <!-- begin: copy render -->
+        <ng-container *ngSwitchCase="'copy-button'">
+          <span class="text-gray-600 fw-bold"> {{ rowData[column.field] || column.blank }}
+            <span class="svg-icon ps-2 m-0 svg-icon-5 cursor-pointer" (click)="copyButtonCallback()"
+              [inlineSVG]="'/assets/media/svg/new-svg-icons/copy-icon.svg'"></span>
+          </span>
+        </ng-container>
+        <!-- end: copy render -->
+
         <!-- begin: default render -->
         <ng-container *ngSwitchDefault>
           <span class="text-gray-600 fw-bold"> {{ rowData[column.field] || column.blank }} </span>

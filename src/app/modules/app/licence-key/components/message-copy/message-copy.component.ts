@@ -1,5 +1,5 @@
 // ANGULAR
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 // External Modules
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,7 @@ export class MessageCopyComponent implements OnInit {
 
   constructor(public modal: NgbActiveModal, public tableService: TableService,) { }
 
+  @Input() data: any;
   @Output() closeEvent = new EventEmitter<any>();
 
   ngOnInit(): void {

@@ -405,6 +405,7 @@ export class TableUtil {
         case 'date-time':
         case 'date-range':
         case 'date-time-range':
+        case 'copy-button':
         case 'dateoptional':
         case "number":
         case "float":
@@ -514,6 +515,7 @@ export class TableUtil {
       case 'date-time':
       case 'date-range':
       case 'date-time-range':
+      case 'copy-button':
       case 'dateoptional':
         return ColumFilterType.DATE
       case "number":

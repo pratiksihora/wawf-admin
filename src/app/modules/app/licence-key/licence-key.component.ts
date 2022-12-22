@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 // External Modules
 import { TranslateService } from '@ngx-translate/core';
@@ -8,6 +9,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 // Services
 import { TableService } from 'src/app/api/services/common/table/table.service';
 import { TableExportService } from 'src/app/shared/_core/services/table/table-export.service';
+import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.service';
 
 // Components
 import { TableApiComponent } from 'src/app/shared/base/table/base-class/table-api/table-api.component';
@@ -15,6 +17,7 @@ import { ExtendComponent } from './components/extend/extend.component';
 import { DeviceHistoryComponent } from './components/device-history/device-history.component';
 import { CreditHistoryComponent } from './components/credit-history/credit-history.component';
 import { CreateLicenceKeyComponent } from './components/create-licence-key/create-licence-key.component';
+import { MessageCopyComponent } from './components/message-copy/message-copy.component';
 
 // Interfaces && Enums
 import { TableConfig } from 'src/app/shared/constants/models/controls/table/table-config';
@@ -27,7 +30,7 @@ import { configureTable } from './licence-key.constant';
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MessageCopyComponent } from './components/message-copy/message-copy.component';
+import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
 
 @Component({
   selector: 'app-licence-key',
@@ -44,7 +47,8 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   constructor(public tableService: TableService,
     public activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef,
     public exportService: TableExportService, public permissionService: NgxPermissionsService,
-    public translate: TranslateService, private modalService: NgbModal,) {
+    public translate: TranslateService, private modalService: NgbModal,
+    public clipboard: Clipboard, protected toast: ToastService,) {
     super(tableService, activatedRoute, cdr, exportService)
   }
 
@@ -74,6 +78,13 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
 
   tableActionDevice() {
     this.modalService.open(DeviceHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+    return;
+  }
+
+  tableActionCopy(event) {
+    const textToCopy = event?.rowData.sk_licence_key
+    this.clipboard.copy(textToCopy);
+    this.toast.show(ToastrUtil.configureSuccess({ type: 'success', title: 'License Key', message: 'License Key has been copied successfully.' }))
     return;
   }
 

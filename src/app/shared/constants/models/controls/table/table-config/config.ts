@@ -62,7 +62,7 @@ export interface ColumnConfig {
   field2?: string;
   header?: string;
 
-  type?: 'number' | 'float' | 'image' | 'images' | 'boolean' | 'user-with-image' | 'user-invite' | 'status' | 'users' | 'date' | 'dateoptional' | 'date-time' | 'date-range' | 'date-time-range' | 'link' | 'HTML' | 'progress' | 'switch' | 'custom' | undefined;
+  type?: 'number' | 'float' | 'image' | 'images' | 'boolean' | 'user-with-image' | 'user-invite' | 'status' | 'users' | 'date' | 'dateoptional' | 'date-time' | 'date-range' | 'date-time-range' | 'link' | 'HTML' | 'progress' | 'switch' | 'custom' | 'copy-button' | undefined;
 
   displayType?: ColumnDisplayType;
   clickable?: boolean;

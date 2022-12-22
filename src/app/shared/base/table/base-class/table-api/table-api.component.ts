@@ -138,6 +138,9 @@ export abstract class TableApiComponent implements OnInit {
       case TableEventType.INVITE:
         this.tableActionInvite(event);
         break;
+      case TableEventType.COPY:
+        this.tableActionCopy(event);
+        break;
       case TableEventType.PREV:
         this.tableActionView(event);
         break;
@@ -195,6 +198,10 @@ export abstract class TableApiComponent implements OnInit {
   }
 
   tableActionInvite(event) {
+    return;
+  }
+
+  tableActionCopy(event) {
     return;
   }
 

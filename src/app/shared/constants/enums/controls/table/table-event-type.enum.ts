@@ -58,4 +58,5 @@ export enum TableEventType {
   DEVISE = 'device',
   CREDIT = 'credit',
   MESSAGE = 'message',
+  COPY = 'copy',
 }

@@ -18,7 +18,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'sk_id',
     columns: [
       {
-        field: 'sk_licence_key', header: 'License Key',
+        field: 'sk_licence_key', header: 'License Key', type: 'copy-button'
       },
       {
         field: 'sk_no_of_login', header: 'Number of Devices', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`,

@@ -56,4 +56,8 @@ export class TableBodyComponent implements OnInit {
   nameCallback(event) {
     this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: ActionType.PREV, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded })
   }
+
+  copyButtonCallback(event) {
+    this.tableComponentCallback.emit({ type: TableEventType.ACTION, action: ActionType.COPY, data: event, rowData: this.rowData, rowIndex: this.rowIndex, expanded: this.expanded })
+  }
 }

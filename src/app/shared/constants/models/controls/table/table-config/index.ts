@@ -235,7 +235,7 @@ export interface TableColumn extends FilterField {
   field?: string;
   field2?: string;
   header?: string;
-  displayType?: 'number' | 'float' | 'image' | 'images' | 'boolean' | 'user-with-image' | 'user-invite' | 'status' | 'users' | 'date' | 'dateoptional' | 'date-time' | 'date-range' | 'date-time-range' | 'link' | 'HTML' | 'progress' | 'switch' | 'custom' | undefined;
+  displayType?: 'number' | 'float' | 'image' | 'images' | 'boolean' | 'user-with-image' | 'user-invite' | 'status' | 'users' | 'date' | 'dateoptional' | 'date-time' | 'date-range' | 'date-time-range' | 'link' | 'HTML' | 'progress' | 'switch' | 'custom' | 'copy-button' | undefined;
   clickable?: boolean;
 
   sortableDisable?: boolean;
