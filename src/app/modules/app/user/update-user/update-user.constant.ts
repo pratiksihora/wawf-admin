@@ -10,11 +10,11 @@ import { InputUtil, SelectUtil } from "src/app/shared/_core/utils/form/field";
 const others = { classNames: { label: 'fw-bold fs-6 col-form-label pb-2' } };
 export const FormFields: { [key: string]: Field } = {
     user_name: InputUtil.configureInput({
-        key: 'user_name', label: 'User Name', smallControl: true,
+        key: 'user_name', label: 'Name', smallControl: true,
         layout: LayoutType.VERTICAL
     }, { required: true }, {}, others),
     user_email: InputUtil.configureEmail({
-        key: 'user_email', label: 'User Email', smallControl: true,
+        key: 'user_email', label: 'Email', smallControl: true,
         layout: LayoutType.VERTICAL
     }, { required: true }, {}, others),
 }

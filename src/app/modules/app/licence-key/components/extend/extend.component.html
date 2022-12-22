@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pb-5">
+                        <!-- <div class="pb-5">
                             <div class="row m-0">
                                 <div class="col-12">
                                     <app-input [fieldConfig]="formFields.sk_no_of_login" [formConfig]="formConfig"
@@ -26,12 +26,12 @@
                                     </app-input>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="pb-3">
                             <div class="row m-0">
                                 <div class="col-12">
                                     <span class="fw-bold fs-6">Credit will Used : </span><span
-                                        class="text-gray-400">{{form.get('sk_no_of_login').value}}</span>
+                                        class="text-gray-400">{{form.get('sk_no_of_login').value * form.get('sk_no_of_month').value}}</span>
                                 </div>
                             </div>
                         </div>

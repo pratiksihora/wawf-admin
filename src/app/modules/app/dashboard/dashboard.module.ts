@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModalsModule, WidgetsModule } from '../../../_metronic/partials';
 import { DashboardComponent } from './dashboard.component';
 import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     WidgetsModule,
     ModalsModule,
-    LoaderModule
+    LoaderModule,
+    NgbAccordionModule
   ],
 })
 export class DashboardModule { }

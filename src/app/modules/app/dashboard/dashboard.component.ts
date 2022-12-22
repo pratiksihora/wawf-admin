@@ -1,5 +1,4 @@
 import { Component, ViewChild, HostBinding, OnInit, ChangeDetectorRef } from '@angular/core';
-
 //service
 import { TableService } from 'src/app/api/services/common/table/table.service';
 
