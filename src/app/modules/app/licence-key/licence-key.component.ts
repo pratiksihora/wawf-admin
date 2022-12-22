@@ -89,8 +89,9 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
     return;
   }
 
-  tableActionCredit() {
-    this.modalService.open(CreditHistoryComponent, { centered: true, size: 'sm', backdrop: 'static', scrollable: true });
+  tableActionCredit(data) {
+    const modelRef = this.modalService.open(CreditHistoryComponent, { centered: true, size: 'lg', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = data?.rowData;
     return;
   }
 

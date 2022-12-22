@@ -35,12 +35,7 @@ export class DeviceHistoryComponent extends TableApiComponent implements OnInit 
 
   @Output() closeEvent = new EventEmitter<any>();
 
-  close() {
-    this.modal.close('close');
-    this.closeEvent.emit('close');
-  }
-
-  config: TableApiConfig = TableApiUtil.localTable({ idKey: 'sk_id', module: ApiModule.API, allUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'User' });
+  config: TableApiConfig;
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService, public modal: NgbActiveModal,
@@ -50,8 +45,14 @@ export class DeviceHistoryComponent extends TableApiComponent implements OnInit 
     super(tableService, activatedRoute, cdr, exportService)
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
+    this.config = TableApiUtil.lazyTable({ idKey: 'sk_id', module: ApiModule.API, paggingUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'User' });
+  }
+
+  close() {
+    this.modal.close('close');
+    this.closeEvent.emit('close');
   }
 
 }
