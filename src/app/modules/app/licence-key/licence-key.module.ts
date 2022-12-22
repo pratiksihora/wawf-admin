@@ -17,6 +17,7 @@ import { DrawerModule } from 'src/app/shared/base/drawer/drawer/drawer.module';
 import { InputModule } from 'src/app/shared/base/form/components/input/input.module';
 import { SelectModule } from 'src/app/shared/base/form/components/select/select.module';
 import { MessageCopyComponent } from './components/message-copy/message-copy.component';
+import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
     DrawerModule,
     InputModule,
     SelectModule,
+    NoResultFoundModule
   ]
 })
 export class LicenceKeyModule { }

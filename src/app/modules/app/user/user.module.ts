@@ -11,6 +11,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
 import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
 import { InputModule } from 'src/app/shared/base/form/components/input/input.module';
+import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
 
 const routes: Routes = [
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
     LoaderModule,
     TableModule,
     InputModule,
+    NoResultFoundModule
   ]
 })
 export class UserModule { }

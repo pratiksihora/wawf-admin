@@ -7,6 +7,7 @@ import { CreditHistoryComponent } from './credit-history.component';
 // Internal Modules
 import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
 import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
+import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     /*** INTERNAL MODULES ***/
     RouterModule.forChild(routes),
     LoaderModule,
-    TableModule
+    TableModule,
+    NoResultFoundModule
   ]
 })
 export class CreditHistoryModule { }
