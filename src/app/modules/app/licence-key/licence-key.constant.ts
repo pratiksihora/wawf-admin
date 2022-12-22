@@ -66,7 +66,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       show: (data) => {
         return data.sk_start_date ? true : false;
       },
-      // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
     device: true,
     deviseConfig: {
@@ -79,7 +78,6 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       button: { tooltip: 'Device History' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
       iconSVG: './assets/media/svg/new-svg-icons/device-history.svg',
-      // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
     },
     credit: true,
     creditConfig: {
@@ -92,7 +90,18 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       button: { tooltip: 'Credit History' },
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
       iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
-      // confirmation: { type: 'success', title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', confirmation: { title: 'Campaign', message: 'Are you sure you want to Clone this campaign?', button1: true, button1Text: 'Clone', button2: true, button2Text: 'Cancel', button1Class: 'btn btn-success', icon: 'bi bi-back me-3' } }
+    },
+    message: true,
+    messageConfig: {
+      type: 'custom',
+      aTag: false,
+      action: ActionType.CREDIT,
+      className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+      text: 'COMMON.BUTTON.DELETE',
+      iconOnly: true,
+      button: { tooltip: 'Message' },
+      iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+      iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
     },
     deleteConfig: {
       show: (data) => {

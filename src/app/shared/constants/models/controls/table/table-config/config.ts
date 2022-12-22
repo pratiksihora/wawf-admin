@@ -38,11 +38,13 @@ export interface TableBaseConfig {
   extend?: boolean;
   device?: boolean;
   credit?: boolean;
+  message?: boolean;
   viewConfig?: ButtonBaseConfig;
   cloneConfig?: ButtonBaseConfig;
   extendConfig?: ButtonBaseConfig;
   deviseConfig?: ButtonBaseConfig;
   creditConfig?: ButtonBaseConfig;
+  messageConfig?: ButtonBaseConfig;
   add?: boolean;
   addConfig?: ButtonBaseConfig;
 

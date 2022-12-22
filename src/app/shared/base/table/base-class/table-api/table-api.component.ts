@@ -97,6 +97,9 @@ export abstract class TableApiComponent implements OnInit {
       case TableEventType.CREDIT:
         this.tableActionCredit(event);
         break;
+      case TableEventType.MESSAGE:
+        this.tableActionMessage(event);
+        break;
       case TableEventType.EDITOR:
         this.tableActionEditor(event);
         break;
@@ -207,6 +210,10 @@ export abstract class TableApiComponent implements OnInit {
   }
 
   tableActionCredit(event) {
+    return;
+  }
+
+  tableActionMessage(event) {
     return;
   }
 

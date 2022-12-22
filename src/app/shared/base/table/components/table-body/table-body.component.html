@@ -28,6 +28,14 @@
   <div class="d-flex">
 
     <!-- begin: clone button -->
+    <ng-container *ngIf="options?.actions.message">
+      <app-button [options]="options?.actions?.messageConfig" [data]="rowData"
+        (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: clone button -->
+
+    <!-- begin: clone button -->
     <ng-container *ngIf="options?.actions.extend">
       <app-button [options]="options?.actions?.extendConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
       </app-button>
@@ -270,6 +278,14 @@
 <!-- begin: action column -->
 <td *ngIf="options?.actions && !options?.tableOptions?.leftAction" class="ui-resizable-column text-truncate">
   <div class="d-flex">
+
+    <!-- begin: clone button -->
+    <ng-container *ngIf="options?.actions.message">
+      <app-button [options]="options?.actions?.messageConfig" [data]="rowData"
+        (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: clone button -->
 
     <!-- begin: clone button -->
     <ng-container *ngIf="options?.actions.extend">
