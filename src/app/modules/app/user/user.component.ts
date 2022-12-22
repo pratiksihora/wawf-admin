@@ -22,6 +22,8 @@ import { configureTable } from './user.constant';
 
 // Utils
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @Component({
   selector: 'app-user',
@@ -37,7 +39,7 @@ export class UserComponent extends TableApiComponent implements OnInit {
   constructor(public tableService: TableService,
     public activatedRoute: ActivatedRoute, public cdr: ChangeDetectorRef,
     public exportService: TableExportService, public permissionService: NgxPermissionsService,
-    public translate: TranslateService) {
+    public translate: TranslateService, private modalService: NgbModal,) {
     super(tableService, activatedRoute, cdr, exportService)
   }
 
@@ -45,4 +47,13 @@ export class UserComponent extends TableApiComponent implements OnInit {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
   }
 
+  onAddEdit(value) {
+    const modelRef = this.modalService.open(UpdateUserComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = value?.rowData;
+    modelRef.result.then(res => {
+      if (res === 'save') {
+        this.table.table.reset();
+      }
+    })
+  }
 }

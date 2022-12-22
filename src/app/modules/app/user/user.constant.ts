@@ -39,7 +39,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       sortOrder: 1
     },
     add: false,
-    actions: false,
-
+    delete: false,
+    edit: true,
   }, translate, permission, data)
 }
