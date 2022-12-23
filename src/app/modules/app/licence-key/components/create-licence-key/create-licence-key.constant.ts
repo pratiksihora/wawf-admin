@@ -15,9 +15,9 @@ export const FormFields: { [key: string]: Field } = {
             { value: 7, text: '7 Month' }, { value: 8, text: '8 Month' }, { value: 9, text: '9 Month' },
             { value: 10, text: '10 Month' }, { value: 11, text: '11 Month' }, { value: 12, text: '12 Month' },
         ]
-    }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
-    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true, type: ValidationType.MAX_100 }, {}, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
-    plan_type: SelectUtil.configureSelect({ key: 'plan_type', label: 'Plan Type', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: 'Premium', text: 'Platinum' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
+    }, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
+    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true, type: ValidationType.MAX_100 }, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
+    plan_type: SelectUtil.configureSelect({ key: 'plan_type', label: 'Plan Type', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: 'Premium', text: 'Platinum' }] }, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
 }
 
 export const FormConfig: FormGlobalConfig = {

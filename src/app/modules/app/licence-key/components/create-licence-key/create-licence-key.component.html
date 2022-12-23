@@ -12,6 +12,9 @@
                         <app-select #select [fieldConfig]="formFields.no_of_month" [formConfig]="formConfig"
                             [form]="form">
                         </app-select>
+                        <div class="text-gray-400">
+                            Duration is For how long would you like to provide a license key to your customer.
+                        </div>
                     </div>
                 </div>
                 <div class="row px-5 px-xl-12 py-2">
@@ -19,6 +22,9 @@
                         <app-input [fieldConfig]="formFields.no_of_device" [formConfig]="formConfig" [form]="form"
                             (detectAction)="detectAction()">
                         </app-input>
+                        <div class="text-gray-400">
+                            Number of active devices that can use this license key.
+                        </div>
                     </div>
                 </div>
                 <div class="row px-5 px-xl-12 py-2">
@@ -31,17 +37,8 @@
                 <div class="row px-5 px-xl-12 py-2 pb-5">
                     <div class="col-12 px-0">
                         <span class="fw-bold fs-6 ">Credit will use : </span><span
-                            class="text-gray-400">{{form.get('no_of_device').value * form.get('no_of_month').value ||
+                            class="text-gray-700">{{form.get('no_of_device').value * form.get('no_of_month').value ||
                             '0'}}</span>
-                    </div>
-                </div>
-                <div class="row px-5 px-xl-12 py-2 pb-5">
-                    <div class="col-12 px-0">
-                        <div class="fw-bold">Note :</div>
-                        <ul style="list-style: decimal;">
-                            <li>Duration is For how long would you like to provide a license key to your customer.</li>
-                            <li>Number of active devices that can use this license key.</li>
-                        </ul>
                     </div>
                 </div>
                 <!-- <div class="row px-5 px-xl-12 py-2">
