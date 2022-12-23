@@ -36,7 +36,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       csvDisable: false,
       excelDisable: false,
       sortField: 'user_created_at',
-      sortOrder: 1
+      sortOrder: 0
     },
     add: false,
     delete: false,

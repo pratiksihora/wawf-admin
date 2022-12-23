@@ -47,7 +47,7 @@ export class DeviceHistoryComponent extends TableApiComponent implements OnInit 
 
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
-    this.config = TableApiUtil.lazyTable({ idKey: 'sk_id', module: ApiModule.API, paggingUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'User' });
+    this.config = TableApiUtil.lazyTable({ idKey: 'skd_id', module: ApiModule.API, paggingUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'User' });
   }
 
   close() {

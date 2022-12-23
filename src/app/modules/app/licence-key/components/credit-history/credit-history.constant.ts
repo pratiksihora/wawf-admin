@@ -36,9 +36,13 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
-      paginator: false,
-      refreshDisable: true
+      sortField: 'ch_created_at',
+      sortOrder: 0,
+      paginator: false
     },
+    add: false,
+    delete: false,
+    edit: false,
     actions: false
   }, translate, permission, data)
 }

@@ -46,6 +46,8 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       exportDisable: true,
       pdfDisable: false,
       csvDisable: false,
+      sortField: 'sk_created_at',
+      sortOrder: 0,
       excelDisable: false,
     },
     edit: false,

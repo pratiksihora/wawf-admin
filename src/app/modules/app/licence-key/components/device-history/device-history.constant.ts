@@ -14,19 +14,16 @@ import { TableUtil } from "src/app/shared/_core/utils/table"
 export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
   return TableUtil.configure({
     type: 'lazy',
-    dataKey: 'user_id',
+    dataKey: 'skd_id',
     columns: [
       {
-        field: 'user_unique_id', header: 'Number'
+        field: 'skd_wa_no', header: 'Number'
       },
       {
-        field: 'user_name', header: 'Name', blank: '-'
+        field: 'skd_device_name', header: 'Device Name', blank: '-'
       },
       {
-        field: 'user_email', header: 'Date of Active', blank: '-'
-      },
-      {
-        field: 'user_created_at', header: 'Device Name'
+        field: 'skd_created_at', header: 'Date of Active', blank: '-', type: 'date'
       },
     ],
     tableOptions: {
@@ -35,12 +32,13 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       pdfDisable: false,
       csvDisable: false,
       excelDisable: false,
-      sortField: 'user_created_at',
-      sortOrder: 1,
+      sortField: 'skd_created_at',
+      sortOrder: 0,
       paginator: false
     },
     add: false,
     delete: false,
-    edit: true,
+    edit: false,
+    actions:false
   }, translate, permission, data)
 }
