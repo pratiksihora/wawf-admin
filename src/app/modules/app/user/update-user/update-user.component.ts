@@ -54,13 +54,16 @@ export class UpdateUserComponent extends FormApiComponent implements OnInit {
       user_name: this.form.get("user_name")?.value,
       user_email: this.form.get("user_email")?.value
     }
+    this.loading = true;
     const common = ApiUtil.configurePut({ module: ApiModule.API, url: `/v1/reseller/user/${this.data?.user_id}`, title: 'User', success: 'User has been update successfully.' });
     this.formService.formCommon(common, payload).subscribe({
       next: (res) => {
+        this.loading = false;
         this.modal.close('save');
         this.closeEvent.emit('save');
         this.cdr.detectChanges();
       }, error: (err) => {
+        this.loading = false;
         this.close();
       }
     })
