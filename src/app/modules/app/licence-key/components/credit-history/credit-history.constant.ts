@@ -38,11 +38,12 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       excelDisable: false,
       sortField: 'ch_created_at',
       sortOrder: 0,
-      paginator: false
+      paginator: false,
+      refreshDisable: true
     },
     add: false,
     delete: false,
     edit: false,
-    actions: false
+    actions: false,
   }, translate, permission, data)
 }
