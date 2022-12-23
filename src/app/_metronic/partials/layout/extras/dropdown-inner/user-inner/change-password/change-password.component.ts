@@ -53,6 +53,7 @@ export class ChangePasswordComponent extends FormApiComponent implements OnInit 
       this.toast.show(ToastrUtil.configureError({ type: 'error', title: 'Change Password', message: 'Make sure your new password and confirm password has been same.' }))
       return;
     }
+    this.loading = true;
     const payload = {
       oldPassword: this.form.get("oldPassword")?.value,
       newPassword: this.form.get("newPassword")?.value
@@ -60,6 +61,7 @@ export class ChangePasswordComponent extends FormApiComponent implements OnInit 
     const common = ApiUtil.configurePost({ module: ApiModule.API, url: `/v1/reseller/change-password`, title: 'Password', success: 'Password has been update successfully.' });
     this.formService.formCommon(common, payload).subscribe({
       next: (res) => {
+        this.loading = false;
         this.modal.close('save');
         this.closeEvent.emit('save');
         this.cdr.detectChanges();
