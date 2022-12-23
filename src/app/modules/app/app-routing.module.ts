@@ -35,6 +35,10 @@ const routes: Routes = [
         path: 'contact-support',
         loadChildren: () => import('./contact-support/contact-support.module').then((m) => m.ContactSupportModule),
       },
+      {
+        path: 'faq',
+        loadChildren: () => import('./faq/faq.module').then((m) => m.FaqModule),
+      },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: '**', redirectTo: `dashboard` }
     ]

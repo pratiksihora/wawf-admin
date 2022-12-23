@@ -10,6 +10,10 @@ import { ApiModule } from 'src/app/api/enums/api-module.enum';
 import { ApiUtil } from 'src/app/shared/_core/utils/api';
 
 import { ModalConfig, ModalComponent } from '../../../_metronic/partials';
+import { TokenUtil } from 'src/app/shared/_core/utils/token';
+import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
+import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.service';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,11 +31,13 @@ export class DashboardComponent implements OnInit {
 
   getData: any;
   loading: boolean;
+  userData: any;
 
-  constructor(public tableService: TableService, public cdr: ChangeDetectorRef,) { }
+  constructor(public tableService: TableService, public cdr: ChangeDetectorRef, public toast: ToastService, public clipboard: Clipboard) { }
 
   ngOnInit(): void {
     this.getAllCount();
+    this.userData = TokenUtil.getUser();
   }
 
   async openModal() {
@@ -48,6 +54,12 @@ export class DashboardComponent implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  copyUrl() {
+    navigator.clipboard.writeText(this.userData?.reseller_ext_link);
+    this.toast.show(ToastrUtil.configureSuccess({ type: 'success', title: 'Link', message: 'Link has been copied successfully.' }))
+    close()
   }
 
 }

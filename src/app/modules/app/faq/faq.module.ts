@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactSupportComponent } from './contact-support.component';
+import { FaqComponent } from './faq.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
-import { SafePipeModule } from 'src/app/shared/_core/pipes/safe-pipe/safe-pipe.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContactSupportComponent
+    component: FaqComponent
   }
 ];
 
-
 @NgModule({
   declarations: [
-    ContactSupportComponent
+    FaqComponent
   ],
   imports: [
     CommonModule,
     /*** INTERNAL MODULES ***/
     RouterModule.forChild(routes),
     NoResultFoundModule,
-    SafePipeModule
+    NgbAccordionModule
   ]
 })
-export class ContactSupportModule { }
+export class FaqModule { }

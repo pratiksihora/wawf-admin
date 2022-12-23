@@ -12,7 +12,6 @@ export const FormFields: { [key: string]: Field } = {
         options: [
             { value: 1, text: '1 Month' }, { value: 2, text: '2 Month' }, { value: 3, text: '3 Month' },
             { value: 4, text: '4 Month' }, { value: 5, text: '5 Month' }, { value: 6, text: '6 Month' },
-            { value: 4, text: '4 Month' }, { value: 5, text: '5 Month' }, { value: 6, text: '6 Month' },
             { value: 7, text: '7 Month' }, { value: 8, text: '8 Month' }, { value: 9, text: '9 Month' },
             { value: 10, text: '10 Month' }, { value: 11, text: '11 Month' }, { value: 12, text: '12 Month' },
         ]

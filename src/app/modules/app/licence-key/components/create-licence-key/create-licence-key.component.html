@@ -1,4 +1,4 @@
-<div class="modal-header pt-4 pb-3 px-7">
+<div class="modal-header py-6 px-7">
     <h3 class="card-title fw-bold text-gray-800">Create Licence key</h3>
     <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
         (click)="close()"></button>
@@ -30,9 +30,9 @@
                 </div>
                 <div class="row px-5 px-xl-12 py-2">
                     <div class="col-12 px-0">
-                        <span class="fw-bold fs-6 ">Credit will Used : </span><span
+                        <span class="fw-bold fs-6 ">Credit will use : </span><span
                             class="text-gray-400">{{form.get('no_of_device').value * form.get('no_of_month').value ||
-                            '-'}}</span>
+                            '0'}}</span>
                     </div>
                 </div>
                 <!-- <div class="row px-5 px-xl-12 py-2">
