@@ -8,7 +8,7 @@ import { ApiUtil } from "src/app/shared/_core/utils/api"
 import { InputUtil, SelectUtil } from "src/app/shared/_core/utils/form/field"
 
 export const FormFields: { [key: string]: Field } = {
-    no_of_month: SelectUtil.configureSelect({ key: 'no_of_month', label: 'Time', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, {
+    no_of_month: SelectUtil.configureSelect({ key: 'no_of_month', label: 'Duration',placeholder:'Time', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, {
         options: [
             { value: 1, text: '1 Month' }, { value: 2, text: '2 Month' }, { value: 3, text: '3 Month' },
             { value: 4, text: '4 Month' }, { value: 5, text: '5 Month' }, { value: 6, text: '6 Month' },
@@ -16,7 +16,7 @@ export const FormFields: { [key: string]: Field } = {
             { value: 10, text: '10 Month' }, { value: 11, text: '11 Month' }, { value: 12, text: '12 Month' },
         ]
     }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
-    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number Of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true, type: ValidationType.MAX_100 }, {}, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
+    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true, type: ValidationType.MAX_100 }, {}, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
     plan_type: SelectUtil.configureSelect({ key: 'plan_type', label: 'Plan Type', smallControl: true, layout: LayoutType.VERTICAL, }, { required: true }, { options: [{ value: 'Premium', text: 'Platinum' }] }, { classNames: { label: 'fw-bold pb-4 fs-6 col-form-label' } }),
 }
 
