@@ -36,7 +36,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/privacy-policy.html",
+              "src/white-label-agreement.html"
             ],
             "styles": [
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
