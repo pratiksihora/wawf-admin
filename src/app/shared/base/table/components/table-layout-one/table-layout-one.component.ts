@@ -64,6 +64,9 @@ export class TableLayoutOneComponent {
   }
 
   buttonCallback(event) {
+    if(event.action === TableEventType.REFRESH){
+      this.globalFilter = '';
+    }
     this.layoutCallback.emit(event);
   }
 
