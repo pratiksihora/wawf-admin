@@ -34,11 +34,29 @@
                         </app-select>
                     </div>
                 </div>
-                <div class="row px-5 px-xl-12 py-2 pb-5">
+                <div class="row px-5 px-xl-12 py-2">
                     <div class="col-12 px-0">
                         <span class="fw-bold fs-6 ">Credit will use : </span><span
                             class="text-gray-700">{{form.get('no_of_device').value * form.get('no_of_month').value ||
                             '0'}}</span>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.name" [formConfig]="formConfig" [form]="form">
+                        </app-input>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.email" [formConfig]="formConfig" [form]="form">
+                        </app-input>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2 pb-5">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.mobile_no" [formConfig]="formConfig" [form]="form">
+                        </app-input>
                     </div>
                 </div>
                 <!-- <div class="row px-5 px-xl-12 py-2">

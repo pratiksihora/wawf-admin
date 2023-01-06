@@ -1,0 +1,35 @@
+<div class="modal-header py-6 px-7">
+    <h3 class="card-title fw-bold text-gray-800">Update Informations</h3>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="close()"></button>
+</div>
+<app-loader [show]="loading">
+    <form [formGroup]="form" class="d-flex flex-column flex-fill h-100">
+        <div class="d-flex h-100 flex-column h-100">
+            <div class="flex-fill h-100 overflow-y-auto pt-3">
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.name"  [formConfig]="formConfig" [form]="form">
+                        </app-input>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.email" [formConfig]="formConfig" [form]="form">
+                        </app-input>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
+                        <app-input [fieldConfig]="formFields.mobile_no" [formConfig]="formConfig" [form]="form">
+                        </app-input>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer px-5 py-3">
+                <button type="button" class="btn btn-md py-2 btn-light-primary" (click)="close()">Close</button>
+                <button type="button" class="btn btn-md py-2 btn-primary" (click)="saveKeyData()">Update</button>
+            </div>
+        </div>
+    </form>
+</app-loader>

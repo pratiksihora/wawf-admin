@@ -21,7 +21,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'sk_licence_key', header: 'License Key', type: 'copy-button'
       },
       {
-        field: 'sk_no_of_login', header: 'Number of Devices', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`,
+        field: 'sk_no_of_login', header: 'Number of Devices', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`, width: '150px'
       },
       {
         field: 'sk_no_of_month', header: 'Number of Month'
@@ -40,6 +40,15 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
           status: data.sk_status, color: UserRoleColor[data.sk_status],
         })
       },
+      {
+        field: 'sk_name', header: 'Name', blank: '-'
+      },
+      {
+        field: 'sk_email_manual', header: 'Email', blank: '-'
+      },
+      {
+        field: 'sk_mobile_no', header: 'Mobile no', blank: '-'
+      },
     ],
     tableOptions: {
       globalFilterDisable: false,
@@ -50,7 +59,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       sortOrder: 0,
       excelDisable: false,
     },
-    edit: false,
+    edit: true,
     addConfig: {
       text: 'Create Licence Key',
     },

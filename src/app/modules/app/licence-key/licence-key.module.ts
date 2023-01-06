@@ -18,6 +18,7 @@ import { InputModule } from 'src/app/shared/base/form/components/input/input.mod
 import { SelectModule } from 'src/app/shared/base/form/components/select/select.module';
 import { MessageCopyComponent } from './components/message-copy/message-copy.component';
 import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
+import { UpdateKeyDetailsComponent } from './components/update-key-details/update-key-details.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
     DeviceHistoryComponent,
     CreditHistoryComponent,
     CreateLicenceKeyComponent,
-    MessageCopyComponent
+    MessageCopyComponent,
+    UpdateKeyDetailsComponent
   ],
   imports: [
     CommonModule,

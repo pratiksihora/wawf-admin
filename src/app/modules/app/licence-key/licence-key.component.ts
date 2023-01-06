@@ -31,6 +31,7 @@ import { configureTable } from './licence-key.constant';
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
+import { UpdateKeyDetailsComponent } from './components/update-key-details/update-key-details.component';
 
 @Component({
   selector: 'app-licence-key',
@@ -57,12 +58,24 @@ export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   }
 
   onAddEdit(value) {
-    const modelRef = this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
-    modelRef.result.then(res => {
-      if (res === 'save') {
-        this.table.table.reset();
-      }
-    })
+    console.log(value);
+    if (value === undefined) {
+      const modelRef = this.modalService.open(CreateLicenceKeyComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+      modelRef.result.then(res => {
+        if (res === 'save') {
+          this.table.table.reset();
+        }
+      })
+      return;
+    }else{
+      const modelRef = this.modalService.open(UpdateKeyDetailsComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+      modelRef.componentInstance.data = value?.data?.data;
+      modelRef.result.then(res => {
+        if (res === 'save') {
+          this.table.table.reset();
+        }
+      })
+    }
   }
 
   tableActionExtend(data) {
