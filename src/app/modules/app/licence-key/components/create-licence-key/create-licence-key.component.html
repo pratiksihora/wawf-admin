@@ -3,10 +3,10 @@
     <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
         (click)="close()"></button>
 </div>
-<app-loader [show]="loading">
+<app-loader [show]="loading" class="overflow-y-hidden d-flex flex-column flex-fill">
     <form [formGroup]="form" (ngSubmit)="submit()" class="d-flex flex-column flex-fill h-100">
         <div class="d-flex h-100 flex-column h-100">
-            <div class="flex-fill h-100 overflow-y-auto pt-3">
+            <div class="flex-fill h-400px overflow-y-auto overflow-x-hidden pt-3">
                 <div class="row px-5 px-xl-12 py-2">
                     <div class="col-12 px-0">
                         <app-select #select [fieldConfig]="formFields.no_of_month" [formConfig]="formConfig"

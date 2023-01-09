@@ -33,7 +33,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'sk_start_date', header: 'Start Date', type: 'date', blank: '-',
       },
       {
-        field: 'sk_end_date', header: 'Executed Date', type: 'date', blank: '-',
+        field: 'sk_end_date', header: 'End Date', type: 'date', blank: '-',
       },
       {
         field: 'sk_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({

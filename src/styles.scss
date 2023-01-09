@@ -17,5 +17,11 @@
 
 .accordion-button:not(.collapsed) {
     background-color: var(--kt-primary-light) !important;
-  }
-  
+}
+
+.overflow-y-auto {
+    overflow-y: auto !important;
+}
+.overflow-x-hidden {
+    overflow-x: hidden !important;
+}
