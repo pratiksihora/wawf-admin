@@ -9,6 +9,13 @@
             <div class="flex-fill h-400px overflow-y-auto overflow-x-hidden pt-3">
                 <div class="row px-5 px-xl-12 py-2">
                     <div class="col-12 px-0">
+                        <app-radio class="custom-inline-radio" [fieldConfig]="formFields.select_duration"
+                            [formConfig]="formConfig" [form]="form">
+                        </app-radio>
+                    </div>
+                </div>
+                <div class="row px-5 px-xl-12 py-2">
+                    <div class="col-12 px-0">
                         <app-select #select [fieldConfig]="formFields.no_of_month" [formConfig]="formConfig"
                             [form]="form">
                         </app-select>
@@ -34,7 +41,7 @@
                         </app-select>
                     </div>
                 </div>
-                <div class="row px-5 px-xl-12 py-2">
+                <div class="row px-5 px-xl-12 py-2" *ngIf="form.get('select_duration').value === 'no_of_month'">
                     <div class="col-12 px-0">
                         <span class="fw-bold fs-6 ">Credit will use : </span><span
                             class="text-gray-700">{{form.get('no_of_device').value * form.get('no_of_month').value ||

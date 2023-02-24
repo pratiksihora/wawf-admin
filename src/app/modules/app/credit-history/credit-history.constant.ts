@@ -20,22 +20,22 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'ch_licence_key', header: 'License Key', blank: '-'
       },
       {
-        field: 'ch_type', header: 'Key Type'
+        field: 'ch_type', header: 'Key Type', blank: '-'
       },
       {
-        field: 'ch_no_of_device', header: 'Number of Devices'
+        field: 'ch_no_of_device', header: 'Number of Devices', blank: '-'
       },
       {
-        field: 'ch_no_of_month', header: 'Number of Month'
+        field: 'ch_no_of_month', header: 'Number of Month', blank: '-'
       },
       {
-        field: 'ch_used_credit', header: 'Credit Used'
+        field: 'ch_used_credit', header: 'Credit Used', blank: '-'
       },
       {
         field: 'ch_plan_type', header: 'Plan Type', blank: '-'
       },
       {
-        field: 'ch_created_at', header: 'Created Date', type: 'date'
+        field: 'ch_created_at', header: 'Created Date', type: 'date', blank: '-'
       },
     ],
     tableOptions: {

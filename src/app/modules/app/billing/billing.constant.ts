@@ -17,22 +17,22 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'bl_id',
     columns: [
       {
-        field: 'bl_email', header: 'Email'
+        field: 'bl_email', header: 'Email', blank: '-'
       },
       {
-        field: 'bl_payment_type', header: 'Payment Type'
+        field: 'bl_payment_type', header: 'Payment Type', blank: '-'
       },
       {
-        field: 'bl_amount', header: 'Amount'
+        field: 'bl_amount', header: 'Amount', blank: '-'
       },
       {
-        field: 'bl_credit', header: 'Credit'
+        field: 'bl_credit', header: 'Credit', blank: '-'
       },
-      {
-        field: 'bl_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({
-          status: data.bl_status, color: UserRoleColor[data.sk_status],
-        })
-      },
+      // {
+      //   field: 'bl_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({
+      //     status: data.bl_status, color: UserRoleColor[data.sk_status],
+      //   })
+      // },
       // {
       //   field: 'bl_receipt_link', header: 'Recipt'
       // },

@@ -1,7 +1,7 @@
 <app-loader [show]="loading">
   <div class="card shadow-sm w-100 rounded-4 mb-5 mb-xl-10">
     <div class="card-body border-top py-7 py-4 px-8">
-      <app-table #table [options]="tableConfig" [count]="count" [rows]="tableList"
+      <app-table class="custom-scroll-table" #table [options]="tableConfig" [count]="count" [rows]="tableList"
         (tableCallback)="tableCallback($event)" [emptyTemplate]="noResultFound">
       </app-table>
       <ng-template #noResultFound>

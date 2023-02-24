@@ -42,7 +42,8 @@ export class CreateLicenceKeyComponent extends FormApiComponent implements OnIni
   modifyPayloadBeforeSave(payload: any, extraValue?: any) {
     payload = {
       ...payload,
-      no_of_month: parseInt(payload?.no_of_month)
+      no_of_month: this.form.get('select_duration')?.value === 'no_of_month' ? parseInt(payload?.no_of_month) : null,
+      lifetime: this.form.get('select_duration')?.value === 'lifetime' ? true : false
     }
     return payload;
   }

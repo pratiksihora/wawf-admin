@@ -6,3 +6,20 @@
 @import "components/tab";
 @import "components/ng-select";
 @import "components/ng-dropdown";
+
+.custom-inline-radio {
+    div.position-relative {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        label.form-check {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.custom-scroll-table p-table {
+    .p-datatable-wrapper {
+        overflow: auto;
+    }
+}

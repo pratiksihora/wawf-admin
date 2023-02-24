@@ -18,36 +18,39 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     dataKey: 'sk_id',
     columns: [
       {
-        field: 'sk_licence_key', header: 'License Key', type: 'copy-button'
+        field: 'sk_licence_key', header: 'License Key', type: 'copy-button', blank: '-'
       },
       {
-        field: 'sk_no_of_login', header: 'Number of Devices', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`, width: '150px'
+        field: 'sk_type', header: 'Key Type', blank: '-', minWidth: '120px',
       },
       {
-        field: 'sk_no_of_month', header: 'Number of Month'
+        field: 'sk_no_of_login', header: 'Number of Devices', blank: '-', prepareColumn: (data) => `${data.sk_no_of_login || '-'}`, minWidth: '170px'
       },
       {
-        field: 'sk_created_at', header: 'Created Date', type: 'date'
+        field: 'sk_no_of_month', header: 'Number of Month', blank: '-', minWidth: '170px'
       },
       {
-        field: 'sk_start_date', header: 'Start Date', type: 'date', blank: '-',
+        field: 'sk_created_at', header: 'Created Date', type: 'date', blank: '-', minWidth: '150px'
       },
       {
-        field: 'sk_end_date', header: 'End Date', type: 'date', blank: '-',
+        field: 'sk_start_date', header: 'Start Date', type: 'date', blank: '-', minWidth: '120px'
       },
       {
-        field: 'sk_status', header: 'Current Status', type: 'status', prepareColumn: (data) => ({
+        field: 'sk_end_date', header: 'End Date', type: 'date', blank: '-', minWidth: '120px'
+      },
+      {
+        field: 'sk_status', header: 'Current Status', type: 'status', minWidth: '140px', prepareColumn: (data) => ({
           status: data.sk_status, color: UserRoleColor[data.sk_status],
         })
       },
       {
-        field: 'sk_name', header: 'Name', blank: '-'
+        field: 'sk_name', header: 'Name', blank: '-', minWidth: '120px'
       },
       {
-        field: 'sk_email_manual', header: 'Email', blank: '-'
+        field: 'sk_email_manual', header: 'Email', blank: '-', minWidth: '120px'
       },
       {
-        field: 'sk_mobile_no', header: 'Mobile no', blank: '-'
+        field: 'sk_mobile_no', header: 'Mobile no', blank: '-', minWidth: '120px'
       },
     ],
     tableOptions: {
@@ -75,7 +78,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
       iconSVG: './assets/media/svg/new-svg-icons/extend.svg',
       show: (data) => {
-        return data.sk_start_date ? true : false;
+        return data?.sk_start_date && data?.sk_type === 'fixed' ? true : false;
       },
     },
     device: true,

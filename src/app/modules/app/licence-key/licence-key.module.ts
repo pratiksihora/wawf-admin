@@ -19,6 +19,8 @@ import { SelectModule } from 'src/app/shared/base/form/components/select/select.
 import { MessageCopyComponent } from './components/message-copy/message-copy.component';
 import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
 import { UpdateKeyDetailsComponent } from './components/update-key-details/update-key-details.component';
+import { SwitchModule } from 'src/app/shared/base/form/components/switch/switch.module';
+import { RadioModule } from 'src/app/shared/base/form/components/radio/radio.module';
 
 const routes: Routes = [
   {
@@ -48,6 +50,7 @@ const routes: Routes = [
     DrawerModule,
     InputModule,
     SelectModule,
+    RadioModule,
     NoResultFoundModule
   ]
 })
