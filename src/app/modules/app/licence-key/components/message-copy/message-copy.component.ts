@@ -11,6 +11,7 @@ import { ToastService } from 'src/app/shared/base/toastr/toast-service/toast.ser
 
 //utill
 import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
+import { TokenUtil } from 'src/app/shared/_core/utils/token';
 
 @Component({
   selector: 'app-message-copy',
@@ -18,13 +19,14 @@ import { ToastrUtil } from 'src/app/shared/_core/utils/toastr';
   styleUrls: ['./message-copy.component.scss']
 })
 export class MessageCopyComponent implements OnInit {
-
+  userData;
   constructor(public modal: NgbActiveModal, public tableService: TableService, public clipboard: Clipboard, protected toast: ToastService,) { }
 
   @Input() data: any;
   @Output() closeEvent = new EventEmitter<any>();
 
   ngOnInit(): void {
+    this.userData = TokenUtil.getUser();
   }
 
   close() {
