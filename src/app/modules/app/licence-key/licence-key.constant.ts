@@ -55,7 +55,7 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     ],
     tableOptions: {
       globalFilterDisable: false,
-      exportDisable: true,
+      exportDisable: false,
       pdfDisable: false,
       csvDisable: false,
       sortField: 'sk_created_at',
