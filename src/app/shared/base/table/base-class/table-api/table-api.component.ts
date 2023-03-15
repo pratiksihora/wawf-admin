@@ -333,7 +333,7 @@ export abstract class TableApiComponent implements OnInit {
 
   tableExportDataCallback = (response: any, error: boolean = false, event = null) => {
     if (!error && response.status === 200) {
-      const list = this.prepareExportDataForTable(response?.data?.records);
+      const list = this.prepareExportDataForTable(response?.data);
       const exportData = this.setExportDataToTable(list);
       switch (event.action) {
         case TableEventType.EXPORT_PDF:

@@ -42,7 +42,7 @@ import { UpdateKeyDetailsComponent } from './components/update-key-details/updat
 export class LicenceKeyComponent extends TableApiComponent implements OnInit {
   @HostBinding('class') class = 'flex-fill overflow-hidden';
 
-  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'sk_id', module: ApiModule.API, exportUrl: '/v1/reseller/subscription/pagging', paggingUrl: '/v1/reseller/subscription/pagging', deleteUrl: '/v1/reseller/delete-key/{{sk_id}}', title: 'User' });
+  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'sk_id', module: ApiModule.API, exportUrl: '/v1/reseller/subscription/export', paggingUrl: '/v1/reseller/subscription/pagging', deleteUrl: '/v1/reseller/delete-key/{{sk_id}}', title: 'User' });
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService,
