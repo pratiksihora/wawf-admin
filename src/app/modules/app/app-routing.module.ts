@@ -39,6 +39,10 @@ const routes: Routes = [
         path: 'faq',
         loadChildren: () => import('./faq/faq.module').then((m) => m.FaqModule),
       },
+      {
+        path: 'api-key',
+        loadChildren: () => import('./api-key/api-key.module').then((m) => m.ApiKeyModule),
+      },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: '**', redirectTo: `dashboard` }
     ]
