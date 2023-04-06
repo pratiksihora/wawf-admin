@@ -583,7 +583,8 @@ export class TableUtil {
           filterPayload && payload.filters.push(filterPayload);
         } else if (key === 'global') {
           payload.globalFilter = filters[key].value;
-          payload.globalFilterFields = tableConfig.columns.filter(a => !a.globalFilterDisable).map(a => ({ field: a.field, type: a.filterType }));
+          payload.global_filters = { value: filters[key].value, columns: tableConfig.columns.filter(a => !a.globalFilterDisable).map(a => (a.field)) }
+          // payload.globalFilterFields = tableConfig.columns.filter(a => !a.globalFilterDisable).map(a => ({ field: a.field, type: a.filterType }));
         }
       });
     }
