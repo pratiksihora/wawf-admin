@@ -24,7 +24,7 @@ export const FormFields: { [key: string]: Field } = {
 }
 
 export const FormAPI = {
-    update: ApiUtil.configurePost({ module: ApiModule.API, fullUrl: '/v1/reseller/extend/key', title: 'Extend', success: 'Extend has been update successfully.' }),
+    update: ApiUtil.configurePost({ module: ApiModule.API, url: '/v1/reseller/extend/key', title: 'Extend', success: 'Extend has been update successfully.' }),
 }
 
 export const FormConfig: FormGlobalConfig = {
