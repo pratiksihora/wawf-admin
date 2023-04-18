@@ -47,7 +47,21 @@ export class DeviceHistoryComponent extends TableApiComponent implements OnInit 
 
   ngOnInit(): void {
     this.tableConfig = configureTable(this.translate, this.permissionService, {});
-    this.config = TableApiUtil.lazyTable({ idKey: 'skd_id', module: ApiModule.API, paggingUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'User' });
+    this.config = TableApiUtil.lazyTable({ idKey: 'skd_id', module: ApiModule.API, deleteUrl: '/v1/subscription-key/remove-device/{{skd_id}}', paggingUrl: `/v1/reseller/subscription-device/${this.data?.sk_id}`, title: 'Device' });
+  }
+
+
+  tableDeleteApiCall(data = null, action = null) {
+    this.loading = true;
+    let payload = this.preparePayloadForDelete(data, action);
+    this.subscriptions.push(this.tableService.tableCommon(this.tableConfigForDeleteApiCall(), payload).subscribe({
+      next: (response: any) => {
+        this.tableDeleteCallback(response);
+        this.table.table.clear();
+      }, error: err => {
+        this.tableDeleteCallback(err, true);
+      }
+    }));
   }
 
   close() {

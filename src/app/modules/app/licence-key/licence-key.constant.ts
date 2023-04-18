@@ -21,6 +21,9 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'sk_licence_key', header: 'License Key', type: 'copy-button', blank: '-'
       },
       {
+        field: 'sk_linked_wa_no', header: 'Key attached number', blank: '-', minWidth: '200px'
+      },
+      {
         field: 'sk_type', header: 'Key Type', blank: '-', minWidth: '120px',
       },
       {
