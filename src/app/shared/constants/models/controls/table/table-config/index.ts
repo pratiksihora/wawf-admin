@@ -295,6 +295,7 @@ export interface ActionOption extends ExtraColumnOption {
   credit?: boolean;
   delete?: boolean;
   message?: boolean;
+  refund?: boolean;
   addConfig?: ButtonConfig;
   editConfig?: ButtonConfig;
   viewConfig?: ButtonConfig;
@@ -303,6 +304,7 @@ export interface ActionOption extends ExtraColumnOption {
   deviseConfig?: ButtonConfig;
   creditConfig?: ButtonConfig;
   messageConfig?: ButtonConfig;
+  refundConfig?: ButtonConfig;
   deleteConfig?: ButtonConfig;
 }
 

@@ -83,6 +83,13 @@
       </app-button>
     </ng-container>
     <!-- end: delete button -->
+
+    <!-- begin: refund button -->
+    <ng-container *ngIf="options?.actions.refund">
+      <app-button [options]="options?.actions?.refundConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: refund button -->
   </div>
 </td>
 <!-- begin: action column -->
@@ -344,6 +351,13 @@
       </app-button>
     </ng-container>
     <!-- end: delete button -->
+
+    <!-- begin: refund button -->
+    <ng-container *ngIf="options?.actions.refund">
+      <app-button [options]="options?.actions?.refundConfig" [data]="rowData" (buttonCallback)="buttonCallback($event)">
+      </app-button>
+    </ng-container>
+    <!-- begin: refund button -->
   </div>
 </td>
 <!-- begin: action column -->

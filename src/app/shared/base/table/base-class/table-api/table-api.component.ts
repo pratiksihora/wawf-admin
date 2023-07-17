@@ -156,6 +156,9 @@ export abstract class TableApiComponent implements OnInit {
       case TableEventType.RESEND:
         this.tableActionResend(event);
         break;
+      case TableEventType.REFUND:
+        this.tableActionRefund(event);
+        break;
       default:
         break;
     }
@@ -166,6 +169,10 @@ export abstract class TableApiComponent implements OnInit {
   }
 
   tableActionResend(event) {
+    return;
+  }
+
+  tableActionRefund(event) {
     return;
   }
 

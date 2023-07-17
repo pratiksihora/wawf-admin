@@ -33,5 +33,6 @@ export enum ActionType {
   EXTEND = 'extend',
   DEVICE = 'device',
   CREDIT = 'credit',
-  MESSAGE = 'message'
+  MESSAGE = 'message',
+  REFUND = 'refund'
 }

@@ -39,12 +39,14 @@ export interface TableBaseConfig {
   device?: boolean;
   credit?: boolean;
   message?: boolean;
+  refund?: boolean;
   viewConfig?: ButtonBaseConfig;
   cloneConfig?: ButtonBaseConfig;
   extendConfig?: ButtonBaseConfig;
   deviseConfig?: ButtonBaseConfig;
   creditConfig?: ButtonBaseConfig;
   messageConfig?: ButtonBaseConfig;
+  refundConfig?: ButtonBaseConfig;
   add?: boolean;
   addConfig?: ButtonBaseConfig;
 

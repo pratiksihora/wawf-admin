@@ -10,9 +10,12 @@ import { TableConfig } from "src/app/shared/constants/models/controls/table/tabl
 
 // Utils
 import { TableUtil } from "src/app/shared/_core/utils/table"
+import { ButtonUtil } from "src/app/shared/_core/utils/button";
+
+import moment from "moment-timezone";
 
 
-export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
+export const configureTable = (translate: any, permission: any, extra: any): TableConfig => {
   return TableUtil.configure({
     type: 'lazy',
     dataKey: 'sk_id',
@@ -69,6 +72,55 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     addConfig: {
       text: 'Create Licence Key',
     },
+    displayOptions: {
+      button: 'Information'
+    },
+    // actionButtons: [
+    //   ButtonUtil.configure({
+    //     type: 'custom',
+    //     aTag: false,
+    //     action: ActionType.MESSAGE,
+    //     className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+    //     text: 'COMMON.BUTTON.DELETE',
+    //     iconOnly: true, size: 'sm',
+    //     button: { tooltip: 'Message' },
+    //     iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+    //     iconSVG: './assets/media/svg/new-svg-icons/message.svg',
+    //   }),
+    //   ButtonUtil.configure({
+    //     type: 'custom',
+    //     aTag: false,
+    //     action: ActionType.DEVICE,
+    //     className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+    //     // text: 'COMMON.BUTTON.DELETE',
+    //     iconOnly: true, size: 'sm',
+    //     button: { tooltip: 'Device History' },
+    //     iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+    //     iconSVG: './assets/media/svg/new-svg-icons/device-history.svg',
+    //   }),
+    //   ButtonUtil.configure({
+    //     type: 'custom',
+    //     aTag: false,
+    //     action: ActionType.CREDIT,
+    //     className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+    //     // text: 'COMMON.BUTTON.DELETE',
+    //     iconOnly: true, size: 'sm',
+    //     button: { tooltip: 'Credit History' },
+    //     iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+    //     iconSVG: './assets/media/svg/new-svg-icons/credit-history.svg',
+    //   }),
+    //   ButtonUtil.configure({
+    //     type: 'editIcon',
+    //     aTag: false,
+    //     action: ActionType.EDIT,
+    //     className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+    //     // text: 'COMMON.BUTTON.DELETE',
+    //     iconOnly: true, size: 'sm',
+    //     button: { tooltip: 'Edit' },
+    //     iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+    //     // iconSVG: './assets/media/svg/new-svg-icons/message.svg',
+    //   }),
+    // ],
     extend: true,
     extendConfig: {
       type: 'custom',
@@ -120,11 +172,28 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
       iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
       iconSVG: './assets/media/svg/new-svg-icons/message.svg',
     },
+    refund: true,
+    refundConfig: {
+      type: 'custom',
+      aTag: false,
+      className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+      action: ActionType.REFUND,
+      iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+      iconOnly: true, space: 'me-1', size: 'sm',
+      button: { tooltip: 'Refund' },
+      iconSVG: './assets/media/svg/new-svg-icons/refund.svg',
+      show: (data) => {
+        let createDate = moment(data?.sk_created_at, 'DD-MM-YYYY');
+        let todaytDate = moment();
+        let remainingDays = todaytDate.diff(createDate, 'days')
+        return data?.sk_status?.status == "Active" && remainingDays <= extra?.reseller_refund_days
+      }
+    },
     deleteConfig: {
       show: (data) => {
         return data.sk_start_date ? false : true;
       },
       iconSVG: './assets/media/svg/new-svg-icons/delete.svg',
     }
-  }, translate, permission, data)
+  }, translate, permission, extra)
 }

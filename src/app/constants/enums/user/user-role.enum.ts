@@ -4,4 +4,5 @@
 export enum UserRoleColor {
   'Unused' = "warning",
   'Active' = "primary",
+  'Refund' = "danger",
 }

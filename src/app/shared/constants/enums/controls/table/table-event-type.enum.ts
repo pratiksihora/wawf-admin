@@ -59,4 +59,5 @@ export enum TableEventType {
   CREDIT = 'credit',
   MESSAGE = 'message',
   COPY = 'copy',
+  REFUND = 'refund',
 }
