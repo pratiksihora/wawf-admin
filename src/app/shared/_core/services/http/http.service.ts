@@ -138,7 +138,7 @@ export class HttpService {
     }
 
     if (body?.unique || TokenUtil.getUniqueId())
-      headers = headers.set('r_unique', body?.unique || TokenUtil.getUniqueId());
+      headers = headers.set('r-unique', body?.unique || TokenUtil.getUniqueId());
 
     return headers;
   }
@@ -178,7 +178,7 @@ export class HttpService {
       }
 
       if (body?.unique || TokenUtil.getUniqueId())
-        headers = headers.set('r_unique', body?.unique || TokenUtil.getUniqueId());
+        headers = headers.set('r-unique', body?.unique || TokenUtil.getUniqueId());
 
       return headers;
     } catch (error) {

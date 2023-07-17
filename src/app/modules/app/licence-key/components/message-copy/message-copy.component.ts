@@ -40,7 +40,7 @@ export class MessageCopyComponent implements OnInit {
 This license key provides access for premium features.
 
 You can download our extension from the following URL, or contact us for installation:
-https://wawf.s2-tastewp.com
+${this.userData?.reseller_ext_link}
 
 Your license:
 ${this.data?.sk_licence_key}

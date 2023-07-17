@@ -21,7 +21,7 @@ export const FormFields: { [key: string]: Field } = {
             { value: 10, text: '10 Month' }, { value: 11, text: '11 Month' }, { value: 12, text: '12 Month' },
         ]
     }, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
-    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { required: true, type: ValidationType.MAX_100 }, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
+    no_of_device: InputUtil.configureNumber({ key: 'no_of_device', label: 'Number of Devices', placeholder: 'Enter Value', smallControl: true, layout: LayoutType.VERTICAL }, { validations: { validators: { required: true, min: 0, max: 100 } } }, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
     name: InputUtil.configureInput({ key: 'name', label: 'Name', placeholder: 'Enter Name', smallControl: true, layout: LayoutType.VERTICAL }, {}, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
     email: InputUtil.configureEmail({ key: 'email', label: 'Email', placeholder: 'Enter Email', smallControl: true, layout: LayoutType.VERTICAL }, {}, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
     mobile_no: InputUtil.configureInput({ key: 'mobile_no', label: 'Mobile Number', placeholder: 'Enter Mobile Number', smallControl: true, layout: LayoutType.VERTICAL }, {}, {}, { classNames: { label: 'fw-bold pb-2 fs-6 col-form-label' } }),
