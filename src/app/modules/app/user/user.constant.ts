@@ -9,6 +9,8 @@ import { TableConfig } from "src/app/shared/constants/models/controls/table/tabl
 
 // Utils
 import { TableUtil } from "src/app/shared/_core/utils/table"
+import { ActionType } from "src/app/shared/constants/enums/common/action/action.enum"
+import moment from "moment-timezone"
 
 
 export const configureTable = (translate: any, permission: any, data: any): TableConfig => {
@@ -26,6 +28,9 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
         field: 'user_email', header: 'Email', blank: '-'
       },
       {
+        field: 'user_trial_end_at', header: 'Trial End date', type: 'date', blank: '-'
+      },
+      {
         field: 'user_created_at', header: 'Created Date', type: 'date'
       },
     ],
@@ -41,5 +46,23 @@ export const configureTable = (translate: any, permission: any, data: any): Tabl
     add: false,
     delete: false,
     edit: true,
+    extend: true,
+    extendConfig: {
+      type: 'custom',
+      aTag: false,
+      action: ActionType.EXTEND,
+      className: 'btn btn-icon btn-flex btn-sm py-2 btn-light btn-active-light-primary me-2 me-1',
+      text: 'COMMON.BUTTON.DELETE',
+      iconOnly: true,
+      button: { tooltip: 'Extend' },
+      iconClass: "svg-icon svg-icon-gray-600 svg-icon-6",
+      iconSVG: './assets/media/svg/new-svg-icons/extend.svg',
+      show: (data) => {
+        const todaytDate = moment();
+        const endDate = moment(data?.user_trial_end_at, 'DD-MM-YYYY');
+        const differenceInDays = endDate.isBefore(todaytDate);
+        return differenceInDays && (data?.user_fk_reseller_unique == 'TJHVW2UJ' || data?.user_fk_reseller_unique == 'Q2ZJRGFM')
+      },
+    },
   }, translate, permission, data)
 }

@@ -1,0 +1,43 @@
+<div class="modal-header py-6 px-7">
+    <h3 class="card-title fw-bold text-gray-800">Extend Trial</h3>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="close()"></button>
+</div>
+<app-loader [show]="loading">
+    <form class="d-flex flex-column flex-fill h-100" [formGroup]="form" (submit)="submit()">
+        <div class="modal-body overflow-x-hidden px-0 pt-2 pb-2">
+            <div class="d-flex h-100 flex-column">
+                <div class="d-flex h-100 flex-column">
+                    <div class="d-flex h-100 flex-column h-100">
+                        <div class="flex-fill">
+                            <div class="row px-5 px-xl-12 py-2">
+                                <div class="col-12 px-0">
+                                    <app-input [fieldConfig]="formFields.amount" [formConfig]="formConfig" [form]="form"
+                                        (detectAction)="detectAction()">
+                                    </app-input>
+                                    <!-- <div class="text-gray-400">
+                                        Number of active devices that can use this license key.
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="row px-5 px-xl-12 py-2">
+                                <div class="col-12 px-0">
+                                    <app-select #select [fieldConfig]="formFields.type" [formConfig]="formConfig"
+                                        [form]="form">
+                                    </app-select>
+                                    <!-- <div class="text-gray-400">
+                                        Duration is For how long would you like to provide a license key to your customer.
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer px-5 py-3">
+            <button type="button" class="btn btn-md py-2 btn-light-primary" (click)="close()">Close</button>
+            <button type="submit" class="btn btn-md py-2 btn-primary">Extend</button>
+        </div>
+    </form>
+</app-loader>

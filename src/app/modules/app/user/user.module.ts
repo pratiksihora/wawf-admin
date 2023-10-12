@@ -6,12 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 //component
 import { UserComponent } from './user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ExtendTrialComponent } from './extend-trial/extend-trial.component';
 
 //EXTERNAL MODULES
 import { TableModule } from 'src/app/shared/base/table/modules/table/table.module';
 import { LoaderModule } from 'src/app/shared/base/loader/loader/loader.module';
 import { InputModule } from 'src/app/shared/base/form/components/input/input.module';
 import { NoResultFoundModule } from 'src/app/shared/base/no-result-found/no-result-found.module';
+import { SelectModule } from 'src/app/shared/base/form/components/select/select.module';
 
 const routes: Routes = [
   {
@@ -23,7 +25,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     UserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    ExtendTrialComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ const routes: Routes = [
     LoaderModule,
     TableModule,
     InputModule,
+    SelectModule,
     NoResultFoundModule
   ]
 })

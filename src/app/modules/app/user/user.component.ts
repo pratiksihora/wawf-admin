@@ -24,6 +24,7 @@ import { configureTable } from './user.constant';
 import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ExtendTrialComponent } from './extend-trial/extend-trial.component';
 
 @Component({
   selector: 'app-user',
@@ -56,4 +57,15 @@ export class UserComponent extends TableApiComponent implements OnInit {
       }
     })
   }
+
+  tableActionExtend(data) {
+    const modelRef = this.modalService.open(ExtendTrialComponent, { centered: true, size: 'md', backdrop: 'static', scrollable: true });
+    modelRef.componentInstance.data = data?.rowData;
+    modelRef.result.then(res => {
+      if (res === 'save') {
+        this.table.table.reset();
+      }
+    })
+  }
+
 }
