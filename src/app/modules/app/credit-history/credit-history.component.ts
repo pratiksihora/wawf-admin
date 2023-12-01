@@ -31,7 +31,7 @@ import { TableApiUtil } from 'src/app/shared/_core/utils/api/table';
 export class CreditHistoryComponent extends TableApiComponent implements OnInit {
   @HostBinding('class') class = 'flex-fill';
 
-  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'ch_id', module: ApiModule.API,paggingUrl:'/v1/reseller/credit-history/pagging', title: 'User' });
+  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'ch_id', module: ApiModule.API,paggingUrl:'/v1/reseller/credit-history/pagging',exportUrl: "/v1/reseller/credit-history/export", title: 'User' });
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService,

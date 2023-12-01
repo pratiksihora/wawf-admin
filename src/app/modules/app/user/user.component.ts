@@ -34,7 +34,7 @@ import { ExtendTrialComponent } from './extend-trial/extend-trial.component';
 export class UserComponent extends TableApiComponent implements OnInit {
   @HostBinding('class') class = 'flex-fill';
 
-  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'user_id', module: ApiModule.API, paggingUrl: '/v1/reseller/user/pagging', title: 'User' });
+  config: TableApiConfig = TableApiUtil.lazyTable({ idKey: 'user_id', module: ApiModule.API, paggingUrl: '/v1/reseller/user/pagging', exportUrl: "/v1/reseller/user/export", title: 'User' });
   tableConfig: TableConfig;
 
   constructor(public tableService: TableService,
